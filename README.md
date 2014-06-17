@@ -1,4 +1,4 @@
 holisticon.github.io
 ====================
 
-Github.io account of holisticon
+Github.io account of holisticon, see http://holisticon.github.io
