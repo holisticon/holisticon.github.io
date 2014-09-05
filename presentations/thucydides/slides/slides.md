@@ -16,7 +16,7 @@ Martin Reinhardt (Holisticon AG)
 * Kann als Java und JBehave-Variante genutzt werden
 * Nutzt PagePattern
     * Page als Model der Webseite mit allen Elemente. 
-    * Steps als Grupperung der möglichen Interaktionsmöglickeiten, z.B. Klicken
+    * Steps als Gruppierung der möglichen Interaktionsmöglickeiten, z.B. Klicken
     * Test ist eine Kollektion von Tests die Benutzereingaben reflektieren und das Ergebnis verifizieren
 * Stellt Reporting für Tracking & Fehlersuche zur Verfügung
 
@@ -28,18 +28,18 @@ Martin Reinhardt (Holisticon AG)
 ```markdown
 $ mvn archetype:generate
 ....
-Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): : net.thucydides:thucydides-simple-archetype
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 
+        net.thucydides:thucydides-simple-archetype
 Choose archetype:
-1: remote -> net.thucydides:thucydides-simple-archetype (Thucydides automated acceptance testing project using Selenium 2 and JUnit)
-Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): : 1
+1: remote -> net.thucydides:thucydides-simple-archetype 
+        (Thucydides automated acceptance ...)
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1
 ...
-26: 0.9.200
-27: 0.9.205
-28: 0.9.229
+...
 29: 0.9.256
 Choose a number: 29:
 ...
-dDefine value for property 'groupId': : thucydides.demo
+Define value for property 'groupId': : thucydides.demo
 Define value for property 'artifactId': : webtest
 Define value for property 'version':  1.0-SNAPSHOT: :
 Define value for property 'package':  thucydides.demo: : demo
@@ -334,7 +334,7 @@ thucydides.timeout=2000
 thucycides.step.delay = 300
 webdriver.driver = firefox
 thucydides.store.html.source = true
-thcydides.reports.show.step.detail=true
+thucydides.reports.show.step.detail=true
 thucydides.report.show.manual.tests=false
 thucydides.report.show.releases=false
 thucydides.verbose.steps = true
