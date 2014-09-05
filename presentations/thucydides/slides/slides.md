@@ -341,8 +341,6 @@ thucydides.verbose.steps = true
 thucydides.take.screenshots = FOR_EACH_ACTION
 ```
 
-mvn thucydides:aggregate
-
 ---
 
 # Thucydides - Reporting
