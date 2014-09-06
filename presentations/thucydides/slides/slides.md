@@ -433,6 +433,6 @@ public class CsvSearchByKeywordStoryTest {
 * Gradle-Support 
 * JBehave, siehe [Wiki](https://github.com/thucydides-webtests/thucydides/wiki)
 * Links
-    * [GitHub-Projekt](https://github.com/hypery2k/thucydides_sample/)
-    * [Jenkins-Beispiel](https://martinreinhardt-online.de/jenkins/job/thucydides_sample/)
+    * [GitHub-Projekt](https://github.com/holisticon/thucydides_sample/)
+    * [Jenkins-Beispiel](https://server.holisticon.de/jenkins/buildStatus/icon?job=thucydides_sample)
 
