@@ -14,7 +14,7 @@ Martin Reinhardt (Holisticon AG)
 * Macht Oberflächen-Tests lesbarer, wartbarer und wiederwendbar
 * Nutzt Selenium als technische Basis
 * Kann als Java und JBehave-Variante genutzt werden
-* Nutzt PagePattern
+* Nutzt Page-Object-Pattern
     * Page als Model der Webseite mit allen Elemente. 
     * Steps als Gruppierung der möglichen Interaktionsmöglickeiten, z.B. Klicken
     * Test ist eine Kollektion von Tests die Benutzereingaben reflektieren und das Ergebnis verifizieren
