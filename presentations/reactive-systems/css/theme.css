@@ -7,17 +7,29 @@
   font-family: 'PT Sans';
   font-style: normal;
   font-weight: 400;
-  src: local("PT Sans"), local("PTSans-Regular"), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/LKf8nhXsWg5ybwEGXk8UBQ.woff) format("woff"); }
+  src: local("PT Sans"), local("PTSans-Regular"), url("/assets/fonts/PT_Sans.woff") format("woff"); }
 
 @font-face {
   font-family: 'PT Sans';
   font-style: normal;
   font-weight: 700;
-  src: local("PT Sans Bold"), local("PTSans-Bold"), url(http://themes.googleusercontent.com/static/fonts/ptsans/v6/0XxGQsSc1g4rdRdjJKZrNBsxEYwM7FgeyaSgU71cLG0.woff) format("woff"); }
+  src: local("PT Sans Bold"), local("PTSans-Bold"), url("/assets/fonts/PT_Sans_Bold.woff") format("woff"); }
 
 .reveal .slides {
   text-align: left; }
 .reveal section img.no-border {
+  border: 0;
+  box-shadow: 0 0 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+.reveal section img.big-image {
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px; }
+.reveal section img.inline {
+  margin: 0px;
   border: 0;
   box-shadow: 0 0 0; }
 .reveal .pause-overlay {
@@ -32,8 +44,10 @@
   padding: 0;
   margin: 0; }
 .reveal li {
-  padding-left: 1em;
-  text-indent: -.7em; }
+  padding-left: 0em;
+  text-indent: -.7em each-line; }
+.reveal ul ul li {
+  padding-left: 1em; }
 .reveal ul li:not(:empty):before {
   content: "■";
   padding-right: 1ex;
@@ -46,6 +60,10 @@
   font-style: inherit;
   color: #666666;
   background-color: #e0e0e0; }
+.reveal h4 {
+  font-weight: bolder;
+  font-size: 300%;
+  text-align: center; }
 
 .checklist li:before {
   content: "▢"; }

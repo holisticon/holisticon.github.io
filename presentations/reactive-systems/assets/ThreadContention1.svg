@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="496px" height="135px"
+     version="1.1">
+    <defs/>
+    <g transform="translate(0.5,0.5)">
+        <ellipse cx="56" cy="49" rx="7.499999999999998" ry="7.499999999999998" fill="#ffffff" stroke="#989292"
+                 stroke-width="3" pointer-events="none"/>
+        <path d="M 56 57 L 56 82 M 56 62 L 41 62 M 56 62 L 71 62 M 56 82 L 41 102 M 56 82 L 71 102" fill="none"
+              stroke="#989292" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="#989292" font-family="Verdana" font-weight="bold" text-anchor="middle" font-size="12px">
+            <text x="56" y="120">Users</text>
+        </g>
+        <rect x="161" y="42" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#989292" stroke-width="3"
+              pointer-events="none"/>
+        <g transform="translate(186,64)scale(0.9999999999999999)">
+            <switch>
+                <text x="36" y="15" fill="#989292" text-anchor="middle" font-size="12px" font-family="Verdana"
+                      font-weight="bold">Frontend
+                </text>
+            </switch>
+        </g>
+        <rect x="372" y="42" width="120" height="60" rx="9" ry="9" fill="#ffffff" stroke="#989292" stroke-width="3"
+              pointer-events="none"/>
+        <g transform="translate(397,64)scale(0.9999999999999999)">
+                <text x="35" y="15" fill="#989292" text-anchor="middle" font-size="12px" font-family="Verdana"
+                      font-weight="bold">Backend
+                </text>
+s        </g>
+        <path d="M 81 57 L 153 57" fill="none" stroke="#989292" stroke-width="2" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 159 57 L 151 61 L 153 57 L 151 53 Z" fill="#989292" stroke="#989292" stroke-width="2"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 282 57 Q 282 57 363 57" fill="none" stroke="#989292" stroke-width="2" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 369 57 L 361 61 L 363 57 L 361 53 Z" fill="#989292" stroke="#989292" stroke-width="2"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 372 87 Q 372 87 286 87" fill="none" stroke="#989292" stroke-width="2" stroke-miterlimit="10"
+              stroke-dasharray="5.999999999999999 5.999999999999999" pointer-events="none"/>
+        <path d="M 292 83 L 284 87 L 292 91" fill="none" stroke="#989292" stroke-width="2" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 161 87 Q 122 87 122 87 Q 122 87 86 87" fill="none" stroke="#989292" stroke-width="2"
+              stroke-miterlimit="10" stroke-dasharray="5.999999999999999 5.999999999999999" pointer-events="none"/>
+        <path d="M 92 83 L 84 87 L 92 91" fill="none" stroke="#989292" stroke-width="2" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="16" cy="9" rx="7.499999999999998" ry="7.499999999999998" fill="#ffffff" stroke="#989292"
+                 stroke-width="3" pointer-events="none"/>
+        <path d="M 16 17 L 16 42 M 16 22 L 1 22 M 16 22 L 31 22 M 16 42 L 1 62 M 16 42 L 31 62" fill="none"
+              stroke="#989292" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/>
+        <ellipse cx="16" cy="79" rx="7.499999999999998" ry="7.499999999999998" fill="#ffffff" stroke="#989292"
+                 stroke-width="3" pointer-events="none"/>
+        <path d="M 16 87 L 16 112 M 16 92 L 1 92 M 16 92 L 31 92 M 16 112 L 1 132 M 16 112 L 31 132" fill="none"
+              stroke="#989292" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/>
+    </g>
+</svg>

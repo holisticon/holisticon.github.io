@@ -1,0 +1,11 @@
+.reveal .slides {
+  text-align: left; }
+
+aside.controls {
+  display: none; }
+
+div.slide-number {
+  display: none !important; }
+
+.reveal .slides section.title {
+  background-position: 40px 40px; }
