@@ -1,6 +1,7 @@
 # Hybride Apps mit Cordova & AngularJS
 Martin Reinhardt (Holisticon AG)
 
+
 <!-- .slide: class="title" data-background="assets/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
 
 ---
@@ -25,6 +26,11 @@ Martin Reinhardt (Holisticon AG)
 * Mehr und mehr Client-Logik <!-- .element: class="fragment" -->
 * JEE 7 zeigt diesen Trend, z.B. JSON und WebSockets <!-- .element: class="fragment" -->
 * Zuerst wird für mobile Geräte wie Smartphones und Tablets geplant <!-- .element: class="fragment" -->
+
+>NOTES:
+* Wer hat schon Erfahrungen
+	* Apps?
+    * AngularJS
 
 --
 
@@ -85,7 +91,7 @@ Martin Reinhardt (Holisticon AG)
 ---
 
 
-# Ist JavaScript schnell genug für RIA?
+# Ist JavaScript schnell genug für RIA?
 
 ![img](assets/javascript.png) <!-- .element: class="big-image no-border" -->
 
@@ -871,9 +877,24 @@ public class MyChromeDriver extends ChromeDriver implements DriverSource {
 ---
 
 # Links
+
 * [jQuery Selektoren Performance](http://jsperf.com/jquery-cache-no-cache/13)
 * [Depedency Injection](http://martinfowler.com/articles/injection.html)
 * [Beispiel auf GitHub](https://github.com/hypery2k/angular_cordova_app) 
 * [Flynn](https://github.com/hypery2k/angular_cordova_app) App mit PouchDB
 * [I18n in AngularJS Anwendungen](http://angularjs.de/artikel/angularjs-i18n-ng-translate)
+
+
+---
+
+# About me
+
+* Martin Reinhardt (Holisticon AG)
+
+![img](https://pbs.twimg.com/profile_images/488919098240139264/KRAs7ITF.png)<!-- .element: class="big-image no-border" style="width:40%;height:40%"-->
+
+* [github.com/hypery2k](https://github.com/hypery2k)
+* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
+
+
 
