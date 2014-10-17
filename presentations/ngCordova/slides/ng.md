@@ -42,7 +42,7 @@ Martin Reinhardt (Holisticon AG)
 4. Apps sind einfach zu bedienen und benötigen wenig Einarbeitungszeit<!-- .element: class="fragment" -->
 5. Apps lassen sich leicht auf den neuesten Stand bringen<!-- .element: class="fragment" -->
 6. Apps sind preiswert<!-- .element: class="fragment" -->
-7. Apps lassen sich leicht deinstallieren und gegen andere austauschen<!-- .element: class="fragment" -->
+7. Apps lassen sich leicht zu installieren und zu entfernen<!-- .element: class="fragment" -->
 8. Apps bieten die Möglichkeit, auch exotische oder ungewöhnliche Aufgaben zu lösen<!-- .element: class="fragment" -->
 9. Apps sind ein Vertriebskanal, den sich viele Unternehmen erstmal lange und mühsam erarbeiten müsse<!-- .element: class="fragment" -->
 10. Apps bieten ein direkten Monetarisierungsansatz <!-- .element: class="fragment" -->
