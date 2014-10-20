@@ -1,6 +1,8 @@
 # Hybride Apps mit Cordova & AngularJS
-Martin Reinhardt (Holisticon AG)
-
+<br />
+Martin Reinhardt 
+<br />
+![img](assets/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align:center" --> [@mreinhardt](https://twitter.com/mreinhardt) / [@holisticon](https://twitter.com/holisticon)<br />
 
 <!-- .slide: class="title" data-background="assets/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
 
