@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Reactive Systems - Vier Traits für die Architektur von Morgen? (Daniel Wegener)</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'bower_components/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'css/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Reactive Systems
+
+Vier Traits für die Architektur von Morgen?
+
+<br />
+Daniel Wegener<br />
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@dwegener](https://twitter.com/dwegener)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+<!-- .slide: data-background="images/Motivation2.svg" data-background-size="100%" -->
+
+---
+
+<!-- .slide: data-background="images/Motivation2b.svg" data-background-size="100%" -->
+
+---
+
+<!-- .slide: data-background="images/reactive_manifesto.png" -->
+
+
+---
+
+# Das Reactive Manifesto
+
+Was sind _reactive systems_?
+
+Das Reactive Manifesto definiert vier Eigenschaften:
+
+ - <!-- .element: class="fragment" --> __Antwortbereit__ (_Responsive_) <br> Anwendungen reagieren und antworten _zeitnah_
+ - <!-- .element: class="fragment" --> + __Widerstandsfähig__ (_Resilient_) <br> Umgang mit Teilausfällen und Fehlern
+ - <!-- .element: class="fragment" --> + __Elastisch__ (_Elastic_) <br> Umgang mit sich ändernder Nutzerzahl und Datenmenge
+ - <!-- .element: class="fragment" --> + __Nachrichten-orientiert__ (_Message-driven_) <br> Asynchrones, nicht-blockierendes Verarbeitungsmodell
+ - <!-- .element: class="fragment" --> = __Reactive__ <br>
+
+
+---
+
+<!-- .slide: data-background="images/reactive-traits-de.svg" data-background-size="100%" -->
+
+
+---
+
+# Warum Responsive?
+
+- User-Experience
+- Benutzer erwarten eine zeitnahe Reaktion des Systems
+- Mobile Nutzung ist netzwerkbedingt bereits langsam
+- Anwendungen mit hoher Latenz sind ggf. nutzlos
+ - Echtzeit-Auktionen
+ - Instant-Messaging
+
+
+---
+
+# How-To: Responsive
+
+- __Antwortzeiten minimieren__
+- Langsame Anfragen werden abgebrochen und wiederholt
+- Zeitintensive Aufgaben werden nachgelagert ausgeführt
+  - Erstellung einer PDF-Rechnung
+  - E-Mail-Versand
+  - (Schreiben in eine Datenbank)
+- SLA für Services definieren und einhalten
+
+---
+
+# Elastizität
+
+- Hardwarebedarf zur Laufzeit anpassen
+ - mehr Hardware bei Lastspitzen
+ - weniger Hardware im Leerlauf
+- _Cloud Readyness_
+
+---
+
+# Warum Elastizität?
+
+- Ökonomischer Betrieb
+- Umgang mit ungeplantem / spontanen Wachstum
+- Internet of Things?
+ - eher doch: mehr Interaktivität
+- Vorraussetzung: __Skalierbarkeit__
+
+---
+
+# Skalierbarkeit
+
+Skalieren mit:
+
+- Anzahl Benutzer
+ - die etwas im System tun
+ - die darauf warten, dass sich im System etwas tut
+- Größe der Wissensbasis / Datenmenge
+- Oft: Mehr Benutzer → mehr Daten
+
+---
+
+# Skalierbarkeit (2)
+
+- __vertikal__ _(scale-up)_
+  - Schnellere Prozessoren, mehr Arbeitsspeicher
+  - __Moores Law is dead__
+  - Multi-Core Server ≈ Verteiltes System
+- <!-- .element: class="fragment" --> __horizontal__ _(scale-out)_
+  - Mehr Maschinen ...
+  - ... die sich gemeinsam die selbe Arbeit teilen
+  - ... die unabhängig gleichartig auf verschiedenen Daten arbeiten
+
+---
+
+# Skalierbarkeit (3)
+
+![img](images/AmdahlsLaw.png) <!-- .element: class="no-border" style="text-align:center" title="By Jgonion (Own work) [Public domain], via Wikimedia Commons" --> <!-- NOTE: Wikimedia Public Domain -->
+
+- Serielle System-Abschnitte limitieren die Skalierbarkeit
+
+---
+
+# Skalierbarkeit (4)
+
+Flaschenhals: Häufige serielle Abschnitte
+
+- Transaktionen in Datenbanken
+- Verteilte Transaktionen (XA)
+- Generierung von Sequenznummern
+- Synchronisierter Zugriff auf _Shared Mutable State_
+
+---
+
+# Thread Contention durch blocking-IO
+
+![img](images/ThreadContention1.svg) <!-- .element: class="no-border" style="text-align:center" title="By Jgonion (Own work) [Public domain], via Wikimedia Commons" --> <!-- NOTE: Wikimedia Public Domain -->
+
+- Standard: _synchronous blocking IO_
+ - Request Limit = Thread-Pool-Size
+- Mehr parallele Requests gewünscht?
+ - Thread-Pool vergrößern?
+ - Threads sind teuer
+ - Thread-Scheduling ist teuer
+
+---
+
+# Thread Contention durch blocking-IO (2)
+
+- Besser: _asynchronous non-blocking IO_
+- Anzahl Threads = Anzahl CPUs
+- Wartende Anfragen werden _beiseite gelegt_
+- Neues Request-Limit
+ - Anzahl Netzwerk-Sockets
+ - Heap-Speicher
+- Das widerspricht gängigen EE-Verarbeitungsmodellen
+ - Ausnahme: _Servlet3 Async_
+
+---
+
+# Global-State Contention
+
+Bei der Synchronisierung mit _Shared Mutable State_ muss das System angehalten werden
+
+---
+
+# Global-State Contention (2)
+
+Vermeidbar durch:
+
+- Auf starke Konsistenz verzichten
+  - Invarianten zulassen und nachgelagert Kompensieren
+- Verteilt erreichbaren Zustand nicht verändern
+ - Shared Immutable State
+ - Event-Sourcing
+- Conflict free replicated data-types (CRDTs)
+
+---
+
+# Warum Resilienz?
+
+- Downtime vergrault Benutzer
+- _Zero Downtime_ ist erstrebenswert
+- Fehler passieren
+ - Auswirkungen sollten begrenzt werden
+ - Kaskadierung durch _Bulkheading_ verhindern
+
+
+---
+
+# Resilienz
+
+Was kann schon schiefgehen?
+
+- (Programmcode enthält Fehler)
+- (der Benutzer macht Eingabefehler)
+- Netzwerk fällt (teilweise) aus
+- Betriebssystem fällt aus
+- Hardware fällt aus
+
+---
+
+# Resilienz (2)
+
+- Ein System sollte mit Teilausfällen umgehen können
+- Die Behandlung des Ausfalls sollte durch das System selbst erfolgen
+- Ein Benutzer sollte über nicht-behebbare Fehler informiert werden
+
+---
+
+# Resilienz (3)
+
+- Ausfallsicherheit durch:
+  - Replikation von Daten und Services
+  - _Hot-Spare_ vs. _mixed Replication_
+  - Koordination von _Leadership_
+- Typische Cluster-Funktionalität
+
+
+---
+
+# How-To Resilienz
+
+- Mögliche Ausfall-Szenarien erkennen und verstehen
+- Middleware und DBMS mit Fault-Tolerance nutzen
+- Fault-Tolerance des Gesamtsystems kontinuierlich testen:
+- Netflix _Simian Army_
+ - Chaos Monkey
+ - Latency Monkey
+ - Chaos Gorilla
+
+
+---
+
+# Message-Driven
+
+- Komponenten des Systems kommunizieren über Nachrichten
+- Die Verarbeitung von Nachrichten erfolgt asynchron
+- Nachrichten haben einen Sender und einen Empfänger
+- Message-Driven abstrahiert von
+ - _Ort_ (location-transparency)
+ - _Zeit_
+
+---
+
+# Message Delivery Semantics
+
+![img](images/MessageDelivery.svg) <!-- .element: class="no-border" style="height:140px" -->
+
+__Zustellungsgarantie:__
+
+- _at most once / fire and forget_
+- _at least once_
+- _~~exact once delivery~~_
+ - <!-- .element: class="fragment" --> Bzw.: _at least once_ + Idempotenz
+
+
+---
+
+# Message Delivery Semantics (2)
+
+![img](images/MessageOrder.svg) <!-- .element: class="no-border" style="height:170px" -->
+
+__Zustellungsreihenfolgen:__
+
+- chronological order
+- shard'ed order
+- ordered per sender/receiver pair
+
+
+---
+
+# Soweit
+
+- Skalierbarkeit/Elastizität durch:
+ - asynchronous non-blocking IO
+ - Vermeidung von globaler Synchronisierung
+ - Location-Transparency
+- <!-- .element: class="fragment" --> Resilienz durch:
+ - Replikation von Daten und Services
+ - Bewusster Umgang mit Ausfall-Szenarien
+ - Kontinuierliches Testen
+
+---
+
+# Soweit (2)
+
+- Message-Driven durch:
+ - Asynchrones Ausführungsmodell
+ - Ggf. Einsatz von nachrichten-basierter Middleware
+- <!-- .element: class="fragment" --> Responsive
+ - Benutzeranfragen werden immer verarbeitet
+ - ... auch bei Teilausfällen des Systems!
+ - Die (mittlere) Antwortzeit bleibt gering
+- <!-- .element: class="fragment" --> ∑ Reactive!
+
+---
+
+---
+
+# Reactive Programming
+
+- Callbacks
+- Futures
+- Stream Processing
+- Distributed Stream Processing
+- Actor Model
+
+---
+
+# Callbacks
+
+```java
+public class MyActionListener implements ActionListener {
+    public void actionPerformed(ActionEvent e) {
+        // ...
+    }
+}
+someComponent.addActionListener(new MyActionListener());
+```
+
+
+---
+
+# Futures
+
+- Datenstruktur für _Dinge die noch nicht da sind_
+- Java-Futures lassen sich nicht zusammensetzen. Besser:
+ - scala.concurrent.Future
+ - [Finagle (Twitter)](https://twitter.github.io/finagle/)
+- Funktionale Komposition von Transformationsschritten
+  - _map_, _fold_, _filter_, _bind_, _..._
+
+
+```
+Future<HttpResponse> response = client.execute(new HttpRequest(...))
+Future<ByBusinessObject> dto = response.map(r -> r.getEntity())
+                                .map(e -> unmarshaller.decode(e))
+```
+
+
+---
+
+# Stream processing
+
+- sog. Observables werden mit funktionalen Kombinatoren verschaltet
+- Observable = Push-Based Iterables
+- single-machine, single-threaded
+
+
+---
+
+# Stream processing (2)
+
+Implementierungen:
+
+- ![img](images/rx_logo.png) <!-- .element: class="inline" style="max-height:40px; vertical-align:middle " --> Reactive Extensions
+ - Rx.NET, RxJS (Microsoft, Erik Meijer)
+ - RxJava (Netflix)
+- Project Reactor
+
+
+---
+
+# Verteiltes Stream Processing
+
+- Verteiltes und ausfalltolerantes Stream Processing
+- Verteilung, Ausfallsicherheit und Konsistenz werden von der Plattform sichergestellt
+- Abbildung der Fachlichkeit als statische Stream-Topologie
+
+
+---
+
+# Verteiltes Stream Processing (2)
+
+Implementierungen:
+
+- Apache ![img](images/apache_storm_logo.png) <!-- .element: class="inline" style="max-height:50px; vertical-align:middle" -->
+- Apache ![img](images/apache_spark_logo.png) <!-- .element: class="inline" style="max-height:50px; vertical-align:middle" --> Streaming
+- ![img](images/akka_logo.svg) <!-- .element: class="inline" style="max-height:50px; max-width: 100px; vertical-align:middle" --> Streaming
+
+
+
+---
+
+# Actor Model
+
+- 1973 von Carl Hewitt entwickelt
+- Ericsson nutzt es für Telekommunikationshardware
+- Verteilt und Fehler-Tolerant _by Design_
+
+
+
+---
+
+<!-- .slide: data-background="images/ActorSystem_1.svg" data-background-size="100%" -->
+
+
+---
+
+<!-- .slide: data-background="images/ActorSystem_2.svg" data-background-size="100%" -->
+
+
+---
+
+<!-- .slide: data-background="images/ActorSystem_3.svg" data-background-size="100%" -->
+
+
+---
+
+<!-- .slide: data-background="images/ActorSystem_4.svg" data-background-size="100%" -->
+
+
+---
+
+<!-- .slide: data-background="images/ActorSystem_5.svg" data-background-size="100%" -->
+
+
+---
+
+# Actor Model (2) - Implementierungen
+
+- Erlang VM
+ - ![img](images/erlang_logo.png) <!-- .element: class="inline" style="max-height:40px; vertical-align:middle" -->
+ - ![img](images/elixir_logo.png) <!-- .element: class="inline" style="max-height:40px; vertical-align:middle" -->
+- Java Virtual Machine (JVM)
+ - ![img](images/akka_logo.svg) <!-- .element: class="inline" style="max-height:40px; max-width: 100px; vertical-align:middle" -->
+ - ![img](images/vertx_logo.png) <!-- .element: class="inline" style="max-height:40px; vertical-align:middle" -->
+- Common Language Runtime (CLR)
+ - ![img](images/akka_net_logo.png) <!-- .element: class="inline" style="max-height:40px; vertical-align:middle" -->
+
+
+---
+
+# Reactive Streams
+
+- API/SPI für asynchrones Stream-Processing auf der JVM
+- Ermöglicht Framework-übergreifende Integration
+- Umfangreiches TCK
+- [www.reactive-streams.org](http://www.reactive-streams.org/)
+
+
+---
+
+
+
+---
+
+# Einmal _Reactive_ zum mitnehmen
+
+- Ein optimales Reactive System
+ - Nutzt Hardware-Ressourcen effizient (hohe _utilisation_)
+ - Ist nahezu linear skalierbar
+ - Antwortet immer innerhalb einer festgelegten Reaktionszeit (SLA)
+ - Kann sich von (Teil-)Ausfällen erholen
+ - Kann zur Laufzeit seine Hardware-Dimensionierung anpassen
+- Reactive ist kein _afterthought_ für bestehende Architekturen
+- __no silver bullet__
+
+
+---
+
+# Einmal _Reactive_ zum mitnehmen (2)
+
+- Reactive ist kein Mainstream
+- Umstellung wird unterschätzt!
+- Auch wenn wir kein _reactive System_ entwickeln:
+ - Fachliche Konsistenzanforderungen kritisch hinterfragen
+ - Entscheidungen möglichst mit lokalem Wissen und ohne Koordination treffen
+ - Anwendungen als Transformation von Datenströmen betrachten
+
+---
+
+# Reactive Systems - Noch Fragen?
+
+Die Folien zu diesem Vortrag finden Sie unter
+
+[http://bit.ly/1aStEjK](http://bit.ly/1aStEjK)
+
+![img](images/qrcode_slides.svg) <!-- .element: style="" -->
+
+---
+
+# Leseempfehlungen
+
+- [Reactive Design Patterns (MEAP; Roland Kuhn, Jamie Allen)](http://manning.com/kuhn/)
+- [A new way to develop for the cloud (interview with jboner)](http://readwrite.com/2014/09/19/reactive-programming-jonas-boner-typesafe)
+- [Introduction to Rx](http://www.introtorx.com/)
+- [Coursera-Kurs _Principles of Reactive Programming_](https://www.coursera.org/course/reactive)
+- [The Netflix Simian Army](http://techblog.netflix.com/2011/07/netflix-simian-army.html)
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: 'fade', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>

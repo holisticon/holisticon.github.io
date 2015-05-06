@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="584px" height="304px"
+     version="1.1">
+    <defs/>
+    <g transform="translate(0.5,0.5)">
+        <rect x="1" y="1" width="580" height="300" fill="none" stroke="none" pointer-events="none"/>
+        <rect x="31" y="11" width="520" height="280" rx="42" ry="42" fill="none" stroke="#989292" stroke-width="3"
+              pointer-events="none"/>
+        <path d="M 278 208 L 306 208 L 306 231 L 278 231 Z" fill="#ffffff" stroke="#de0027" stroke-width="3"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 278 208 L 292 219 L 306 208" fill="none" stroke="#de0027" stroke-width="3" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <g fill="#DE0027" font-family="Verdana" text-anchor="middle" font-size="12px">
+            <text x="292" y="251">Message</text>
+        </g>
+        <path d="M 227 221 L 267 221" fill="none" stroke="#989292" stroke-miterlimit="10" pointer-events="none"/>
+        <ellipse cx="194" cy="219" rx="22.5" ry="22.5" fill="#ffffff" stroke="#de0027" stroke-width="3"
+                 pointer-events="none"/>
+        <g transform="translate(172,212)">
+            <text x="22" y="12" fill="#DE0027" text-anchor="middle" font-size="12px" font-family="Verdana">Actor</text>
+        </g>
+        <path d="M 151 215 C 151 209 166 209 166 215 L 166 229 C 166 234 151 234 151 229 Z" fill="#ffffff"
+              stroke="#de0027" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 151 215 C 151 219 166 219 166 215" fill="none" stroke="#de0027" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <g transform="translate(134,192)">
+                <text x="25" y="57" fill="#DE0027" text-anchor="middle" font-size="10px" font-family="Verdana">Mailbox
+                </text>
+        </g>
+        <path d="M 320 221 L 365 221" fill="none" stroke="#989292" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 370 221 L 363 224 L 365 221 L 363 217 Z" fill="#989292" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <ellipse cx="419" cy="218" rx="22.5" ry="22.5" fill="#ffffff" stroke="#de0027" stroke-width="3"
+                 pointer-events="none"/>
+        <ellipse cx="231" cy="118" rx="15" ry="15" fill="#ffffff" stroke="#de0027" stroke-width="3"
+                 pointer-events="none"/>
+        <ellipse cx="360" cy="118" rx="15" ry="15" fill="#ffffff" stroke="#de0027" stroke-width="3"
+                 pointer-events="none"/>
+        <ellipse cx="292" cy="53" rx="10" ry="10" fill="#ffffff" stroke="#de0027" stroke-width="3"
+                 pointer-events="none"/>
+        <path d="M 271 71 L 246 96" fill="none" stroke="#989292" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 242 100 L 244 92 L 246 96 L 249 97 Z" fill="none" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 220 141 L 203 185" fill="none" stroke="#989292" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 201 190 L 201 182 L 203 185 L 207 184 Z" fill="none" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 311 71 L 344 97" fill="none" stroke="#989292" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 348 100 L 340 98 L 344 97 L 345 93 Z" fill="none" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 381 141 L 408 185" fill="none" stroke="#989292" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 410 190 L 404 186 L 408 185 L 410 182 Z" fill="none" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <rect x="61" y="21" width="80" height="20" fill="none" stroke="none" pointer-events="none"/>
+        <g fill="#DE0027" font-family="Verdana" text-anchor="middle" font-size="12px">
+            <text x="101" y="35">Actor System</text>
+        </g>
+        <path d="M 431 191 Q 434 171 426 151 Q 418 131 387 114" fill="none" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 382 111 L 390 111 L 387 114 L 386 118 Z" fill="#989292" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <rect x="427" y="130" width="16" height="14" fill="none" stroke="none" pointer-events="none"/>
+        <rect x="427" y="130" width="16" height="14" fill="none" stroke="none" pointer-events="none"/>
+        <path d="M 427 130 L 441 130 L 441 141 L 427 141 Z" fill="#ffffff" stroke="#de0027" stroke-width="2"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 427 130 L 434 135 L 441 130" fill="none" stroke="#de0027" stroke-width="2" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <rect x="433" y="136" width="10" height="8" fill="#ffffff" stroke="none" pointer-events="none"/>
+        <g fill="#989292" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="438" y="144">☹</text>
+        </g>
+        <path d="M 377 215 C 377 209 392 209 392 215 L 392 229 C 392 234 377 234 377 229 Z" fill="#ffffff"
+              stroke="#de0027" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 377 215 C 377 219 392 219 392 215" fill="none" stroke="#de0027" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 386 197 Q 372 188 362 174 Q 351 161 351 141" fill="none" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <path d="M 390 200 L 382 199 L 386 197 L 386 193 Z" fill="#989292" stroke="#989292" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <rect x="336" y="161" width="18" height="14" fill="none" stroke="none" pointer-events="none"/>
+        <rect x="336" y="161" width="18" height="14" fill="none" stroke="none" pointer-events="none"/>
+        <rect x="336" y="161" width="18" height="14" fill="none" stroke="none" pointer-events="none"/>
+        <path d="M 336 161 L 350 161 L 350 172 L 336 172 Z" fill="#ffffff" stroke="#de0027" stroke-width="2"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 336 161 L 343 166 L 350 161" fill="none" stroke="#de0027" stroke-width="2" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <rect x="344" y="167" width="10" height="8" fill="#ffffff" stroke="none" pointer-events="none"/>
+        <g fill="#989292" font-family="Helvetica" text-anchor="middle" font-size="14px">
+            <text x="349" y="176">☠</text>
+        </g>
+        <rect x="315" y="161" width="16" height="14" fill="none" stroke="none" pointer-events="none"/>
+        <rect x="315" y="161" width="16" height="14" fill="none" stroke="none" pointer-events="none"/>
+        <path d="M 315 161 L 329 161 L 329 172 L 315 172 Z" fill="#ffffff" stroke="#de0027" stroke-width="2"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 315 161 L 322 166 L 329 161" fill="none" stroke="#de0027" stroke-width="2" stroke-miterlimit="10"
+              pointer-events="none"/>
+        <rect x="321" y="167" width="10" height="8" fill="#ffffff" stroke="none" pointer-events="none"/>
+        <g fill="#989292" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="326" y="175">↻</text>
+        </g>
+    </g>
+</svg>
