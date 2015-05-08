@@ -356,7 +356,7 @@ __Zustellungsreihenfolgen:__
 ```java
 public class MyActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
-        // ...
+        // change the world!
     }
 }
 someComponent.addActionListener(new MyActionListener());
@@ -386,9 +386,18 @@ Future<ByBusinessObject> dto = response.map(r -> r.getEntity())
 
 # Stream processing
 
-- sog. Observables werden mit funktionalen Kombinatoren verschaltet
-- Observable = Push-Based Iterables
-- single-machine, single-threaded
+- Streams werden mit funktionalen Kombinatoren verschaltet
+- _Push-Based Iterables_
+- single-machine
+
+```
+Stream<HttpRequest> requestStream = httpSocket.requests();
+requestStream.map(HttpRequest r -> r.getEntity())
+             .map(HttpEntity e -> unmarshaller.decode(e))
+             .filter(MyUser u -> isAuthenticated(u))
+             .flatMap(u -> orderService.getOrdersList(u))
+             .map(Order o -> marshaller.encodeHttpResponse(o))
+```
 
 
 ---
@@ -431,6 +440,17 @@ Implementierungen:
 - 1973 von Carl Hewitt entwickelt
 - Ericsson nutzt es für Telekommunikationshardware
 - Verteilt und Fehler-Tolerant _by Design_
+
+```
+class MyActor extends Actor {
+    public void onReceive(Object message) {
+        if ("hello".equals(message))
+        sender.tell("hello back")
+        supervisor.tell("someone said hi")
+    }
+}
+
+```
 
 
 
