@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Holisticon Presentation Template</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'bower_components/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'css/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-vertical="^\n--\n$" data-notes="^>NOTES:"><script type="text/template"># Responsive Testing mit Galen
+Martin Reinhardt 
+
+
+![Twitter - Martin Reinhardt](images/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@mreinhardt](https://twitter.com/mreinhardt)<br />
+
+
+---
+
+# Agenda
+
+* Warum Galen?
+* Responsive Testing
+* Galen Specs
+* Demo
+* Best Practices & Lessons Learned
+* Outlook
+
+
+---
+
+# Warum Galen
+
+* "Otto wird Responsive" (2014)
+	* brauchten wir dringend automasierte Layout-Tests
+	* Toolauswahl fiel auf Galen
+	* Fokus lag auf schneller Nutzung und Stabilität
+* schnelle Einführung von Galen
+	* immer mehr Tests für das Layout
+	* erste Fehler direkt nach 2 Tagen gefunden
+	* Autor begann am Projekt mitzuarbeiten
+	* Erfahrungen aus Projekt floßen in Projekt zurück
+
+--
+
+# Über Galen
+
+>  "Galen is a OSS tool for testing html layout in a real browser"
+
+![Galen Logo](images/galen_logo.png)
+
+* Grundprinzip
+	* Test beschreiben im BDD-Stil das gewünschte Verhalten
+	* "menschlich lesbar"
+	* Verhalten wie ein Nutzer
+* Features
+	* DSL für die Beschreibung der Specs
+	* Eigene Testsyntax mit Data-Providern (optional)
+	* Selenium für die Ausführung
+	* Ausführtlichen Reporting
+
+>NOTES:
+* Interaktion mit WebDriver möglich
+* positiv UND negativ Feedback
+
+
+--
+
+![Layout Design](images/layout_design.png)
+
+* Layout Testing ist herausfordernd
+* Lösung: Beziehung von Elementen relativ zueinander in einer DSL beschreiben 
+* 
+--
+
+![Selenium Grid](images/selenium_grid.png)
+
+* Ausführung lokal oder in Selenium Grid, auch SauceLabs oder BrowserStak 
+* Unterstützung für verschiedene Browser
+* Ausführung in mobilen Geräten möglich
+* Parallele Ausführung um Testausführung zu reduzieren
+
+--
+
+# Installation
+
+* CLI
+```
+(sudo) npm install -g galenframework-cli
+```
+
+---
+
+# Size matters
+
+* Responsive Tests im TDD-Style möglich
+* Anforderung in Spec beschreiben
+* Verifizierung über die Testausführung
+* Definition der Geräte wichtig für Testausführung
+
+--
+
+## Analyse design
+
+
+![Responsive Design](images/responsive_design.png)
+
+* Galen wurde aufgrund von Responsive Webdesign entwickelt
+* Geräte stehen stellvertretend für Browser und Bildschirmgröße
+* Tags sorgen für Zuordnung
+* Zur Ausführung wird Browsergröße angepasst und Test ausgeführt
+
+---
+
+# Galen Spec Language
+
+![Spec Language](images/galen_spec.png)
+
+* Elemente werden zunächst bekannt gemacht
+* Geräte(klassen) werden über Tags festgelegt
+* Elemente erhalten Regeln, die geprüft werden
+
+
+--
+
+```python
+@ Overall layout | *
+--------------------------
+content
+   visible
+content
+   below: navbar 370 to 410 px
+   	
+@ navigation hidden  | mobile
+--------------------------
+navbar-item-*
+   absent
+
+@ Content should fit screen | mobile
+--------------------------
+content
+   width: 100% of screen/width
+
+```
+* Tag '*' erlaubt 'WildCard' Pattern für alle Geräte
+* '*' kann auch in Listen genutzt werden
+
+
+--
+
+## Wiederverwendung
+
+Prinzipiell zwei Arten
+
+* Importieren von Specs
+* Auslagerung in Komponenten
+
+<br>
+
+```python
+@@ import shared/common.spec
+
+==============================================================
+bootstrap-logo		css     span.bs-docs-booticon
+==============================================================
+# common layout checks
+@@ import shared/commonLayout.spec
+
+# concrete layout tests
+
+@ Bootstrap logo should be visible | *
+--------------------------
+bootstrap-logo
+   visible
+
+```
+
+--
+
+## Callout Komponente
+
+* Komponenten verhalten sich wie Widgets, z.B. Menüeinträge oder Listeneinträge
+* Pseudo-Element 'parent' für Referenzierung
+
+
+```python
+==============================================================
+heading		     css        h4
+text-*			  css		p
+==============================================================
+
+@ callout on phone device | phone
+--------------------------
+heading
+   inside: parent 10px top left
+   width: ~100% of screen/width
+   
+@ callout on tablet device | tablet                                  
+--------------------------
+heading
+   inside: parent 10px top left
+   width: ~90% of screen/width
+```
+
+--
+
+## Aufbau von Tests
+
+* Galen erlaubt Parametrisierung:
+
+```python
+@@ table devices
+  | device    | size     |
+  | mobile    | 500x700  |
+  | tablet    | 900x600  |
+  | desktop   | 1300x700 |
+
+@@ parameterized using devices
+homepage on ${device}
+  ${websiteUrl} ${size}
+    check specs/homepage.spec --include "${device}"
+
+```
+Ausführung über Kommandozeile
+
+```
+galen test my.test -DwebsiteUrl='http://getbootstrap.com' --htmlreport reports/
+```
+
+--
+
+
+# Testausführung
+
+Einzelne Tests können auch direkt ausgeführt werden
+
+
+```python
+$ galen check home-page.spec 
+    --url "http://example.com/home" 
+    --size 1024x800 
+    --include desktop 
+    --htmlreport report.html
+```
+
+--
+
+# Bildvergleich
+
+* Pagedump kann Screenshots der aktuellen Seite erzeugen
+
+```python
+galen dump "specs/homepage.spec"
+    --url "http://galenframework.com"
+    --size "1024x768"
+    --export "dumps/homepage-dump" 
+    --max-width "200" 
+    --max-height "200"
+```
+
+>NOTES:
+* Pagedump eignet sich auch zum "Sammeln der Elemente"
+
+--
+
+# Vergleich in Spec
+
+```python
+header-logo
+    image: file imgs/header-logo.png
+```
+
+![Responsive Design](images/galen_image-comparison.png)
+
+---
+
+# Report
+
+![Responsive Design](images/galen_report.png)
+
+
+* Report hilft durch direkte Anzeige der Elemente bei Fehlersuche
+
+--
+
+# Demo
+
+![Coding](images/code.png)
+
+---
+
+# Fazit
+
+* TDD in Responsive Design möglich mit Galen
+	* Anforderung in Specs formulieren (ID zunächst festlegen)
+	* Regeln für das Verhalten in Spec hinterlegen
+	* Frontend entwickeln
+	* Design mit Specs verifizieren
+
+>NOTES:
+Once the html is finished you can define the references to all your objects in spec using one of the locators: id, css, xpath
+
+--
+
+## Best Practices & Lessons Learned
+
+* Rahmenbedingungen
+	* Responsive Tests helfen beim Testen von Responsive Design (BDD)
+	* Nicht 'Pixel-genau' testen
+	* Galen nutzen um Elemente relativ zueinander auf Seite anzusprechen
+	* tell Galen how elements are located relatively to each other on page
+* Tests sind anfällig
+	* Infrastruktur (Integration Tests)
+	* Nicht sinnvoll alles zu testen
+
+>NOTES:
+* Aufgrund von verschiedenen Browsern Pixel-genau nicht sinvoll (Rundungen ...)
+* Integrationstests aufgrund ihrer Natur!!
+* Fokus beim Testen wichtig
+
+
+---
+
+# Outlook - Release 2
+
+![Galen Release 2](images/Galen_AoD.png)
+
+* Tiefere Java test integration
+* GalenSpec v2
+* Verbesserte Reports und Configuration
+* Spec editor mit Autocompletion und Syntax Support (IDEA und Eclipse)
+
+--
+
+# Einführung
+
+<iframe width="676" height="411" src="//www.youtube.com/embed/mW9lWZtI7AE" frameborder="0" allowfullscreen></iframe>
+
+---
+
+# Links
+
+* [galenframework.com](http://galenframework.com)
+* [Visual Test-Driven Development For Responsive Interface Design](http://www.smashingmagazine.com/2015/04/07/visual-test-driven-development-responsive-interface-design/)
+* [Using Galen with gulp](http://galenframework.com/docs/tutorial-using-galen-with-a-task-runner/)
+* [Responsive Testing with Galen in Java](http://kekz-box.de/en/responsive-testing-galen/)
+* [Sublime Highlighting](https://github.com/professant/sublime-galen)
+
+---
+
+![QR Link](images/qr_link.png)
+
+* [Präsentation](http://holisticon.github.io/presentations/enterjs_galen/)
+* [Sourcen](https://github.com/holisticon/holisticon.github.io/tree/master/presentations/enterjs_galen/tests)
+
+
+---
+
+# Lust auf Hamburg?
+
+<img src="images/hamburg_speicherstadt.jpg" height="250em" style="padding-top:0"></img>
+
+<div class="fragment">
+Wir suchen immer <a href="http://bit.ly/1HCmKft">Software Enthusiasten</a>!
+<br>
+<img src="images/qr_job.png" height="400em"></img>
+</div></script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
