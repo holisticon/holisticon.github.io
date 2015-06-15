@@ -1,0 +1,403 @@
+<html>
+    <head>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "testId" : "6-homepage-on-desktop",
+  "name" : "homepage on desktop",
+  "report" : {
+    "nodes" : [ {
+      "name" : "http://getbootstrap.com 1300x700",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/homePageLayout.spec --include \"desktop\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: desktop",
+          "status" : "error",
+          "time" : 1429879832106,
+          "includedTags" : [ "desktop" ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation shown on desktop",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-7" ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-6" ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-5" ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-4" ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-3" ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-2" ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-1" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Content should fit to screen size",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 32
+                },
+                "name" : "width: 80 to 90% of screen/width",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 73, 0, 98, 50 ]
+            },
+            "navbar-item-7" : {
+              "area" : [ 1168, 0, 60, 50 ]
+            },
+            "navbar-item-6" : {
+              "area" : [ 1105, 0, 63, 50 ]
+            },
+            "bootstrap-logo" : {
+              "area" : [ 571, 130, 144, 144 ]
+            },
+            "navbar-item-5" : {
+              "area" : [ 567, 0, 99, 50 ]
+            },
+            "navbar-item-4" : {
+              "area" : [ 468, 0, 99, 50 ]
+            },
+            "navbar-item-3" : {
+              "area" : [ 355, 0, 113, 50 ]
+            },
+            "navbar-item-2" : {
+              "area" : [ 297, 0, 58, 50 ]
+            },
+            "navbar-item-1" : {
+              "area" : [ 170, 0, 127, 50 ]
+            }
+          },
+          "screenshot" : "layout-6-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429879829346,
+        "type" : "node"
+      } ],
+      "time" : 1429879825471,
+      "type" : "node"
+    } ]
+  }
+};
+        </script>
+        <script>
+
+            $(function () {
+                var galenReport = createGalenReport();
+                galenReport.render("main", reportData);
+            });
+        </script>
+    </head>
+    <body>
+        <script id="report-tpl" type="text/x-handlebars-template">
+            <ul class="report-nodes">
+            {{#each report.nodes}}
+                {{renderNode this}}
+            {{/each}}
+            </ul>
+        </script>
+        <script id="report-node-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-{{status}} contains-children-{{hasChildElements nodes}} collapsed" href="#">{{status}}</a>
+                <div class="node-name node-status-{{status}}">{{name}}</div>
+                {{#if stacktrace}}
+                    <div class="stacktrace">{{stacktrace}}</div>
+                {{/if}}
+                {{#if attachments}}
+                    <ul class="report-node-attachments">
+                        {{#each attachments}}
+                            <li>
+                                <a class="icon-sprite-before node-attachment" href="{{this}}">{{this}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+                <div class="node-details expand-container">
+                    {{#if nodes}}
+                        <ul class="report-nodes">
+                            {{#each nodes}}
+                                {{renderNode this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        <script id="report-node-text-tpl" type="text/x-handlebars-template">
+            <li>
+                <div class="node-simple-text">
+                    {{name}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-label node-status-info contains-children-true collapsed" href="#">INFO</a>
+                <div class="node-name">{{name}}</div>
+                <div class="node-details expand-container">
+                    {{renderSublayout this}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-sublayout-tpl" type="text/x-handlebars-template">
+            <div class="layout-report" data-layout-id="{{layoutId}}" data-screenshot="{{screenshot}}">
+                <ul class="layout-sections">
+                    {{#each sections}}
+                        {{renderLayoutSection this}}
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+        <script id="report-layout-section-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-section icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <div class="layout-details expand-container">
+                    {{#if sections}}
+                        <ul class="layout-sections">
+                        {{#each sections}}
+                            {{renderLayoutSection this}}
+                        {{/each}}
+                        </ul>
+                    {{/if}}
+                    {{#if objects}}
+                        <ul class="layout-objects">
+                            {{#each objects}}
+                                {{renderLayoutObject this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        
+        <script id="report-layout-object-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-object icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <ul class="layout-checks expand-container">
+                    {{#each specs}}
+                        {{renderLayoutCheck this}}
+                    {{/each}}
+                    {{#each specGroups}}
+                    <li>
+                        <a class="layout-specgroup icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                        <ul class="layout-checks expand-container">
+                            {{#each specs}}
+                                {{renderLayoutCheck this}}
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+        </script>
+        <script id="report-layout-check-tpl" type="text/x-handlebars-template">
+            <li>
+            <a class="layout-check icon-sprite-before layout-check-status-{{status}}" href="#" 
+                data-highlight-objects="{{commaSeparated highlight}}"
+                title="{{place.filePath}}#{{place.lineNumber}}"
+                >{{name}}</a>
+
+                {{#if errors}}
+                    <div class="layout-check-error-message">
+                        {{#if imageComparison}}
+                        <a class="image-comparison-link" 
+                            data-actual-image="{{imageComparison.actualImage}}"
+                            data-expected-image="{{imageComparison.expectedImage}}"
+                            data-map-image="{{imageComparison.comparisonMapImage}}"
+                            href="#">Show image comparison</a>
+                        {{/if}}
+                        <div class="layout-check-error-message-text">
+                            <ul>
+                            {{#each errors}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if subLayout}}
+                    {{renderSublayout subLayout}}
+                {{/if}}
+            </li>
+        </script>
+        <script id="screenshot-popup-tpl" type="text/x-handlebars-template">
+            <div class="screenshot-canvas">
+                <img src="{{screenshot}}"/>
+                {{#each objects}}
+                <div class="canvas-rect" style="left: {{area.left}}px; top: {{area.top}}px; width: {{area.width}}px; height: {{area.height}}px; border-color: {{color}};">
+                    <div class="canvas-rect-wrapper">
+                        <div class="canvas-rect-hint" style="background: {{color}};">{{@key}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        <script id="image-comparison-tpl" type="text/x-handlebars-template">
+            <div class="image-comparison">
+                <h5>Actual</h5>
+                <img src="{{actual}}"/>
+
+                <h5>Expected</h5>
+                <img src="{{expected}}"/>
+
+                <h5>Comparison map</h5>
+                <img src="{{map}}"/>
+            </div>
+        </script>
+
+
+        <div id="menu">
+            <ul>
+                <li><a class="menu-op-expand-all" href="#">Expand All</a></li>
+                <li><a class="menu-op-collapse-all" href="#">Collapse All</a></li>
+                <li><a class="menu-op-expand-errors" href="#">Expand Errors</a></li>
+            </ul>
+        </div>
+        <h2>homepage on desktop</h2>
+        <div id="main"></div>
+        <div id="screen-shadow"></div>
+        <div id="popup" class="popup">
+            <div class="popup-wrapper">
+                <a class="popup-close-link" href="#">close</a>
+                <div class="popup-content"></div>
+            </div>
+        </div>
+        <div id="notification" class="notification">
+            <div class="notification-wrapper">
+                <a class="notification-close-link" href="#">close</a>
+                <div class="notification-summary"></div>
+                <div class="notification-message"></div>
+            </div>
+        </div>
+    </body>
+</html>

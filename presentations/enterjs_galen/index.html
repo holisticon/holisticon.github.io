@@ -59,22 +59,62 @@ Martin Reinhardt
 * Galen Specs
 * Demo
 * Best Practices & Lessons Learned
-* Outlook
+* Ausblick
 
 
 ---
 
 # Warum Galen
 
-* "Otto wird Responsive" (2014)
-	* brauchten wir dringend automasierte Layout-Tests
-	* Toolauswahl fiel auf Galen
-	* Fokus lag auf schneller Nutzung und Stabilität
-* schnelle Einführung von Galen
-	* immer mehr Tests für das Layout
-	* erste Fehler direkt nach 2 Tagen gefunden
-	* Autor begann am Projekt mitzuarbeiten
-	* Erfahrungen aus Projekt floßen in Projekt zurück
+* "Otto wird Responsive" <!-- .element: class="fragment"-->
+	* Seit April 2015 ist einer der größten deutschen Shops responsive
+	* Entwicklunge erfolgt agil und mit Continous Delivery<!-- .element: class="fragment"-->
+	* Einer der größten Shops in Europa monatelang Schritt für Schritt umgestellt<!-- .element: class="fragment"-->
+	* brauchten automasierte Layout-Tests<!-- .element: class="fragment"-->
+	* Toolauswahl fiel auf Galen<!-- .element: class="fragment"-->
+	* Fokus auf schneller Nutzung und Stabilität<!-- .element: class="fragment"-->
+* schnelle Einführung von Galen<!-- .element: class="fragment"-->
+	* immer mehr Tests für Layout<!-- .element: class="fragment"-->
+	* erste Fehler direkt nach 2 Tagen gefunden<!-- .element: class="fragment"-->
+	* Autor begann am Projekt mitzuarbeiten<!-- .element: class="fragment"-->
+	* Erfahrungen aus Otto-Projekt floßen in Galen-Projekt zurück<!-- .element: class="fragment"-->
+	* Mitarbeit im Galen-Projekt<!-- .element: class="fragment"-->
+
+
+>NOTES:
+* So bin ich selbst auf Galen aufmerksam geworden
+
+--
+
+# Herausforderungen
+
+* komplexe Navigationsstrukturen auf intuitive Weise für mobile Geräte nutzbar<!-- .element: class="fragment"-->
+* Bild- und Grafik-Intensive Anwendungen/Seiten mit guter Performance<!-- .element: class="fragment"-->
+* Unterschiedliche Darstellungsformen für Bilder, wei Produktabbildungen, je nach verwendetem Endgerät<!-- .element: class="fragment"-->
+* Nutzer Feedback zum Status<!-- .element: class="fragment"-->
+	* Ladebalken
+	* Status im Prozess
+* Mobile und Desktop-Ansichten liefern gleiche User Experience im Repsonsive Design wie getrennt gepflegte Varianten<!-- .element: class="fragment"-->
+* Responsive Webdesign erhöht Testaufwand für verschiedene Auflösungen/Geräteklassen<!-- .element: class="fragment"-->
+* Agile Entwicklung wiederholt gerade Testschritte in mehreren Sprints<!-- .element: class="fragment"-->
+
+>NOTES:
+* Browser-Wanking
+* Kombinationen für Layout-Tests multiplizieren sich mit jeder Klasse
+     * 20 Seiten in 4 Browsern
+     * X4 Geräteklassen
+* Dann nochmal Wiederholung in mehreren Sprints
+     * Features gesplittet.
+     * Änderungen an Features
+* Menschen nicht geeignet um so etwas wiederholt zu verifizieren, Komplexität des Layouts!
+
+--
+
+# otto.de/responsive-design
+
+<div  class="stretch fragment">
+<iframe src="https://www.otto.de/responsive-design" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
 
 --
 
@@ -84,15 +124,15 @@ Martin Reinhardt
 
 ![Galen Logo](images/galen_logo.png)
 
-* Grundprinzip
+* Grundprinzipen<!-- .element: class="fragment"-->
 	* Test beschreiben im BDD-Stil das gewünschte Verhalten
 	* "menschlich lesbar"
 	* Verhalten wie ein Nutzer
-* Features
+* Features<!-- .element: class="fragment"-->
 	* DSL für die Beschreibung der Specs
 	* Eigene Testsyntax mit Data-Providern (optional)
 	* Selenium für die Ausführung
-	* Ausführtlichen Reporting
+	* Ausführliches Reporting
 
 >NOTES:
 * Interaktion mit WebDriver möglich
@@ -105,12 +145,12 @@ Martin Reinhardt
 
 * Layout Testing ist herausfordernd
 * Lösung: Beziehung von Elementen relativ zueinander in einer DSL beschreiben 
-* 
+
 --
 
 ![Selenium Grid](images/selenium_grid.png)
 
-* Ausführung lokal oder in Selenium Grid, auch SauceLabs oder BrowserStak 
+* Ausführung lokal oder in Selenium Grid, auch SauceLabs oder BrowserStack 
 * Unterstützung für verschiedene Browser
 * Ausführung in mobilen Geräten möglich
 * Parallele Ausführung um Testausführung zu reduzieren
@@ -119,14 +159,18 @@ Martin Reinhardt
 
 # Installation
 
-* CLI
-```
+* Manual Install
+* NPM Install
+
+
+<br>
+```bash
 (sudo) npm install -g galenframework-cli
 ```
 
 ---
 
-# Size matters
+# Größe ist wichtig ...
 
 * Responsive Tests im TDD-Style möglich
 * Anforderung in Spec beschreiben
@@ -342,8 +386,7 @@ Once the html is finished you can define the references to all your objects in s
 * Rahmenbedingungen
 	* Responsive Tests helfen beim Testen von Responsive Design (BDD)
 	* Nicht 'Pixel-genau' testen
-	* Galen nutzen um Elemente relativ zueinander auf Seite anzusprechen
-	* tell Galen how elements are located relatively to each other on page
+	* Elemente relativ zueinander ansprechen
 * Tests sind anfällig
 	* Infrastruktur (Integration Tests)
 	* Nicht sinnvoll alles zu testen
@@ -385,8 +428,8 @@ Once the html is finished you can define the references to all your objects in s
 
 ![QR Link](images/qr_link.png)
 
-* [Präsentation](http://holisticon.github.io/presentations/enterjs_galen/)
-* [Sourcen](https://github.com/holisticon/holisticon.github.io/tree/master/presentations/enterjs_galen/tests)
+* [Präsentation](http://bit.ly/1SioMFS) bit.ly/1SioMFS
+* [Sourcen](http://bit.ly/1FXihjZ) bit.ly/1FXihjZ
 
 
 ---

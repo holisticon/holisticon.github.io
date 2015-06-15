@@ -1,0 +1,200 @@
+{
+  "testId" : "6-homepage-on-desktop",
+  "name" : "homepage on desktop",
+  "report" : {
+    "nodes" : [ {
+      "name" : "http://getbootstrap.com 1300x700",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/homePageLayout.spec --include \"desktop\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: desktop",
+          "status" : "error",
+          "time" : 1429879832106,
+          "includedTags" : [ "desktop" ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation shown on desktop",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-7" ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-6" ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-5" ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-4" ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-3" ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-2" ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-1" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Content should fit to screen size",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 32
+                },
+                "name" : "width: 80 to 90% of screen/width",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 73, 0, 98, 50 ]
+            },
+            "navbar-item-7" : {
+              "area" : [ 1168, 0, 60, 50 ]
+            },
+            "navbar-item-6" : {
+              "area" : [ 1105, 0, 63, 50 ]
+            },
+            "bootstrap-logo" : {
+              "area" : [ 571, 130, 144, 144 ]
+            },
+            "navbar-item-5" : {
+              "area" : [ 567, 0, 99, 50 ]
+            },
+            "navbar-item-4" : {
+              "area" : [ 468, 0, 99, 50 ]
+            },
+            "navbar-item-3" : {
+              "area" : [ 355, 0, 113, 50 ]
+            },
+            "navbar-item-2" : {
+              "area" : [ 297, 0, 58, 50 ]
+            },
+            "navbar-item-1" : {
+              "area" : [ 170, 0, 127, 50 ]
+            }
+          },
+          "screenshot" : "layout-6-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429879829346,
+        "type" : "node"
+      } ],
+      "time" : 1429879825471,
+      "type" : "node"
+    } ]
+  }
+}

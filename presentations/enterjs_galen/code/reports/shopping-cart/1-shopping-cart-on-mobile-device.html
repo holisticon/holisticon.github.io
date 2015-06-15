@@ -1,0 +1,394 @@
+<html>
+    <head>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "testId" : "1-shopping-cart-on-mobile-device",
+  "name" : "Shopping cart on mobile device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "file:///Users/mreinhardt/Documents/Programmierung/repositories/git/holisticon-revealjs/test/shoppingcart/website/shopping-cart.html 500x700",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "        check specs/shopping-cart.spec --include \"mobile\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/shopping-cart.spec included tags: mobile",
+          "status" : "error",
+          "time" : 1429965153378,
+          "includedTags" : [ "mobile" ],
+          "sections" : [ {
+            "name" : "*",
+            "objects" : [ {
+              "name" : "header",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 16
+                },
+                "name" : "inside: screen 0px top left right",
+                "errors" : [ "\"header\" is 15px right instead of 0px" ],
+                "highlight" : [ "header", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 17
+                },
+                "name" : "height: 60px",
+                "errors" : [ "\"header\" height is 58px instead of 60px" ],
+                "highlight" : [ "header" ]
+              } ]
+            }, {
+              "name" : "navigation",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "inside: screen 0px left",
+                "errors" : [ "\"navigation\" is -15px left instead of 0px" ],
+                "highlight" : [ "navigation", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 21
+                },
+                "name" : "below: header 0px",
+                "errors" : [ "\"navigation\" is 20px below \"header\" instead of 0px" ],
+                "highlight" : [ "navigation", "header" ]
+              } ]
+            }, {
+              "name" : "footer",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 24
+                },
+                "name" : "inside: screen 0px bottom left right",
+                "errors" : [ "\"footer\" is 143px bottom and 15px right instead of 0px" ],
+                "highlight" : [ "footer", "screen" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 25
+                },
+                "name" : "below: banner-panel 0px",
+                "highlight" : [ "footer", "banner-panel" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 26
+                },
+                "name" : "height: 100px",
+                "highlight" : [ "footer" ]
+              } ]
+            } ]
+          }, {
+            "name" : "mobile",
+            "objects" : [ {
+              "name" : "navigation",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 68
+                },
+                "name" : "inside: screen 0px left right",
+                "errors" : [ "\"navigation\" is -15px left instead of 0px" ],
+                "highlight" : [ "navigation", "screen" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 69
+                },
+                "name" : "above: main 0px",
+                "highlight" : [ "navigation", "main" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 70
+                },
+                "name" : "height: > 60px",
+                "highlight" : [ "navigation" ]
+              } ]
+            }, {
+              "name" : "main",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 73
+                },
+                "name" : "inside: screen 0px left right",
+                "errors" : [ "\"main\" is -15px left instead of 0px" ],
+                "highlight" : [ "main", "screen" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 74
+                },
+                "name" : "above: banner-panel 0px",
+                "highlight" : [ "main", "banner-panel" ]
+              } ]
+            }, {
+              "name" : "banner-panel",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 77
+                },
+                "name" : "inside: screen 0px left right",
+                "errors" : [ "\"banner-panel\" is -15px left instead of 0px" ],
+                "highlight" : [ "banner-panel", "screen" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 78
+                },
+                "name" : "height: > 50px",
+                "highlight" : [ "banner-panel" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navigation" : {
+              "area" : [ -15, 78, 530, 100 ]
+            },
+            "footer" : {
+              "area" : [ 0, 378, 500, 100 ]
+            },
+            "header" : {
+              "area" : [ 0, 0, 500, 58 ]
+            },
+            "screen" : {
+              "area" : [ 0, 0, 515, 621 ]
+            },
+            "main" : {
+              "area" : [ -15, 178, 530, 100 ]
+            },
+            "banner-panel" : {
+              "area" : [ -15, 278, 530, 100 ]
+            }
+          },
+          "screenshot" : "layout-1-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429965152119,
+        "type" : "node"
+      } ],
+      "time" : 1429965148368,
+      "type" : "node"
+    } ]
+  }
+};
+        </script>
+        <script>
+
+            $(function () {
+                var galenReport = createGalenReport();
+                galenReport.render("main", reportData);
+            });
+        </script>
+    </head>
+    <body>
+        <script id="report-tpl" type="text/x-handlebars-template">
+            <ul class="report-nodes">
+            {{#each report.nodes}}
+                {{renderNode this}}
+            {{/each}}
+            </ul>
+        </script>
+        <script id="report-node-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-{{status}} contains-children-{{hasChildElements nodes}} collapsed" href="#">{{status}}</a>
+                <div class="node-name node-status-{{status}}">{{name}}</div>
+                {{#if stacktrace}}
+                    <div class="stacktrace">{{stacktrace}}</div>
+                {{/if}}
+                {{#if attachments}}
+                    <ul class="report-node-attachments">
+                        {{#each attachments}}
+                            <li>
+                                <a class="icon-sprite-before node-attachment" href="{{this}}">{{this}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+                <div class="node-details expand-container">
+                    {{#if nodes}}
+                        <ul class="report-nodes">
+                            {{#each nodes}}
+                                {{renderNode this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        <script id="report-node-text-tpl" type="text/x-handlebars-template">
+            <li>
+                <div class="node-simple-text">
+                    {{name}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-label node-status-info contains-children-true collapsed" href="#">INFO</a>
+                <div class="node-name">{{name}}</div>
+                <div class="node-details expand-container">
+                    {{renderSublayout this}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-sublayout-tpl" type="text/x-handlebars-template">
+            <div class="layout-report" data-layout-id="{{layoutId}}" data-screenshot="{{screenshot}}">
+                <ul class="layout-sections">
+                    {{#each sections}}
+                        {{renderLayoutSection this}}
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+        <script id="report-layout-section-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-section icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <div class="layout-details expand-container">
+                    {{#if sections}}
+                        <ul class="layout-sections">
+                        {{#each sections}}
+                            {{renderLayoutSection this}}
+                        {{/each}}
+                        </ul>
+                    {{/if}}
+                    {{#if objects}}
+                        <ul class="layout-objects">
+                            {{#each objects}}
+                                {{renderLayoutObject this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        
+        <script id="report-layout-object-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-object icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <ul class="layout-checks expand-container">
+                    {{#each specs}}
+                        {{renderLayoutCheck this}}
+                    {{/each}}
+                    {{#each specGroups}}
+                    <li>
+                        <a class="layout-specgroup icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                        <ul class="layout-checks expand-container">
+                            {{#each specs}}
+                                {{renderLayoutCheck this}}
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+        </script>
+        <script id="report-layout-check-tpl" type="text/x-handlebars-template">
+            <li>
+            <a class="layout-check icon-sprite-before layout-check-status-{{status}}" href="#" 
+                data-highlight-objects="{{commaSeparated highlight}}"
+                title="{{place.filePath}}#{{place.lineNumber}}"
+                >{{name}}</a>
+
+                {{#if errors}}
+                    <div class="layout-check-error-message">
+                        {{#if imageComparison}}
+                        <a class="image-comparison-link" 
+                            data-actual-image="{{imageComparison.actualImage}}"
+                            data-expected-image="{{imageComparison.expectedImage}}"
+                            data-map-image="{{imageComparison.comparisonMapImage}}"
+                            href="#">Show image comparison</a>
+                        {{/if}}
+                        <div class="layout-check-error-message-text">
+                            <ul>
+                            {{#each errors}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if subLayout}}
+                    {{renderSublayout subLayout}}
+                {{/if}}
+            </li>
+        </script>
+        <script id="screenshot-popup-tpl" type="text/x-handlebars-template">
+            <div class="screenshot-canvas">
+                <img src="{{screenshot}}"/>
+                {{#each objects}}
+                <div class="canvas-rect" style="left: {{area.left}}px; top: {{area.top}}px; width: {{area.width}}px; height: {{area.height}}px; border-color: {{color}};">
+                    <div class="canvas-rect-wrapper">
+                        <div class="canvas-rect-hint" style="background: {{color}};">{{@key}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        <script id="image-comparison-tpl" type="text/x-handlebars-template">
+            <div class="image-comparison">
+                <h5>Actual</h5>
+                <img src="{{actual}}"/>
+
+                <h5>Expected</h5>
+                <img src="{{expected}}"/>
+
+                <h5>Comparison map</h5>
+                <img src="{{map}}"/>
+            </div>
+        </script>
+
+
+        <div id="menu">
+            <ul>
+                <li><a class="menu-op-expand-all" href="#">Expand All</a></li>
+                <li><a class="menu-op-collapse-all" href="#">Collapse All</a></li>
+                <li><a class="menu-op-expand-errors" href="#">Expand Errors</a></li>
+            </ul>
+        </div>
+        <h2>Shopping cart on mobile device</h2>
+        <div id="main"></div>
+        <div id="screen-shadow"></div>
+        <div id="popup" class="popup">
+            <div class="popup-wrapper">
+                <a class="popup-close-link" href="#">close</a>
+                <div class="popup-content"></div>
+            </div>
+        </div>
+        <div id="notification" class="notification">
+            <div class="notification-wrapper">
+                <a class="notification-close-link" href="#">close</a>
+                <div class="notification-summary"></div>
+                <div class="notification-message"></div>
+            </div>
+        </div>
+    </body>
+</html>

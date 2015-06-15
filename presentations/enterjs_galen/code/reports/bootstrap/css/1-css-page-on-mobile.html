@@ -1,0 +1,2192 @@
+<html>
+    <head>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "testId" : "1-css-page-on-mobile",
+  "name" : "css page on mobile",
+  "report" : {
+    "nodes" : [ {
+      "name" : "http://getbootstrap.com/css 500x700",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/cssPageLayout.spec --include \"mobile\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/cssPageLayout.spec included tags: mobile",
+          "status" : "error",
+          "time" : 1429880015695,
+          "includedTags" : [ "mobile" ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "highlight" : [ "content" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is 416px below \"navbar\" which is not in range of 370 to 410px" ],
+                "highlight" : [ "content", "navbar" ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation hidden on mobile",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Content should fit to screen size",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 26
+                },
+                "name" : "width: 100% of screen/width",
+                "highlight" : [ "content" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Code snippets should be vertical aligned",
+            "objects" : [ {
+              "name" : "css-hint-3",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-3" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 26985, 455, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 27006, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 27030, 409, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-20",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-20" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 52621, 455, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 52642, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 52667, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-2",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-2" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 24662, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 24683, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 24708, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-21",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-21" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 52783, 455, 217 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 52804, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 52828, 409, 60 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 40, 52898, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-1",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-1" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 18835, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 18856, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 18881, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-24",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-24" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 56939, 455, 227 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 56960, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 56985, 409, 160 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-25",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-25" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 57528, 455, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 57549, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 57574, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-22",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-22" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 53875, 455, 187 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 53896, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 53921, 409, 120 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-23",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-23" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 56439, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 56460, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 56485, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-9",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-9" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 32577, 455, 247 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 32598, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 32623, 409, 180 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-8",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-8" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 32416, 455, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 32437, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 32461, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-7",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-7" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 32166, 455, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 32187, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 32212, 409, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-6",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-6" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 30160, 455, 267 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 30181, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 30206, 409, 80 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 40, 30386, 409, 20 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-5",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-5" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 29999, 455, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 30020, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 30044, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-4",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-4" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 29629, 455, 207 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 29650, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 29675, 409, 140 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-17",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-17" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 45324, 455, 337 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 45345, 409, 40 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 45390, 409, 160 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 40, 45560, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-18",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-18" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 51422, 455, 167 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 51443, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 51468, 409, 100 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-15",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-15" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 43331, 455, 337 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 43352, 409, 40 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 43396, 409, 80 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 40, 43486, 409, 160 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-16",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-16" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 45082, 455, 227 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 45103, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 45128, 409, 160 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-19",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-19" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 52479, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 52500, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 52525, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-31",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-31" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 61273, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 61294, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 61318, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-10",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-10" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 35818, 455, 87 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 35839, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 35863, 409, 20 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-30",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-30" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 60178, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 60199, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 60223, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-13",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-13" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 41617, 455, 307 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 41638, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 41663, 409, 240 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-14",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-14" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 41939, 455, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 41960, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 41984, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-11",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-11" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 36096, 455, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 36117, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 36142, 409, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-12",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-12" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 41069, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 41090, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 41115, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-28",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-28" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 59199, 455, 207 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 59220, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 59245, 409, 140 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-29",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-29" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 60016, 455, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 60037, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 60062, 409, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-26",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-26" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 57855, 455, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 57876, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 57901, 409, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-27",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 1 errors" ],
+                "highlight" : [ "css-hint-27" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 15, 59057, 455, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 40, 59078, 409, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 40, 59103, 409, 60 ]
+                    }
+                  }
+                }
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "css-hint-3" : {
+              "area" : [ 15, 26985, 455, 107 ]
+            },
+            "css-hint-20" : {
+              "area" : [ 15, 52621, 455, 147 ]
+            },
+            "css-hint-2" : {
+              "area" : [ 15, 24662, 455, 127 ]
+            },
+            "css-hint-21" : {
+              "area" : [ 15, 52783, 455, 217 ]
+            },
+            "css-hint-1" : {
+              "area" : [ 15, 18835, 455, 127 ]
+            },
+            "css-hint-24" : {
+              "area" : [ 15, 56939, 455, 227 ]
+            },
+            "css-hint-25" : {
+              "area" : [ 15, 57528, 455, 147 ]
+            },
+            "css-hint-22" : {
+              "area" : [ 15, 53875, 455, 187 ]
+            },
+            "css-hint-23" : {
+              "area" : [ 15, 56439, 455, 127 ]
+            },
+            "css-hint-9" : {
+              "area" : [ 15, 32577, 455, 247 ]
+            },
+            "css-hint-8" : {
+              "area" : [ 15, 32416, 455, 147 ]
+            },
+            "css-hint-7" : {
+              "area" : [ 15, 32166, 455, 107 ]
+            },
+            "css-hint-6" : {
+              "area" : [ 15, 30160, 455, 267 ]
+            },
+            "content" : {
+              "area" : [ 0, 466, 485, 78329 ]
+            },
+            "css-hint-5" : {
+              "area" : [ 15, 29999, 455, 147 ]
+            },
+            "css-hint-4" : {
+              "area" : [ 15, 29629, 455, 207 ]
+            },
+            "navbar" : {
+              "area" : [ 0, 0, 485, 50 ]
+            },
+            "css-hint-17" : {
+              "area" : [ 15, 45324, 455, 337 ]
+            },
+            "css-hint-18" : {
+              "area" : [ 15, 51422, 455, 167 ]
+            },
+            "css-hint-15" : {
+              "area" : [ 15, 43331, 455, 337 ]
+            },
+            "css-hint-16" : {
+              "area" : [ 15, 45082, 455, 227 ]
+            },
+            "css-hint-19" : {
+              "area" : [ 15, 52479, 455, 127 ]
+            },
+            "css-hint-31" : {
+              "area" : [ 15, 61273, 455, 127 ]
+            },
+            "css-hint-10" : {
+              "area" : [ 15, 35818, 455, 87 ]
+            },
+            "css-hint-30" : {
+              "area" : [ 15, 60178, 455, 127 ]
+            },
+            "css-hint-13" : {
+              "area" : [ 15, 41617, 455, 307 ]
+            },
+            "css-hint-14" : {
+              "area" : [ 15, 41939, 455, 147 ]
+            },
+            "css-hint-11" : {
+              "area" : [ 15, 36096, 455, 107 ]
+            },
+            "css-hint-12" : {
+              "area" : [ 15, 41069, 455, 127 ]
+            },
+            "css-hint-28" : {
+              "area" : [ 15, 59199, 455, 207 ]
+            },
+            "css-hint-29" : {
+              "area" : [ 15, 60016, 455, 147 ]
+            },
+            "css-hint-26" : {
+              "area" : [ 15, 57855, 455, 107 ]
+            },
+            "css-hint-27" : {
+              "area" : [ 15, 59057, 455, 127 ]
+            }
+          },
+          "screenshot" : "layout-1-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429879989706,
+        "type" : "node"
+      } ],
+      "time" : 1429879983157,
+      "type" : "node"
+    } ]
+  }
+};
+        </script>
+        <script>
+
+            $(function () {
+                var galenReport = createGalenReport();
+                galenReport.render("main", reportData);
+            });
+        </script>
+    </head>
+    <body>
+        <script id="report-tpl" type="text/x-handlebars-template">
+            <ul class="report-nodes">
+            {{#each report.nodes}}
+                {{renderNode this}}
+            {{/each}}
+            </ul>
+        </script>
+        <script id="report-node-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-{{status}} contains-children-{{hasChildElements nodes}} collapsed" href="#">{{status}}</a>
+                <div class="node-name node-status-{{status}}">{{name}}</div>
+                {{#if stacktrace}}
+                    <div class="stacktrace">{{stacktrace}}</div>
+                {{/if}}
+                {{#if attachments}}
+                    <ul class="report-node-attachments">
+                        {{#each attachments}}
+                            <li>
+                                <a class="icon-sprite-before node-attachment" href="{{this}}">{{this}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+                <div class="node-details expand-container">
+                    {{#if nodes}}
+                        <ul class="report-nodes">
+                            {{#each nodes}}
+                                {{renderNode this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        <script id="report-node-text-tpl" type="text/x-handlebars-template">
+            <li>
+                <div class="node-simple-text">
+                    {{name}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-label node-status-info contains-children-true collapsed" href="#">INFO</a>
+                <div class="node-name">{{name}}</div>
+                <div class="node-details expand-container">
+                    {{renderSublayout this}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-sublayout-tpl" type="text/x-handlebars-template">
+            <div class="layout-report" data-layout-id="{{layoutId}}" data-screenshot="{{screenshot}}">
+                <ul class="layout-sections">
+                    {{#each sections}}
+                        {{renderLayoutSection this}}
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+        <script id="report-layout-section-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-section icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <div class="layout-details expand-container">
+                    {{#if sections}}
+                        <ul class="layout-sections">
+                        {{#each sections}}
+                            {{renderLayoutSection this}}
+                        {{/each}}
+                        </ul>
+                    {{/if}}
+                    {{#if objects}}
+                        <ul class="layout-objects">
+                            {{#each objects}}
+                                {{renderLayoutObject this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        
+        <script id="report-layout-object-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-object icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <ul class="layout-checks expand-container">
+                    {{#each specs}}
+                        {{renderLayoutCheck this}}
+                    {{/each}}
+                    {{#each specGroups}}
+                    <li>
+                        <a class="layout-specgroup icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                        <ul class="layout-checks expand-container">
+                            {{#each specs}}
+                                {{renderLayoutCheck this}}
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+        </script>
+        <script id="report-layout-check-tpl" type="text/x-handlebars-template">
+            <li>
+            <a class="layout-check icon-sprite-before layout-check-status-{{status}}" href="#" 
+                data-highlight-objects="{{commaSeparated highlight}}"
+                title="{{place.filePath}}#{{place.lineNumber}}"
+                >{{name}}</a>
+
+                {{#if errors}}
+                    <div class="layout-check-error-message">
+                        {{#if imageComparison}}
+                        <a class="image-comparison-link" 
+                            data-actual-image="{{imageComparison.actualImage}}"
+                            data-expected-image="{{imageComparison.expectedImage}}"
+                            data-map-image="{{imageComparison.comparisonMapImage}}"
+                            href="#">Show image comparison</a>
+                        {{/if}}
+                        <div class="layout-check-error-message-text">
+                            <ul>
+                            {{#each errors}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if subLayout}}
+                    {{renderSublayout subLayout}}
+                {{/if}}
+            </li>
+        </script>
+        <script id="screenshot-popup-tpl" type="text/x-handlebars-template">
+            <div class="screenshot-canvas">
+                <img src="{{screenshot}}"/>
+                {{#each objects}}
+                <div class="canvas-rect" style="left: {{area.left}}px; top: {{area.top}}px; width: {{area.width}}px; height: {{area.height}}px; border-color: {{color}};">
+                    <div class="canvas-rect-wrapper">
+                        <div class="canvas-rect-hint" style="background: {{color}};">{{@key}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        <script id="image-comparison-tpl" type="text/x-handlebars-template">
+            <div class="image-comparison">
+                <h5>Actual</h5>
+                <img src="{{actual}}"/>
+
+                <h5>Expected</h5>
+                <img src="{{expected}}"/>
+
+                <h5>Comparison map</h5>
+                <img src="{{map}}"/>
+            </div>
+        </script>
+
+
+        <div id="menu">
+            <ul>
+                <li><a class="menu-op-expand-all" href="#">Expand All</a></li>
+                <li><a class="menu-op-collapse-all" href="#">Collapse All</a></li>
+                <li><a class="menu-op-expand-errors" href="#">Expand Errors</a></li>
+            </ul>
+        </div>
+        <h2>css page on mobile</h2>
+        <div id="main"></div>
+        <div id="screen-shadow"></div>
+        <div id="popup" class="popup">
+            <div class="popup-wrapper">
+                <a class="popup-close-link" href="#">close</a>
+                <div class="popup-content"></div>
+            </div>
+        </div>
+        <div id="notification" class="notification">
+            <div class="notification-wrapper">
+                <a class="notification-close-link" href="#">close</a>
+                <div class="notification-summary"></div>
+                <div class="notification-message"></div>
+            </div>
+        </div>
+    </body>
+</html>

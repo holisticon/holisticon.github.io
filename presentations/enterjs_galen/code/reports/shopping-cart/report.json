@@ -1,0 +1,45 @@
+{
+  "tests" : [ {
+    "name" : "Shopping cart on mobile device",
+    "startedAt" : 1429965148367,
+    "endedAt" : 1429965153477,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 6,
+      "errors" : 8,
+      "warnings" : 0,
+      "total" : 14
+    },
+    "testId" : "1-shopping-cart-on-mobile-device",
+    "failed" : true,
+    "duration" : 5110
+  }, {
+    "name" : "Shopping cart on tablet device",
+    "startedAt" : 1429965153478,
+    "endedAt" : 1429965156767,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 6,
+      "errors" : 10,
+      "warnings" : 0,
+      "total" : 16
+    },
+    "testId" : "2-shopping-cart-on-tablet-device",
+    "failed" : true,
+    "duration" : 3289
+  }, {
+    "name" : "Shopping cart on desktop device",
+    "startedAt" : 1429965156767,
+    "endedAt" : 1429965160017,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 7,
+      "errors" : 9,
+      "warnings" : 0,
+      "total" : 16
+    },
+    "testId" : "3-shopping-cart-on-desktop-device",
+    "failed" : true,
+    "duration" : 3250
+  } ]
+}

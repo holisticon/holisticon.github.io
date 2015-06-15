@@ -1,0 +1,179 @@
+{
+  "testId" : "4-homepage-on-mobile",
+  "name" : "homepage on mobile",
+  "report" : {
+    "nodes" : [ {
+      "name" : "http://getbootstrap.com 500x700",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/homePageLayout.spec --include \"mobile\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: mobile",
+          "status" : "error",
+          "time" : 1429879819996,
+          "includedTags" : [ "mobile" ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation hidden on mobile",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Content should fit to screen size",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 26
+                },
+                "name" : "width: 100% of screen/width",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 0, 0, 485, 50 ]
+            },
+            "bootstrap-logo" : {
+              "area" : [ 171, 80, 144, 144 ]
+            }
+          },
+          "screenshot" : "layout-4-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429879818054,
+        "type" : "node"
+      } ],
+      "time" : 1429879814269,
+      "type" : "node"
+    } ]
+  }
+}

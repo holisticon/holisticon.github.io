@@ -1,0 +1,212 @@
+{
+  "testId" : "2-shopping-cart-on-tablet-device",
+  "name" : "Shopping cart on tablet device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "file:///Users/mreinhardt/Documents/Programmierung/repositories/git/holisticon-revealjs/test/shoppingcart/website/shopping-cart.html 900x600",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "        check specs/shopping-cart.spec --include \"tablet\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/shopping-cart.spec included tags: tablet",
+          "status" : "error",
+          "time" : 1429965156676,
+          "includedTags" : [ "tablet" ],
+          "sections" : [ {
+            "name" : "*",
+            "objects" : [ {
+              "name" : "header",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 16
+                },
+                "name" : "inside: screen 0px top left right",
+                "errors" : [ "\"header\" is 15px right instead of 0px" ],
+                "highlight" : [ "header", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 17
+                },
+                "name" : "height: 60px",
+                "errors" : [ "\"header\" height is 58px instead of 60px" ],
+                "highlight" : [ "header" ]
+              } ]
+            }, {
+              "name" : "navigation",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "inside: screen 0px left",
+                "errors" : [ "\"navigation\" is -15px left instead of 0px" ],
+                "highlight" : [ "navigation", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 21
+                },
+                "name" : "below: header 0px",
+                "errors" : [ "\"navigation\" is 20px below \"header\" instead of 0px" ],
+                "highlight" : [ "navigation", "header" ]
+              } ]
+            }, {
+              "name" : "footer",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 24
+                },
+                "name" : "inside: screen 0px bottom left right",
+                "errors" : [ "\"footer\" is 143px bottom and 15px right instead of 0px" ],
+                "highlight" : [ "footer", "screen" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 25
+                },
+                "name" : "below: banner-panel 0px",
+                "highlight" : [ "footer", "banner-panel" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 26
+                },
+                "name" : "height: 100px",
+                "highlight" : [ "footer" ]
+              } ]
+            } ]
+          }, {
+            "name" : "desktop, tablet",
+            "objects" : [ {
+              "name" : "banner-panel",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 45
+                },
+                "name" : "below: header 0px",
+                "errors" : [ "\"banner-panel\" is 120px below \"header\" instead of 0px" ],
+                "highlight" : [ "banner-panel", "header" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 46
+                },
+                "name" : "inside: screen 0px right",
+                "highlight" : [ "banner-panel", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 47
+                },
+                "name" : "width: 300px",
+                "errors" : [ "\"banner-panel\" width is 310px instead of 300px" ],
+                "highlight" : [ "banner-panel" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 48
+                },
+                "name" : "near: main 0px right",
+                "highlight" : [ "banner-panel", "main" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 49
+                },
+                "name" : "aligned horizontally all: main",
+                "highlight" : [ "banner-panel", "main" ]
+              } ]
+            } ]
+          }, {
+            "name" : "tablet",
+            "objects" : [ {
+              "name" : "navigation",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 56
+                },
+                "name" : "inside: screen 0px left right",
+                "errors" : [ "\"navigation\" is -15px left instead of 0px" ],
+                "highlight" : [ "navigation", "screen" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 57
+                },
+                "name" : "above: main 0px",
+                "highlight" : [ "navigation", "main" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 58
+                },
+                "name" : "width: 60px",
+                "errors" : [ "\"navigation\" width is 930px instead of 60px" ],
+                "highlight" : [ "navigation" ]
+              } ]
+            }, {
+              "name" : "main",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 61
+                },
+                "name" : "inside: screen 0px left",
+                "errors" : [ "\"main\" is -15px left instead of 0px" ],
+                "highlight" : [ "main", "screen" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navigation" : {
+              "area" : [ -15, 78, 930, 100 ]
+            },
+            "footer" : {
+              "area" : [ 0, 278, 900, 100 ]
+            },
+            "header" : {
+              "area" : [ 0, 0, 900, 58 ]
+            },
+            "screen" : {
+              "area" : [ 0, 0, 915, 521 ]
+            },
+            "main" : {
+              "area" : [ -15, 178, 620, 100 ]
+            },
+            "banner-panel" : {
+              "area" : [ 605, 178, 310, 100 ]
+            }
+          },
+          "screenshot" : "layout-2-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429965155718,
+        "type" : "node"
+      } ],
+      "time" : 1429965153478,
+      "type" : "node"
+    } ]
+  }
+}

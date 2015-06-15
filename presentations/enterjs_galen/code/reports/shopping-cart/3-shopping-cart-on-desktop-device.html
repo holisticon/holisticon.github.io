@@ -1,0 +1,414 @@
+<html>
+    <head>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "testId" : "3-shopping-cart-on-desktop-device",
+  "name" : "Shopping cart on desktop device",
+  "report" : {
+    "nodes" : [ {
+      "name" : "file:///Users/mreinhardt/Documents/Programmierung/repositories/git/holisticon-revealjs/test/shoppingcart/website/shopping-cart.html 1300x700",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "        check specs/shopping-cart.spec --include \"desktop\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/shopping-cart.spec included tags: desktop",
+          "status" : "error",
+          "time" : 1429965159926,
+          "includedTags" : [ "desktop" ],
+          "sections" : [ {
+            "name" : "*",
+            "objects" : [ {
+              "name" : "header",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 16
+                },
+                "name" : "inside: screen 0px top left right",
+                "errors" : [ "\"header\" is 15px right instead of 0px" ],
+                "highlight" : [ "header", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 17
+                },
+                "name" : "height: 60px",
+                "errors" : [ "\"header\" height is 58px instead of 60px" ],
+                "highlight" : [ "header" ]
+              } ]
+            }, {
+              "name" : "navigation",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "inside: screen 0px left",
+                "errors" : [ "\"navigation\" is -15px left instead of 0px" ],
+                "highlight" : [ "navigation", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 21
+                },
+                "name" : "below: header 0px",
+                "errors" : [ "\"navigation\" is 20px below \"header\" instead of 0px" ],
+                "highlight" : [ "navigation", "header" ]
+              } ]
+            }, {
+              "name" : "footer",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 24
+                },
+                "name" : "inside: screen 0px bottom left right",
+                "errors" : [ "\"footer\" is 343px bottom and 15px right instead of 0px" ],
+                "highlight" : [ "footer", "screen" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 25
+                },
+                "name" : "below: banner-panel 0px",
+                "highlight" : [ "footer", "banner-panel" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 26
+                },
+                "name" : "height: 100px",
+                "highlight" : [ "footer" ]
+              } ]
+            } ]
+          }, {
+            "name" : "desktop",
+            "objects" : [ {
+              "name" : "navigation",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 33
+                },
+                "name" : "width: 300px",
+                "errors" : [ "\"navigation\" width is 211px instead of 300px" ],
+                "highlight" : [ "navigation" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 34
+                },
+                "name" : "aligned horizontally all: main",
+                "highlight" : [ "navigation", "main" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 35
+                },
+                "name" : "near: main 0px left",
+                "highlight" : [ "navigation", "main" ]
+              } ]
+            }, {
+              "name" : "main",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 38
+                },
+                "name" : "below: header 0px",
+                "errors" : [ "\"main\" is 20px below \"header\" instead of 0px" ],
+                "highlight" : [ "main", "header" ]
+              } ]
+            } ]
+          }, {
+            "name" : "desktop, tablet",
+            "objects" : [ {
+              "name" : "banner-panel",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 45
+                },
+                "name" : "below: header 0px",
+                "errors" : [ "\"banner-panel\" is 20px below \"header\" instead of 0px" ],
+                "highlight" : [ "banner-panel", "header" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 46
+                },
+                "name" : "inside: screen 0px right",
+                "highlight" : [ "banner-panel", "screen" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 47
+                },
+                "name" : "width: 300px",
+                "errors" : [ "\"banner-panel\" width is 317px instead of 300px" ],
+                "highlight" : [ "banner-panel" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 48
+                },
+                "name" : "near: main 0px right",
+                "highlight" : [ "banner-panel", "main" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shopping-cart.spec",
+                  "lineNumber" : 49
+                },
+                "name" : "aligned horizontally all: main",
+                "highlight" : [ "banner-panel", "main" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navigation" : {
+              "area" : [ -15, 78, 211, 100 ]
+            },
+            "footer" : {
+              "area" : [ 0, 178, 1237, 100 ]
+            },
+            "header" : {
+              "area" : [ 0, 0, 1237, 58 ]
+            },
+            "screen" : {
+              "area" : [ 0, 0, 1252, 621 ]
+            },
+            "main" : {
+              "area" : [ 196, 78, 739, 100 ]
+            },
+            "banner-panel" : {
+              "area" : [ 935, 78, 317, 100 ]
+            }
+          },
+          "screenshot" : "layout-3-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429965158985,
+        "type" : "node"
+      } ],
+      "time" : 1429965156767,
+      "type" : "node"
+    } ]
+  }
+};
+        </script>
+        <script>
+
+            $(function () {
+                var galenReport = createGalenReport();
+                galenReport.render("main", reportData);
+            });
+        </script>
+    </head>
+    <body>
+        <script id="report-tpl" type="text/x-handlebars-template">
+            <ul class="report-nodes">
+            {{#each report.nodes}}
+                {{renderNode this}}
+            {{/each}}
+            </ul>
+        </script>
+        <script id="report-node-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-{{status}} contains-children-{{hasChildElements nodes}} collapsed" href="#">{{status}}</a>
+                <div class="node-name node-status-{{status}}">{{name}}</div>
+                {{#if stacktrace}}
+                    <div class="stacktrace">{{stacktrace}}</div>
+                {{/if}}
+                {{#if attachments}}
+                    <ul class="report-node-attachments">
+                        {{#each attachments}}
+                            <li>
+                                <a class="icon-sprite-before node-attachment" href="{{this}}">{{this}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
+                <div class="node-details expand-container">
+                    {{#if nodes}}
+                        <ul class="report-nodes">
+                            {{#each nodes}}
+                                {{renderNode this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        <script id="report-node-text-tpl" type="text/x-handlebars-template">
+            <li>
+                <div class="node-simple-text">
+                    {{name}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-tpl" type="text/x-handlebars-template">
+            <li>
+                <span class="report-time">{{formatReportTime time}}</span>
+                <a class="expand-link node-expand-button node-status-label node-status-info contains-children-true collapsed" href="#">INFO</a>
+                <div class="node-name">{{name}}</div>
+                <div class="node-details expand-container">
+                    {{renderSublayout this}}
+                </div>
+            </li>
+        </script>
+        <script id="report-layout-sublayout-tpl" type="text/x-handlebars-template">
+            <div class="layout-report" data-layout-id="{{layoutId}}" data-screenshot="{{screenshot}}">
+                <ul class="layout-sections">
+                    {{#each sections}}
+                        {{renderLayoutSection this}}
+                    {{/each}}
+                </ul>
+            </div>
+        </script>
+        <script id="report-layout-section-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-section icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <div class="layout-details expand-container">
+                    {{#if sections}}
+                        <ul class="layout-sections">
+                        {{#each sections}}
+                            {{renderLayoutSection this}}
+                        {{/each}}
+                        </ul>
+                    {{/if}}
+                    {{#if objects}}
+                        <ul class="layout-objects">
+                            {{#each objects}}
+                                {{renderLayoutObject this}}
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </div>
+            </li>
+        </script>
+        
+        <script id="report-layout-object-tpl" type="text/x-handlebars-template">
+            <li>
+                <a class="layout-object icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                <ul class="layout-checks expand-container">
+                    {{#each specs}}
+                        {{renderLayoutCheck this}}
+                    {{/each}}
+                    {{#each specGroups}}
+                    <li>
+                        <a class="layout-specgroup icon-sprite-before expand-link contains-children-true" href="#">{{name}}</a>
+                        <ul class="layout-checks expand-container">
+                            {{#each specs}}
+                                {{renderLayoutCheck this}}
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+        </script>
+        <script id="report-layout-check-tpl" type="text/x-handlebars-template">
+            <li>
+            <a class="layout-check icon-sprite-before layout-check-status-{{status}}" href="#" 
+                data-highlight-objects="{{commaSeparated highlight}}"
+                title="{{place.filePath}}#{{place.lineNumber}}"
+                >{{name}}</a>
+
+                {{#if errors}}
+                    <div class="layout-check-error-message">
+                        {{#if imageComparison}}
+                        <a class="image-comparison-link" 
+                            data-actual-image="{{imageComparison.actualImage}}"
+                            data-expected-image="{{imageComparison.expectedImage}}"
+                            data-map-image="{{imageComparison.comparisonMapImage}}"
+                            href="#">Show image comparison</a>
+                        {{/if}}
+                        <div class="layout-check-error-message-text">
+                            <ul>
+                            {{#each errors}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+
+                {{#if subLayout}}
+                    {{renderSublayout subLayout}}
+                {{/if}}
+            </li>
+        </script>
+        <script id="screenshot-popup-tpl" type="text/x-handlebars-template">
+            <div class="screenshot-canvas">
+                <img src="{{screenshot}}"/>
+                {{#each objects}}
+                <div class="canvas-rect" style="left: {{area.left}}px; top: {{area.top}}px; width: {{area.width}}px; height: {{area.height}}px; border-color: {{color}};">
+                    <div class="canvas-rect-wrapper">
+                        <div class="canvas-rect-hint" style="background: {{color}};">{{@key}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        <script id="image-comparison-tpl" type="text/x-handlebars-template">
+            <div class="image-comparison">
+                <h5>Actual</h5>
+                <img src="{{actual}}"/>
+
+                <h5>Expected</h5>
+                <img src="{{expected}}"/>
+
+                <h5>Comparison map</h5>
+                <img src="{{map}}"/>
+            </div>
+        </script>
+
+
+        <div id="menu">
+            <ul>
+                <li><a class="menu-op-expand-all" href="#">Expand All</a></li>
+                <li><a class="menu-op-collapse-all" href="#">Collapse All</a></li>
+                <li><a class="menu-op-expand-errors" href="#">Expand Errors</a></li>
+            </ul>
+        </div>
+        <h2>Shopping cart on desktop device</h2>
+        <div id="main"></div>
+        <div id="screen-shadow"></div>
+        <div id="popup" class="popup">
+            <div class="popup-wrapper">
+                <a class="popup-close-link" href="#">close</a>
+                <div class="popup-content"></div>
+            </div>
+        </div>
+        <div id="notification" class="notification">
+            <div class="notification-wrapper">
+                <a class="notification-close-link" href="#">close</a>
+                <div class="notification-summary"></div>
+                <div class="notification-message"></div>
+            </div>
+        </div>
+    </body>
+</html>

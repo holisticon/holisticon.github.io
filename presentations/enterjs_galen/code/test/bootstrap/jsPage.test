@@ -1,0 +1,10 @@
+@@ table devices
+  | device    | size     |
+  | mobile    | 500x700  |
+  | tablet    | 900x600  |
+  | desktop   | 1300x700 |
+
+@@ parameterized using devices
+javascript page on ${device}
+  ${websiteUrl} ${size}
+    check specs/javascriptPageLayout.spec --include "${device}"

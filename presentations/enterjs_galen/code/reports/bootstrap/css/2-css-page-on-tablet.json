@@ -1,0 +1,2780 @@
+{
+  "testId" : "2-css-page-on-tablet",
+  "name" : "css page on tablet",
+  "report" : {
+    "nodes" : [ {
+      "name" : "http://getbootstrap.com/css 900x600",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/cssPageLayout.spec --include \"tablet\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/cssPageLayout.spec included tags: tablet",
+          "status" : "error",
+          "time" : 1429880054073,
+          "includedTags" : [ "tablet" ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "highlight" : [ "content" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is 479px below \"navbar\" which is not in range of 370 to 410px" ],
+                "highlight" : [ "content", "navbar" ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Code snippets should be vertical aligned",
+            "objects" : [ {
+              "name" : "css-hint-3",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-3" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 23946, 720, 87 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 23967, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 23992, 674, 20 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-20",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-20" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 45996, 720, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 46017, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 46042, 674, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-2",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-2" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 21800, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 21821, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 21846, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-21",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 4 errors" ],
+                "highlight" : [ "css-hint-21" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-2\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-2" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 46138, 720, 157 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 46159, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 46184, 674, 40 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 108, 46234, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-1",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-1" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 16356, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 16377, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 16402, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-24",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-24" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 49585, 720, 167 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 49606, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 49630, 674, 100 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-25",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-25" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 50074, 720, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 50095, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 50120, 674, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-22",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-22" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 46941, 720, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 46962, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 46987, 674, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-23",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-23" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 49162, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 49183, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 49208, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-9",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-9" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 29148, 720, 167 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 29169, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 29193, 674, 100 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-8",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-8" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 29006, 720, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 29027, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 29052, 674, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-7",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-7" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 28796, 720, 87 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 28817, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 28842, 674, 20 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-6",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 4 errors" ],
+                "highlight" : [ "css-hint-6" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-2\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-2" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 26967, 720, 227 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 26988, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 27013, 674, 40 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 108, 27153, 674, 20 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-5",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-5" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 26825, 720, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 26846, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 26871, 674, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-4",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-4" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 26535, 720, 147 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 26556, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 26581, 674, 80 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-17",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 4 errors" ],
+                "highlight" : [ "css-hint-17" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-2\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-2" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 39887, 720, 237 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 39908, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 39933, 674, 100 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 108, 40043, 674, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-18",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-18" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 44989, 720, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 45010, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 45035, 674, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-15",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 4 errors" ],
+                "highlight" : [ "css-hint-15" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-2", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    }, {
+                      "name" : "text-2",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-2\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-2" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 38261, 720, 237 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 38282, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 38307, 674, 60 ]
+                    },
+                    "text-2" : {
+                      "area" : [ 108, 38377, 674, 100 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-16",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-16" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 39706, 720, 167 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 39727, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 39751, 674, 100 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-19",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-19" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 45874, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 45895, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 45920, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-31",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-31" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 53431, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 53452, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 53477, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-10",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-10" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 31687, 720, 87 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 31708, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 31733, 674, 20 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-30",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-30" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 52375, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 52396, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 52421, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-13",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-13" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 36801, 720, 207 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 36822, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 36847, 674, 140 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-14",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-14" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 37023, 720, 127 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 37044, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 37069, 674, 60 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-11",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-11" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 31948, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 31969, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 31993, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-12",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-12" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 36333, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 36354, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 36379, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-28",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-28" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 51496, 720, 167 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 51517, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 51542, 674, 100 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-29",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-29" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 52253, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 52274, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 52299, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-26",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-26" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 50362, 720, 87 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 50383, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 50408, 674, 20 ]
+                    }
+                  }
+                }
+              } ]
+            }, {
+              "name" : "css-hint-27",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/cssPageLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "component: shared/calloutComponent.spec",
+                "errors" : [ "Child component spec contains 3 errors" ],
+                "highlight" : [ "css-hint-27" ],
+                "subLayout" : {
+                  "includedTags" : [ ],
+                  "excludedTags" : [ ],
+                  "sections" : [ {
+                    "name" : "general callout layout",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 10
+                        },
+                        "name" : "inside: parent 10px top left",
+                        "errors" : [ "\"heading\" is 21px top and 25px left instead of 10px" ],
+                        "highlight" : [ "heading", "parent" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "info",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 12
+                        },
+                        "name" : "aligned vertically left: heading",
+                        "highlight" : [ "text-1", "heading" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "callout on tablet device",
+                    "objects" : [ {
+                      "name" : "heading",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 27
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"heading\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "heading" ]
+                      } ]
+                    }, {
+                      "name" : "text-1",
+                      "specs" : [ {
+                        "status" : "error",
+                        "place" : {
+                          "filePath" : "specs/shared/calloutComponent.spec",
+                          "lineNumber" : 29
+                        },
+                        "name" : "width: 80 to 90% of screen/width",
+                        "errors" : [ "\"text-1\" width is 674px which is not in range of 708 to 796,5px" ],
+                        "highlight" : [ "text-1" ]
+                      } ]
+                    } ]
+                  } ],
+                  "objects" : {
+                    "parent" : {
+                      "area" : [ 83, 51374, 720, 107 ]
+                    },
+                    "heading" : {
+                      "area" : [ 108, 51395, 674, 20 ]
+                    },
+                    "text-1" : {
+                      "area" : [ 108, 51420, 674, 40 ]
+                    }
+                  }
+                }
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "css-hint-3" : {
+              "area" : [ 83, 23946, 720, 87 ]
+            },
+            "css-hint-20" : {
+              "area" : [ 83, 45996, 720, 127 ]
+            },
+            "css-hint-2" : {
+              "area" : [ 83, 21800, 720, 107 ]
+            },
+            "css-hint-21" : {
+              "area" : [ 83, 46138, 720, 157 ]
+            },
+            "css-hint-1" : {
+              "area" : [ 83, 16356, 720, 107 ]
+            },
+            "css-hint-24" : {
+              "area" : [ 83, 49585, 720, 167 ]
+            },
+            "css-hint-25" : {
+              "area" : [ 83, 50074, 720, 127 ]
+            },
+            "css-hint-22" : {
+              "area" : [ 83, 46941, 720, 147 ]
+            },
+            "css-hint-23" : {
+              "area" : [ 83, 49162, 720, 107 ]
+            },
+            "css-hint-9" : {
+              "area" : [ 83, 29148, 720, 167 ]
+            },
+            "css-hint-8" : {
+              "area" : [ 83, 29006, 720, 127 ]
+            },
+            "css-hint-7" : {
+              "area" : [ 83, 28796, 720, 87 ]
+            },
+            "css-hint-6" : {
+              "area" : [ 83, 26967, 720, 227 ]
+            },
+            "content" : {
+              "area" : [ 68, 529, 750, 68427 ]
+            },
+            "css-hint-5" : {
+              "area" : [ 83, 26825, 720, 127 ]
+            },
+            "css-hint-4" : {
+              "area" : [ 83, 26535, 720, 147 ]
+            },
+            "navbar" : {
+              "area" : [ 83, 0, 98, 50 ]
+            },
+            "css-hint-17" : {
+              "area" : [ 83, 39887, 720, 237 ]
+            },
+            "css-hint-18" : {
+              "area" : [ 83, 44989, 720, 127 ]
+            },
+            "css-hint-15" : {
+              "area" : [ 83, 38261, 720, 237 ]
+            },
+            "css-hint-16" : {
+              "area" : [ 83, 39706, 720, 167 ]
+            },
+            "css-hint-19" : {
+              "area" : [ 83, 45874, 720, 107 ]
+            },
+            "css-hint-31" : {
+              "area" : [ 83, 53431, 720, 107 ]
+            },
+            "css-hint-10" : {
+              "area" : [ 83, 31687, 720, 87 ]
+            },
+            "css-hint-30" : {
+              "area" : [ 83, 52375, 720, 107 ]
+            },
+            "css-hint-13" : {
+              "area" : [ 83, 36801, 720, 207 ]
+            },
+            "css-hint-14" : {
+              "area" : [ 83, 37023, 720, 127 ]
+            },
+            "css-hint-11" : {
+              "area" : [ 83, 31948, 720, 107 ]
+            },
+            "css-hint-12" : {
+              "area" : [ 83, 36333, 720, 107 ]
+            },
+            "css-hint-28" : {
+              "area" : [ 83, 51496, 720, 167 ]
+            },
+            "css-hint-29" : {
+              "area" : [ 83, 52253, 720, 107 ]
+            },
+            "css-hint-26" : {
+              "area" : [ 83, 50362, 720, 87 ]
+            },
+            "css-hint-27" : {
+              "area" : [ 83, 51374, 720, 107 ]
+            }
+          },
+          "screenshot" : "layout-2-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1429880020445,
+        "type" : "node"
+      } ],
+      "time" : 1429880015791,
+      "type" : "node"
+    } ]
+  }
+}
