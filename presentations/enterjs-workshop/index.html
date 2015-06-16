@@ -117,7 +117,17 @@
 							<li>make it look like Java
 							<li>made it look like C and AWK
 							<li>Mistakes (some recapitulating LISP) were frozen early
-							</ul>							
+							<li>Copy/paste snippets of code into HTML 
+								<li>-Tolerate “minor” errors (e.g., missing semicolons) 
+							<li>Simpliﬁed event handling
+								<li>-onclick, onmouseover
+								<li>-inspired by HyperCard
+							<li>Pick a few hard-working, powerful primitives 
+								<li>-First class functions for procedural abstraction 	(AWK more than Scheme) 
+								<li>-Objects everywhere, prototype-based 	(Self, but only one parent per object) 
+							<li>Leave all else out!	
+							</ul>
+													
 						</aside>
 
                     </section>
@@ -157,16 +167,7 @@ map.hund = "Ganz neu geht auch";
 </code></pre>
 					    <aside class="notes">
 							<pre>
-	Copy/paste snippets of code into HTML 
-		Tolerate “minor” errors (e.g., missing semicolons) 
-	Simpliﬁed event handling
-		onclick, onmouseover
-		inspired by HyperCard
-	Pick a few hard-working, powerful primitives 
-		First class functions for procedural abstraction 	(AWK more than Scheme) 
-		Objects everywhere, prototype-based 	(Self, but only one parent per object) 
-	Leave all else out! 
-	
+
 	Self: The Power of Simplicity
 	1980er Jahre: Xerox PARC & Sun Microsystems
 	Ziel: mehr Freiheit als bei OO-Sprachen wie Smalltalk
@@ -411,6 +412,9 @@ console.log(achso); // ReferenceError
                             </li>
 
                         </ul>
+						<aside class="notes"><a target="_blank"  href="http://jsbin.com/repawa/edit?js,console">http://jsbin.com/repawa/edit?js,console
+</a>
+
                     </section>
                         <section>
                 <section>
@@ -564,6 +568,8 @@ olli instanceof Person;
                             </li>
                             <li>Erzeuge ein Objekt vom Typ Person und rufe Methoden darauf auf
                         </ul>
+						<aside class="notes"><a target="_blank" href="http://jsbin.com/meboyo/edit?js,console
+">http://jsbin.com/meboyo/edit?js,console</a></aside>
                     </section>
                 <section>
                     <section>
@@ -605,7 +611,7 @@ olli.gender === 'Male';
 olli instanceof Male;
 olli instanceof Person;
 olli instanceof Object;</code></pre>
-                    <aside class="notes">Weiterhing aufmalen</aside>
+                    <aside class="notes">Weiterhin aufmalen</aside>
 				</section>
         <section>
             <h2>Underscore</h2>
@@ -672,7 +678,7 @@ console.log(programmer instanceof Person);</code></pre>
     return child;
 }
 </code></pre>
-	        <aside class="notes">Bei Mixins werden alle Properties eines Prototypen in einen anderen hineinkopiert, aufmalen</aside>
+	        <aside class="notes">Bei Mixins werden alle Properties eines Objekts in einen anderen hineinkopiert, aufmalen</aside>
 		</section>
 		<section>
 			            <h3>Mixins</h3>
@@ -715,6 +721,8 @@ var wolpertinger = $.extend({}, duck, dog);
                             </li>
                             <li>Erzeuge mindestens ein Objekt vom Typ Customer und rufe Methoden darauf auf
                         </ul>
+						<aside class="notes"><a target="_blank" href="http://jsbin.com/lapaku/edit?js,console
+">http://jsbin.com/lapaku/edit?js,console</a></aside>
                     </section>
                 <section>
                     <section>
@@ -850,6 +858,8 @@ require(['js/modules/accounting'], function (Accounting) {
                         <li>Schreibe den aufrufenden Code so um, dass er mit den neuen Modulen arbeitet
 						<li>Benutze das Revealing Module Pattern
                     </ul>
+					<aside class="notes"><a target="_blank" href="http://jsbin.com/pogece/edit?js,console
+">http://jsbin.com/pogece/edit?js,console</a></aside>
                 </section>
             <section>
                 <section>
@@ -907,7 +917,10 @@ require(['js/modules/accounting'], function (Accounting) {
                        
                     </ul>
 					<aside class="notes"> <li>Wenn du nicht bei Null anfangen möchtest, kannst du auch dieses Projekt clonen
-                            <a target="_blank" href="http://jsbin.com/hiyuxometi/3/edit?js,output">http://jsbin.com/hiyuxometi/3/edit?js,output</a></aside>
+                            <a target="_blank" href="http://jsbin.com/hiyuxometi/3/edit?js,output">http://jsbin.com/hiyuxometi/3/edit?js,output</a><br>
+							<a target="_blank" href="http://jsbin.com/kixife/edit?js,output
+">http://jsbin.com/kixife/edit?js,output</a>
+					</aside>
                 </section>
 				
     <section>
@@ -972,6 +985,9 @@ require(['js/modules/accounting'], function (Accounting) {
   console.log(a); // => ReferenceError: a is not defined
 })();
 </code></pre>
+<aside class="notes">
+	<a href="http://jsbin.com/jigoxu/edit?js,console" target="_blank">http://jsbin.com/jigoxu/edit?js,console</a>
+</aside>
         </section>
         <section>
             <h3>Gesprengte Ketten #2: Klassen</h3>
@@ -999,6 +1015,7 @@ require(['js/modules/accounting'], function (Accounting) {
   console.log(programmer instanceof Programmer); // true
   console.log(programmer instanceof Person); // true
 })();</code></pre>
+<aside class="notes"><a target="_blank" href="http://jsbin.com/juroxo/edit?js,console">http://jsbin.com/juroxo/edit?js,console</a></aside>
         </section>
 		        <section>
 		            <h3>Gesprengte Ketten #3: Fat Arrow</h3>
@@ -1019,6 +1036,9 @@ require(['js/modules/accounting'], function (Accounting) {
 		The fat arrow is a feature of ES6 (now officially called ECMAScript 2015). 
 		It's been introduced in Firefox but not yet in other browsers (and especially
 	 	not completely in V8 which would be interesting for nodejs/iojs development).
+		
+		<a target="_blank" href="http://jsbin.com/wuxadu/edit?js,console
+">http://jsbin.com/wuxadu/edit?js,console</a>
 			</pre>
 		</aside>
 		</section>
@@ -1061,8 +1081,8 @@ require(['js/modules/accounting'], function (Accounting) {
 							
 					</ul>
 					<aside class="notes">
-                        <li>Babel-Übersetzer in JsBin:
-                            <a target="_blank" href="http://jsbin.com/jobaci/1/edit?js,console">http://jsbin.com/jobaci/1/edit?js,console</a>
+                        <li>Lösung:
+                            <a target="_blank" href="http://jsbin.com/popozo/edit?js,console">http://jsbin.com/popozo/edit?js,console</a>
 
                     </aside>
                 </section>
