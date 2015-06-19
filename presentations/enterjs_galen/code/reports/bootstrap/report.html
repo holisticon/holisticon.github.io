@@ -1,0 +1,380 @@
+<html>
+    <head>
+        <title>Galen Reports</title>
+        <link rel="stylesheet" type="text/css" href="report.css"></link>
+        <link rel="stylesheet" type="text/css" href="tablesorter.css"></link>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="handlebars-v2.0.0.js"></script>
+        <script src="tablesorter.js"></script>
+        <script src="galen-report.js"></script>
+        <script>
+var reportData = {
+  "tests" : [ {
+    "name" : "homepage on Mobile in Chrome browser",
+    "startedAt" : 1434704878321,
+    "endedAt" : 1434704887273,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 1
+    },
+    "testId" : "1-homepage-on-mobile-in-chrome-browser",
+    "groups" : [ "home", "page" ],
+    "failed" : false,
+    "duration" : 8952
+  }, {
+    "name" : "homepage on Tablet in Chrome browser",
+    "startedAt" : 1434704887274,
+    "endedAt" : 1434704892417,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 1
+    },
+    "testId" : "2-homepage-on-tablet-in-chrome-browser",
+    "groups" : [ "home", "page" ],
+    "failed" : false,
+    "duration" : 5143
+  }, {
+    "name" : "homepage on Desktop in Chrome browser",
+    "startedAt" : 1434704892417,
+    "endedAt" : 1434704898079,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 1
+    },
+    "testId" : "3-homepage-on-desktop-in-chrome-browser",
+    "groups" : [ "home", "page" ],
+    "failed" : false,
+    "duration" : 5662
+  }, {
+    "name" : "homepage on Mobile in Firefox browser",
+    "startedAt" : 1434704898080,
+    "endedAt" : 1434704904617,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 1
+    },
+    "testId" : "4-homepage-on-mobile-in-firefox-browser",
+    "groups" : [ "home", "page" ],
+    "failed" : false,
+    "duration" : 6537
+  }, {
+    "name" : "homepage on Tablet in Firefox browser",
+    "startedAt" : 1434704904617,
+    "endedAt" : 1434704913124,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 1
+    },
+    "testId" : "5-homepage-on-tablet-in-firefox-browser",
+    "groups" : [ "home", "page" ],
+    "failed" : false,
+    "duration" : 8507
+  }, {
+    "name" : "homepage on Desktop in Firefox browser",
+    "startedAt" : 1434704913124,
+    "endedAt" : 1434704919463,
+    "failed" : false,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 0,
+      "warnings" : 0,
+      "total" : 1
+    },
+    "testId" : "6-homepage-on-desktop-in-firefox-browser",
+    "groups" : [ "home", "page" ],
+    "failed" : false,
+    "duration" : 6339
+  }, {
+    "name" : "javascript page on Mobile in Chrome browser",
+    "startedAt" : 1434704919463,
+    "endedAt" : 1434704925796,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 10,
+      "errors" : 11,
+      "warnings" : 0,
+      "total" : 21
+    },
+    "testId" : "7-javascript-page-on-mobile-in-chrome-browser",
+    "groups" : [ "javascript", "page" ],
+    "failed" : true,
+    "duration" : 6333
+  }, {
+    "name" : "javascript page on Tablet in Chrome browser",
+    "startedAt" : 1434704925797,
+    "endedAt" : 1434704933104,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 9,
+      "errors" : 12,
+      "warnings" : 0,
+      "total" : 21
+    },
+    "testId" : "8-javascript-page-on-tablet-in-chrome-browser",
+    "groups" : [ "javascript", "page" ],
+    "failed" : true,
+    "duration" : 7307
+  }, {
+    "name" : "javascript page on Desktop in Chrome browser",
+    "startedAt" : 1434704933104,
+    "endedAt" : 1434704940091,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 9,
+      "errors" : 12,
+      "warnings" : 0,
+      "total" : 21
+    },
+    "testId" : "9-javascript-page-on-desktop-in-chrome-browser",
+    "groups" : [ "javascript", "page" ],
+    "failed" : true,
+    "duration" : 6987
+  }, {
+    "name" : "javascript page on Mobile in Firefox browser",
+    "startedAt" : 1434704940091,
+    "endedAt" : 1434704948039,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 10,
+      "errors" : 11,
+      "warnings" : 0,
+      "total" : 21
+    },
+    "testId" : "10-javascript-page-on-mobile-in-firefox-browser",
+    "groups" : [ "javascript", "page" ],
+    "failed" : true,
+    "duration" : 7948
+  }, {
+    "name" : "javascript page on Tablet in Firefox browser",
+    "startedAt" : 1434704948039,
+    "endedAt" : 1434704956502,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 9,
+      "errors" : 12,
+      "warnings" : 0,
+      "total" : 21
+    },
+    "testId" : "11-javascript-page-on-tablet-in-firefox-browser",
+    "groups" : [ "javascript", "page" ],
+    "failed" : true,
+    "duration" : 8463
+  }, {
+    "name" : "javascript page on Desktop in Firefox browser",
+    "startedAt" : 1434704956502,
+    "endedAt" : 1434704965195,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 9,
+      "errors" : 12,
+      "warnings" : 0,
+      "total" : 21
+    },
+    "testId" : "12-javascript-page-on-desktop-in-firefox-browser",
+    "groups" : [ "javascript", "page" ],
+    "failed" : true,
+    "duration" : 8693
+  }, {
+    "name" : "css page on Mobile in Chrome browser",
+    "startedAt" : 1434704965195,
+    "endedAt" : 1434704970295,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 8,
+      "errors" : 3,
+      "warnings" : 0,
+      "total" : 11
+    },
+    "testId" : "13-css-page-on-mobile-in-chrome-browser",
+    "groups" : [ "css", "page" ],
+    "failed" : true,
+    "duration" : 5100
+  }, {
+    "name" : "css page on Tablet in Chrome browser",
+    "startedAt" : 1434704970295,
+    "endedAt" : 1434704977543,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 3
+    },
+    "testId" : "14-css-page-on-tablet-in-chrome-browser",
+    "groups" : [ "css", "page" ],
+    "failed" : true,
+    "duration" : 7248
+  }, {
+    "name" : "css page on Desktop in Chrome browser",
+    "startedAt" : 1434704977543,
+    "endedAt" : 1434704983359,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 8,
+      "errors" : 3,
+      "warnings" : 0,
+      "total" : 11
+    },
+    "testId" : "15-css-page-on-desktop-in-chrome-browser",
+    "groups" : [ "css", "page" ],
+    "failed" : true,
+    "duration" : 5816
+  }, {
+    "name" : "css page on Mobile in Firefox browser",
+    "startedAt" : 1434704983359,
+    "endedAt" : 1434704989615,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 8,
+      "errors" : 3,
+      "warnings" : 0,
+      "total" : 11
+    },
+    "testId" : "16-css-page-on-mobile-in-firefox-browser",
+    "groups" : [ "css", "page" ],
+    "failed" : true,
+    "duration" : 6256
+  }, {
+    "name" : "css page on Tablet in Firefox browser",
+    "startedAt" : 1434704989615,
+    "endedAt" : 1434704995742,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 1,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 3
+    },
+    "testId" : "17-css-page-on-tablet-in-firefox-browser",
+    "groups" : [ "css", "page" ],
+    "failed" : true,
+    "duration" : 6127
+  }, {
+    "name" : "css page on Desktop in Firefox browser",
+    "startedAt" : 1434704995742,
+    "endedAt" : 1434705003143,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 8,
+      "errors" : 3,
+      "warnings" : 0,
+      "total" : 11
+    },
+    "testId" : "18-css-page-on-desktop-in-firefox-browser",
+    "groups" : [ "css", "page" ],
+    "failed" : true,
+    "duration" : 7401
+  } ]
+};
+
+        </script>
+        <script>
+            $(function () {
+                var galenReport = createGalenTestOverview();
+                galenReport.renderTestsTable("tests-table", reportData);
+                galenReport.renderGroupsTable("groups-table", reportData);
+
+                window.onhashchange = function () {
+                    galenReport.handleHash(window.location.hash.substr(1));
+                };
+
+                galenReport.handleHash(window.location.hash.substr(1));
+            });
+        </script>
+    </head>
+    <body>
+
+
+        <div class="tests-overview">
+            <h2>Galen Test Report</h2>
+            <div class="tabs">
+                <a class="tab tab-tests" href="#tests">Tests</a>
+                <a class="tab tab-groups" href="#groups">Groups</a>
+            </div>
+            <div id="tests-table">
+            </div>
+            <div id="groups-table">
+            </div>
+
+            <script id="tests-table-tpl" type="text/x-handlebars-template">
+                <table class="tests tablesorter">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>Warnings</th>
+                            <th>Total</th>
+                            <th>Groups</th>
+                            <th>Started</th>
+                            <th>Duration</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each tests}}
+                        <tr data-groups="{{groups}}">
+                            <td class="suite-link">
+                                <a href="{{testId}}.html">{{name}}</a>
+                            </td>
+                            <td class="status passed">{{statistic.passed}}</td>
+                            <td class="status failed">{{statistic.errors}}</td>
+                            <td class="status warnings">{{statistic.warnings}}</td>
+                            <td class="status total">{{statistic.total}}</td>
+                            <td class="tags">{{formatGroupsPretty groups}}</td>
+                            <td class="time">{{formatDateTime startedAt}}</td>
+                            <td class="time">{{formatDurationHumanReadable duration}}</td>
+                            <td class="progressbar">
+                                {{renderProgressBar statistic}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </script>
+            <script id="groups-table-tpl" type="text/x-handlebars-template">
+                <table class="groups tablesorter">
+                    <thead>
+                        <tr>
+                            <th>Group</th>
+                            <th>Passed</th>
+                            <th>Failed</th>
+                            <th>Tests</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each this}}
+                        <tr>
+                            <td class="group-link">
+                                <a href="#tests|grouped|{{name}}">{{name}}</a>
+                            </td>
+                            <td class="status passed">{{passed}}</td>
+                            <td class="status failed">{{failed}}</td>
+                            <td class="status total">{{tests}}</td>
+                            <td class="progressbar">
+                                {{renderGroupsProgressBar this}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,312 @@
+{
+  "testId" : "11-javascript-page-on-tablet-in-firefox-browser",
+  "name" : "javascript page on Tablet in Firefox browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium firefox http://getbootstrap.com 640x480",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/homePageLayout.spec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: ",
+          "status" : "info",
+          "time" : 1434704954275,
+          "includedTags" : [ ],
+          "sections" : [ {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 10
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "bootstrap-logo" : {
+              "area" : [ 248, 80, 144, 144 ]
+            }
+          },
+          "screenshot" : "layout-15-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434704952964,
+        "type" : "node"
+      }, {
+        "name" : "    check specs/javascriptPageLayout.spec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/javascriptPageLayout.spec included tags: ",
+          "status" : "error",
+          "time" : 1434704956394,
+          "includedTags" : [ ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation hidden on mobile",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation shown on desktop",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "errors" : [ "\"navbar-item-7\" is not visible on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "errors" : [ "\"navbar-item-6\" is not visible on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "errors" : [ "\"navbar-item-5\" is not visible on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "errors" : [ "\"navbar-item-4\" is not visible on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "errors" : [ "\"navbar-item-3\" is not visible on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "errors" : [ "\"navbar-item-2\" is not visible on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "errors" : [ "\"navbar-item-1\" is not visible on page" ],
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Content should fit to screen size",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 26
+                },
+                "name" : "width: 100% of screen/width",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 32
+                },
+                "name" : "width: 80 to 90% of screen/width",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Ad should be centered",
+            "objects" : [ {
+              "name" : "ad",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/javascriptPageLayout.spec",
+                  "lineNumber" : 22
+                },
+                "name" : "centered horizontally on: ad-container",
+                "errors" : [ "\"ad\" is centered but not horizontally on \"ad-container\"" ],
+                "highlight" : [ "ad", "ad-container" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 0, 0, 640, 50 ]
+            },
+            "ad" : {
+              "area" : [ 155, 484, 330, 142 ]
+            },
+            "ad-container" : {
+              "area" : [ 15, 484, 610, 142 ]
+            }
+          },
+          "screenshot" : "layout-16-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434704954275,
+        "type" : "node"
+      } ],
+      "time" : 1434704948039,
+      "type" : "node"
+    } ]
+  }
+}

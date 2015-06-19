@@ -1,0 +1,70 @@
+{
+  "testId" : "17-css-page-on-tablet-in-firefox-browser",
+  "name" : "css page on Tablet in Firefox browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium firefox http://getbootstrap.com 640x480",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/cssPageLayout.spec --include \"tablet\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/cssPageLayout.spec included tags: tablet",
+          "status" : "error",
+          "time" : 1434704995646,
+          "includedTags" : [ "tablet" ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Code snippets should be vertical aligned",
+            "objects" : [ ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 0, 0, 640, 50 ]
+            }
+          },
+          "screenshot" : "layout-23-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434704994199,
+        "type" : "node"
+      } ],
+      "time" : 1434704989615,
+      "type" : "node"
+    } ]
+  }
+}

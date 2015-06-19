@@ -1,0 +1,45 @@
+{
+  "testId" : "3-home-page-on-firefox-browser",
+  "name" : "Home page on Firefox browser",
+  "report" : {
+    "nodes" : [ {
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "        check specs/homePageLayout.spec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: ",
+          "status" : "info",
+          "time" : 1434633395719,
+          "includedTags" : [ ],
+          "sections" : [ {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 10
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "bootstrap-logo" : {
+              "area" : [ 432, 130, 144, 144 ]
+            }
+          },
+          "screenshot" : "layout-3-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434633389378,
+        "type" : "node"
+      } ],
+      "time" : 1434633381876,
+      "type" : "node"
+    } ]
+  }
+}

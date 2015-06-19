@@ -1,0 +1,333 @@
+{
+  "testId" : "12-javascript-page-on-desktop-in-firefox-browser",
+  "name" : "javascript page on Desktop in Firefox browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium firefox http://getbootstrap.com 1024x800",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/homePageLayout.spec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: ",
+          "status" : "info",
+          "time" : 1434704962781,
+          "includedTags" : [ ],
+          "sections" : [ {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 10
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "bootstrap-logo" : {
+              "area" : [ 440, 130, 144, 144 ]
+            }
+          },
+          "screenshot" : "layout-17-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434704961521,
+        "type" : "node"
+      }, {
+        "name" : "    check specs/javascriptPageLayout.spec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/javascriptPageLayout.spec included tags: ",
+          "status" : "error",
+          "time" : 1434704965097,
+          "includedTags" : [ ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 8
+                },
+                "name" : "below: navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation hidden on mobile",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "errors" : [ "\"navbar-item-7\" is not absent on page" ],
+                "highlight" : [ "navbar-item-7" ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "errors" : [ "\"navbar-item-6\" is not absent on page" ],
+                "highlight" : [ "navbar-item-6" ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "errors" : [ "\"navbar-item-5\" is not absent on page" ],
+                "highlight" : [ "navbar-item-5" ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "errors" : [ "\"navbar-item-4\" is not absent on page" ],
+                "highlight" : [ "navbar-item-4" ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "errors" : [ "\"navbar-item-3\" is not absent on page" ],
+                "highlight" : [ "navbar-item-3" ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "errors" : [ "\"navbar-item-2\" is not absent on page" ],
+                "highlight" : [ "navbar-item-2" ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 14
+                },
+                "name" : "absent",
+                "errors" : [ "\"navbar-item-1\" is not absent on page" ],
+                "highlight" : [ "navbar-item-1" ]
+              } ]
+            } ]
+          }, {
+            "name" : "navigation shown on desktop",
+            "objects" : [ {
+              "name" : "navbar-item-7",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-7" ]
+              } ]
+            }, {
+              "name" : "navbar-item-6",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-6" ]
+              } ]
+            }, {
+              "name" : "navbar-item-5",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-5" ]
+              } ]
+            }, {
+              "name" : "navbar-item-4",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-4" ]
+              } ]
+            }, {
+              "name" : "navbar-item-3",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-3" ]
+              } ]
+            }, {
+              "name" : "navbar-item-2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-2" ]
+              } ]
+            }, {
+              "name" : "navbar-item-1",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 20
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar-item-1" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Content should fit to screen size",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 26
+                },
+                "name" : "width: 100% of screen/width",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.spec",
+                  "lineNumber" : 32
+                },
+                "name" : "width: 80 to 90% of screen/width",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            } ]
+          }, {
+            "name" : "Ad should be centered",
+            "objects" : [ {
+              "name" : "ad",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/javascriptPageLayout.spec",
+                  "lineNumber" : 22
+                },
+                "name" : "centered horizontally on: ad-container",
+                "errors" : [ "\"ad\" is centered but not horizontally on \"ad-container\"" ],
+                "highlight" : [ "ad", "ad-container" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 42, 0, 98, 50 ]
+            },
+            "ad" : {
+              "area" : [ 347, 604, 330, 132 ]
+            },
+            "navbar-item-7" : {
+              "area" : [ 937, 0, 60, 50 ]
+            },
+            "navbar-item-6" : {
+              "area" : [ 874, 0, 63, 50 ]
+            },
+            "navbar-item-5" : {
+              "area" : [ 537, 0, 99, 50 ]
+            },
+            "navbar-item-4" : {
+              "area" : [ 438, 0, 99, 50 ]
+            },
+            "ad-container" : {
+              "area" : [ 42, 604, 940, 132 ]
+            },
+            "navbar-item-3" : {
+              "area" : [ 325, 0, 113, 50 ]
+            },
+            "navbar-item-2" : {
+              "area" : [ 267, 0, 58, 50 ]
+            },
+            "navbar-item-1" : {
+              "area" : [ 140, 0, 127, 50 ]
+            }
+          },
+          "screenshot" : "layout-18-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434704962781,
+        "type" : "node"
+      } ],
+      "time" : 1434704956502,
+      "type" : "node"
+    } ]
+  }
+}

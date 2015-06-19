@@ -1,8 +1,8 @@
 {
   "tests" : [ {
     "name" : "Shopping cart on mobile device",
-    "startedAt" : 1429965148367,
-    "endedAt" : 1429965153477,
+    "startedAt" : 1434705025568,
+    "endedAt" : 1434705030061,
     "failed" : true,
     "statistic" : {
       "passed" : 6,
@@ -12,11 +12,11 @@
     },
     "testId" : "1-shopping-cart-on-mobile-device",
     "failed" : true,
-    "duration" : 5110
+    "duration" : 4493
   }, {
     "name" : "Shopping cart on tablet device",
-    "startedAt" : 1429965153478,
-    "endedAt" : 1429965156767,
+    "startedAt" : 1434705030062,
+    "endedAt" : 1434705034309,
     "failed" : true,
     "statistic" : {
       "passed" : 6,
@@ -26,20 +26,20 @@
     },
     "testId" : "2-shopping-cart-on-tablet-device",
     "failed" : true,
-    "duration" : 3289
+    "duration" : 4247
   }, {
     "name" : "Shopping cart on desktop device",
-    "startedAt" : 1429965156767,
-    "endedAt" : 1429965160017,
+    "startedAt" : 1434705034309,
+    "endedAt" : 1434705038480,
     "failed" : true,
     "statistic" : {
-      "passed" : 7,
-      "errors" : 9,
+      "passed" : 6,
+      "errors" : 10,
       "warnings" : 0,
       "total" : 16
     },
     "testId" : "3-shopping-cart-on-desktop-device",
     "failed" : true,
-    "duration" : 3250
+    "duration" : 4171
   } ]
 }

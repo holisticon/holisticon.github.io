@@ -1,0 +1,46 @@
+{
+  "testId" : "4-homepage-on-mobile-in-firefox-browser",
+  "name" : "homepage on Mobile in Firefox browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium firefox http://getbootstrap.com 320x600",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/homePageLayout.spec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: ",
+          "status" : "info",
+          "time" : 1434704904504,
+          "includedTags" : [ ],
+          "sections" : [ {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 10
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "bootstrap-logo" : {
+              "area" : [ 96, 80, 144, 144 ]
+            }
+          },
+          "screenshot" : "layout-4-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434704903278,
+        "type" : "node"
+      } ],
+      "time" : 1434704898080,
+      "type" : "node"
+    } ]
+  }
+}

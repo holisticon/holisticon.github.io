@@ -1,0 +1,46 @@
+{
+  "testId" : "6-homepage-on-desktop-in-firefox-browser",
+  "name" : "homepage on Desktop in Firefox browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium firefox http://getbootstrap.com 1024x800",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "    check specs/homePageLayout.spec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.spec included tags: ",
+          "status" : "info",
+          "time" : 1434704919353,
+          "includedTags" : [ ],
+          "sections" : [ {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.spec",
+                  "lineNumber" : 10
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "bootstrap-logo" : {
+              "area" : [ 440, 130, 144, 144 ]
+            }
+          },
+          "screenshot" : "layout-6-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1434704918041,
+        "type" : "node"
+      } ],
+      "time" : 1434704913124,
+      "type" : "node"
+    } ]
+  }
+}

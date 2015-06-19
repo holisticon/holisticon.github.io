@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Holisticon Presentation Template</title>
+    <title>enterJS - Layout Testing</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -120,9 +120,9 @@ Martin Reinhardt
 
 # Über Galen
 
->  "Galen is a OSS tool for testing html layout in a real browser"
-
 ![Galen Logo](images/galen_logo.png)
+
+>  "Galen is a OSS tool for testing html layout in a real browser"
 
 * Grundprinzipen<!-- .element: class="fragment"-->
 	* Test beschreiben im BDD-Stil das gewünschte Verhalten
@@ -138,6 +138,20 @@ Martin Reinhardt
 * Interaktion mit WebDriver möglich
 * positiv UND negativ Feedback
 
+--
+
+# Architektur
+
+* Test Spezifikationen und Device Infos werden interpretiert
+* Tests werden mit Selenium ausgeführt
+
+![Galen Release 2](images/Galen_AoD_v1.png)
+
+* Schnittstellen zu Java und JavaScript<!-- .element: class="fragment"-->
+
+>NOTES:
+* Galen ist in Java geschrieben
+* Rhino als Schnittstelle zwischen Galen und JavaScript
 
 --
 
@@ -154,6 +168,10 @@ Martin Reinhardt
 * Unterstützung für verschiedene Browser
 * Ausführung in mobilen Geräten möglich
 * Parallele Ausführung um Testausführung zu reduzieren
+
+
+>NOTES:
+* Mobile Geräte mit Appium
 
 --
 
@@ -360,11 +378,82 @@ header-logo
 
 * Report hilft durch direkte Anzeige der Elemente bei Fehlersuche
 
+
+--
+
+# Beispiel-Report
+
+<div  class="stretch fragment">
+<iframe src="code/reports/bootstrap/15-css-page-on-desktop-in-chrome-browser.html" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+
 --
 
 # Demo
 
+```python 
+# basic.test
+@@ table browsers
+    | browerName | browser |
+    | Chrome     | chrome  |
+    | Firefox    | firefox |
+@@ table devices
+    | deviceName | tags      | size     |
+    | Mobile     | mobile    | 320x600  |
+    | Desktop    | desktop   | 1024x800 |
+@@ parameterized using browsers
+@@ parameterized using devices
+@@ groups home, page
+homepage on ${deviceName} in ${browerName} browser
+  selenium ${browser} ${websiteUrl} ${size}
+    check specs/homePageLayout.spec --include "${device}"
+# run
+galen test basic.test -DwebsiteUrl="getbootstrap.com" --htmlreport reports -Dwebdriver.chrome.driver=...
+```
+
+
+--
+
+# Live-Demo
+
+
 ![Coding](images/code.png)
+
+>NOTES:
+* iterm: umst + cmd +7
+
+
+--
+
+
+# Saucelabs
+
+* Testing in Cloud möglich
+
+```python 
+@@ set 
+    sauceKey        aff16b42-9c23-4cb6-adf7-38da9e02193a
+    sauceUser       hypery2k
+    gridLogin       ${sauceUser}:${sauceKey}
+    gridUrl         http://${gridLogin}@ondemand.saucelabs.com:80/wd/hub
+    website         http://testapp.galenframework.com
+@@ table browsers
+    | browserName   | gridArgs                                                               |
+    | Safari on Mac | --browser "safari" --version 6   --dc.platform "OS X 10.8"             |
+    | Opera         | --browser "opera" --version 12   --dc.platform "Linux"                 |
+    | Firefox       | --browser "firefox" --version 34 --dc.platform "Linux"                 |
+    | Chrome        | --browser "chrome" --version 39 --dc.platform "Linux"                  |
+    | IE 11         | --browser "internet explorer" --version 11 --dc.platform "Windows 8.1" |
+@@ parameterized using browsers
+Home page on ${browserName} browser
+    selenium grid ${gridUrl} --page ${website} ${gridArgs}
+        check homepage.spec
+```
+
+>NOTES:
+* Alternative zum eigenen Grid
+* [Dashboard](https://saucelabs.com/beta/dashboard)
 
 ---
 
@@ -389,19 +478,23 @@ Once the html is finished you can define the references to all your objects in s
 	* Elemente relativ zueinander ansprechen
 * Tests sind anfällig
 	* Infrastruktur (Integration Tests)
+  * Schritt für Schritt ausbauen (Seiten, Browser, Geräte)
 	* Nicht sinnvoll alles zu testen
 
 >NOTES:
 * Aufgrund von verschiedenen Browsern Pixel-genau nicht sinvoll (Rundungen ...)
 * Integrationstests aufgrund ihrer Natur!!
 * Fokus beim Testen wichtig
+* Nicht den Fehler machen am Anfang alles zu testen
+  * Eine Platform/Browser zu Beginn
+  * Schritt für Schritt ausbauen
 
 
 ---
 
 # Outlook - Release 2
 
-![Galen Release 2](images/Galen_AoD.png)
+![Galen Release 2](images/Galen_AoD_v2.png)
 
 * Tiefere Java test integration
 * GalenSpec v2
@@ -423,6 +516,10 @@ Once the html is finished you can define the references to all your objects in s
 * [Using Galen with gulp](http://galenframework.com/docs/tutorial-using-galen-with-a-task-runner/)
 * [Responsive Testing with Galen in Java](http://kekz-box.de/en/responsive-testing-galen/)
 * [Sublime Highlighting](https://github.com/professant/sublime-galen)
+* Doku
+  * [Test Suite Syntax](http://galenframework.com/docs/reference-galen-test-suite-syntax/#Parameterization)
+  * [TestSpec Syntax](http://galenframework.com/docs/reference-galen-spec-language-guide/)
+  * [CLI](http://galenframework.com/docs/reference-working-in-command-line/)
 
 ---
 
