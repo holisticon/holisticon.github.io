@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Holisticon Presentation Template</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'bower_components/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Continuous Delivery ohne Kopfschmerzen
+
+Martin Reinhardt (Holisticon AG)
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@mreinhardt](https://twitter.com/mreinhardt)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agendas
+
+* Einführung
+* Build Pipeline
+* Toogle Integration
+* Automatisierung
+* Ausblick
+* Links
+
+---
+
+# Einführung
+
+
+> "There is no one-size-fits-all solution to the complex problem of
+implementing a deployment pipeline." 
+<br>*Continuous Delivery*, J. Humble, D. Farley
+
+* Continuous Delivery ist die logische Fortsetzung von Continuous Integration<!-- .element: class="fragment big-image no-border" -->
+* Die Idee dahinter<!-- .element: class="fragment big-image no-border" -->
+    * Software mit agilen Methoden kann nicht komplett (manuell) getestet werden
+    * Alle 2 Wochen gesamten Funktionsumfang abtesten ist utopisch
+    * Testumgebungen stehen meist nicht ausreichend zur Verfügung
+
+
+--
+
+# Warum Continuous Delivery
+
+* wesentliches Ziel ist schnelles Feedback, also Geschwigkeit
+    * Schritte schnell abarbeiten
+    * Möglichst früh Fehler binden (**Unit-Tests**)
+* Betrieb einbinden <!-- .element: class="fragment" -->
+	* DevOps (Puppet/Chef)
+	* Ticket-Systeme
+	* LoadBalancing
+* unabhängig vom (Build-)Tool<!-- .element: class="fragment" -->
+    * Build muss reproduzierbar sein
+* CI-Tools <!-- .element: class="fragment" -->
+    * Jenkins, Go, Travis CI, XCode Bots ...
+    * TestTools
+* Quellcode muss Continous Delivery gerecht werden <!-- .element: class="fragment" -->
+
+
+>NOTES:
+* Feature Toogles
+* Einer der Grundsätze des Continuous Integration besagt, dass es lediglich einen Master-Branch und keine weiteren Feature-Branches geben soll, in den der Code eingecheckt und damit eben diese Merge-Hölle vermieden wird.
+
+--
+
+# Continous Delivery
+
+* CI Server stellt finale Software auf Zielsystem bereit
+* Jeder gängige CI Server bietet Pipeline Bausteine an <!-- .element: class="fragment no-border" -->
+    * somit CD Server
+    * logische 1. Schritt ist Visualisierung
+    * Übersicht aller Pipelines eines CD Servers
+    * Zeitliche Aktivitäten
+
+>NOTES:
+* Konkrete Namen können variieren
+    * Teils historische Gründe, teils Abgrenzung zur Konkurrenz
+    * Jenkins: Build Jobs, Build Steps, Post-build Actions, diverse Plugins
+    * Go: Go Pipelines, Stages, Jobs, Tasks
+* Bisherige Aktivitäten einer Pipeline
+
+--
+
+# Build Pipelines
+
+
+![img](images/001_bigpicture.png)<!-- .element: class="fragment big-image no-border" -->
+
+* Jobs = Bausteine der Stages ("Unit of Work")<!-- .element: class="fragment big-image no-border" -->
+    * Bestehen aus Tasks wie Build, Deploy, Copy, Test
+
+>NOTES:
+* Eventuell mehrere Pipelines sinnvoll
+* Stages
+    * Commit Stage als zentrales Eingangs-Gate
+    * Typische Stages: UAT, Performance Tests, Production Deployment
+    * Stages verbunden durch Trigger (automatisch oder manuell)
+
+
+--
+
+# Warum Build Pipelines
+
+* Agile Softwareentwicklung arbeitet kleinteilig<!-- .element: class="fragment" -->
+    * Software oft und zuverlässig in Produktion
+    * Nutzung der IDE != Automatisierung
+    * Wesentlich ist dabei die Build Pipeline
+* Wie?<!-- .element: class="fragment" -->
+    * Geschwindigkeit
+    * Automatisierung
+
+![img](images/002_buildpipeline.png) <!-- .element: class="fragment big-image no-border" -->
+
+>NOTES:
+* Pipeline mehrmals durchlaufen
+    * jeder einzelnen Schritt der Pipeline schnell und zuverlässig
+    * wird durch **Automatisierung** erreicht
+* Schritte
+    * Entwicklung
+    * Qualitätssicherung
+    * Auslieferung
+* Tests liefern schnelles Feedback über Seiteneffekte und Regressionen
+* Deployment auf Knopfdruck und innerhalb von Minuten auf dem Produktionssystem
+* Pipeline wird mit jeder Änderung durchlaufen
+    * neuer Softwarestand hinein
+    * qualitätsgesichertes, produktionsreifes und installierbares Softwarepaket
+
+---
+
+# DevOps
+
+ > Bruchstellen zwischen Entwicklung und Betrieb überwinden
+ 
+ * Einführung von Continuous Delivery erfordert Umsetzung von DevOps<!-- .element: class="fragment" -->
+ * strikte Trennung passt nicht zu agilen Ansätzen<!-- .element: class="fragment" -->
+ * zunächst organisatorisches Thema<!-- .element: class="fragment" -->
+ 	* Gegenseitiges Verständnis von Entwicklung und Betrieb
+ 	* technische Hilfsmittel wie Docker, Vagrant, Puppet, Chef, Nagios, Splunk ...
+ 	* Kontinuierliche Zusammenarbeit leben
+
+>NOTES:
+* Konzept einer von gegenseitigem Aufgabenverständnis und Akzeptanz geprägten, organisationsübergreifenden Zusammenarbeit von Anwendungsentwicklung und IT-Betrieb
+* beide Seiten lernen voneinander
+* DevOps bereits umsetzen, profitieren von einer erheblichen Steigerung der IT-Performance. Sie sind in der Lage, neuen Programmcode bis zu 30-mal häufiger mit bis zu 50 Prozent weniger Fehlern zu implementieren
+* Trennung zwischen Softwareentwicklung und IT-Betrieb nicht vollständig aufheben
+	* Risiken im Bereich Sicherheit
+    * Einführung mit Bedacht
+    * Auch nicht-funktional Anforderungen testen
+* Konfigurationswerkzeuge wie Chef oder Puppet entfalten ihre ganze Wirkung nur in einem geeigneten organisatorischen Umfeld
+* DevOps-Idee aus Startups
+	* Geschäftsmodell beruht auf IT abhängt
+    * Schnelligkeit und Innovationsfreude
+* sehr produktionsnah
+* Skalierung einfacher
+
+--
+
+# Beispiel: JBoss Cluster mit Vagrant und Chef
+
+* Typischer Java-Stack
+	* HA-Proxy
+	* JBoss AppServer Cluster
+	* Deployment einer Java-WAR Anwendung
+* Vagrant zum Erzeugen der VMs und Chef für Konfiguration<!-- .element: class="fragment" -->
+
+
+```javascript
+default['wildfly-clu']['cluster_schema'] = {
+	"myserver1"  => { 
+    	:role => "domain-controller" ,
+        :ip => "33.33.33.111",
+        :port_offset => "0" },
+    "myserver2"  => {
+    	:role => "slave",
+        :ip => "33.33.33.112" ,
+        :master => "myserver1" ,
+        :port_offset => "0" },
+	"myserver3"  => {
+        :role => "slave"  ,
+        :ip => "33.33.33.113" ,
+        :master => "myserver1" ,
+    	:port_offset => "0" }
+}
+```
+<!-- .element: class="fragment" -->
+
+
+>NOTES:
+* Links
+	* http://33.33.33.111/helloworld  (via reverse proxy)
+    * App Server
+    	* http://33.33.33.111:8080/helloworld/
+        * http://33.33.33.112:8080/helloworld/
+        * http://33.33.33.113:8080/helloworld/
+    * Wildfly Console: htttp://33.33.33.111:9990/console  (user: admin,  password: admin)
+	* HAPROXY Console: http://33.33.33.111:22002/ HAPROXY admin console.
+
+--
+
+# Infrastruktur
+
+![img](images/haproxy.png)
+![img](images/wildfly_console.png)
+
+
+---
+
+# Build Pipelines
+
+* 3 Grundprinzipien
+    * Zeit - Schritte schnell abgeschlossen (3 - 5 min)
+    * Automatisierung
+    * Reproduzierbarkeit
+* Tests müssen schnell gefixt werden und stabil sein
+* Tests gruppieren & parallelisieren
+* Kritische Tests immer in Pipeline laufen lassen
+* weitere Teststrecken aufbauen
+    * Code Quality
+    * Migrationstests
+    * Nightly Builds
+    * Weitere Pipelines
+
+
+
+>NOTES:
+* Integrations-Tests aufsplitten
+* Neben der Optimierung der Tests kann Selektion von Tests helfen (Gruppierung)
+* Integrations-Tests parallelisieren (gerade UI tests)
+
+--
+
+# Jenkins Build Pipeline Plugin
+
+* Deployment Pipeline Erzeugung in Jenkins benötigt viele Plugins
+* Build Pipeline Ansicht bietet detailiierten Überblick über einzelne Schritte der Pipeline
+
+
+<div  class="stretch">
+<iframe src="https://martinreinhardt-online.de/jenkins/view/BMP_%20AngularCordovaApp/" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+>NOTES:
+* Deployment Pipeline Erzeugung in Jenkins benötigt viele Plugins
+    * Build Pipeline, Copy Artifact, Parameterized Trigger, Promoted Builds
+    * Plugins arbeiten nicht ideal zusammen
+* Jenkins ist nicht auf Pipeline Erstellung ausgelegt
+* üblichen Verdächtigen
+    * Selektives „Überspringen“ von Stages, z.B. Deployen auf Produktion aber nicht auf Test Umgebung (z.B. bei Hotfix)
+    * Erneutes Ausführen einzelner Stages
+
+
+--
+
+# Continous Delivery Plugin
+
+* Reine Darstellung
+* gute Aggregationsmöglichkeit
+
+<div  class="stretch">
+<iframe src="https://martinreinhardt-online.de/jenkins/view/CD_AngularCordova/" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+---
+
+# Deployment
+
+* Wichtiger Punkt bei Planung
+* Versionierung meist zu grob (1.0.3-SNAPSHOT)<!-- .element: class="fragment" -->
+* Verschiedene Arten neue Version bereitzustellen<!-- .element: class="fragment" -->
+    * Big Bang
+    * Feature-Toogle (nur eine Version)
+    * simultane Versionen (Blue/Green im Cluster)
+    * Beta-Release für Nutzergruppen
+* Abhängigkeit zu Betrieb & Systemarchitektur<!-- .element: class="fragment" -->
+
+>NOTES:
+* mindestens Build-Nummer mit aufnehmen
+* recht trivial erscheinenden Änderung steckt eine grundsätzlich andere Herangehensweise an den Entwicklungsprozess
+    * kein unnwichtigen Development Branch (fehlerhafter oder unfertiger Code eingecheckt)
+    * keine wichtige Release Branches (jede Änderung nur mit großer Sorgfalt vorgenommen wird)
+    * im Hauptenwicklungszweig jeder Commit = potenzielles Release
+* Anfügen eines Zeitstempels wg. zeitlich aufeinanderfolgende Builds auch aufsteigende Versionsnummern
+* Feature Toogles prinzipiell bei allen Arten genutzt werden
+* Gerade letzten beiden Versionen erfordern vom Backend mehrere Versionen in DB etc. zu unterstützen<!-- .element: class="fragment no-border" -->
+
+--
+
+# Toggle-Integration
+
+* praxis-bewährtes Konzept - [FeatureToggle Pattern](http://martinfowler.com/bliki/FeatureToggle.html)
+* Features nicht nur nach ihrem Fertigstellungsgrad nutzbar, sondern abhängig von<!-- .element: class="fragment" -->
+    * Benutzer
+    * Umgebung
+    * ...
+* Togglz<!-- .element: class="fragment" -->
+    * Bibliothek für Java
+    * Integration in Spring, JEE, CDI, JSF
+    * Flexible [Persistierung](http://www.togglz.org/documentation/repositories.html) (Datei, Datenbank, ...)
+    * Admin-Konsole zu Verwaltung
+
+
+>NOTES:
+* Nach Finalisierung der neuen Funktionen lässt es sich in allen Umgebungen aktivieren und damit in der Software zur Verfügung stellen.
+
+--
+
+## Togglz (1)
+
+* Admin-Konsole, auch für Betrieb nützlich
+
+![img](images/togglz-admin-console.png)
+
+>NOTES:
+* Bei DevOps kann auch Betrieb im Notfall Toogles deaktivieren
+
+--
+
+## Togglz (2)
+
+* Features als Enum-Klassen
+
+```java
+public enum AppFeatures implements Feature {
+  @Label("Portal")
+  PORTAL,
+
+  @EnabledByDefault
+  @Label("Enable project support in CV")
+  FEATURE_CV_PROJECT_SUPPORT;
+
+  public boolean isActive() {
+    return FeatureContext.getFeatureManager().isActive(this);
+  }
+```
+
+
+<br>
+```java
+
+if (AppFeatures.PORTAL.isActive()) {
+...
+```
+
+---
+
+# (Test)automatisierung
+
+* Anchluss der Unit-Tests erzeugten Artefakte weiter testen
+    * Ablage in Repository
+    * Deployment in Test-Umgebung
+* Testumgebungen problemebehaftet<!-- .element: class="fragment" -->
+    * Dedizierte Slaves (Labels)
+    * Docker Images
+* DevOps besonders hilfreich (lokales Testen, Ressourcennutzung)<!-- .element: class="fragment" -->
+	* Vagrant / Docker per [Maven-Plugin](https://github.com/rhuss/docker-maven-plugin)
+	* Chef/Puppet
+* Feedback ist ein Muss<!-- .element: class="fragment" -->
+    * TestTools müssen aussaugekräftige Reports liefern
+    * reproduzierbar & nachvollziehbar
+    * gerade bei Oberflächen-Tests
+
+>NOTES:
+* Infrastructure as a Code hilft beim Aufsetzen von Testumgebungen
+* Updates einfach zu testen
+* sehr produktionsnah
+* Nichtfunktionale Anforderungen auch ständig testen
+	* Performance
+    * umfangreiche Sicherheitstests
+
+--
+
+## Responsive Testing mit Galen
+
+* Automatisierung von Regressionstests des Layouts
+* Defintion von Devices und Specs für diese
+* Eigene DSL zur Anforderungsbeschreibung
+
+```python
+==============================================================
+app-entry-*         css     a.list-group-item
+app-entry-logo-*    css     a.list-group-item div.pull-left i.fa
+==============================================================
+# common layout checks
+@@ import shared/commonLayout.spec
+
+# concrete layout tests
+
+@ Each app entry should have a logo| *
+[ 1 - 4 ]
+app-entry-logo-@
+    near: app-entry-@ -79 px left
+```
+
+* Nutzt Selenium zur Ausführung
+* Gutes Reporting
+* Stetige Weiterentwicklung als OSS-Projekt
+
+--
+
+# Galen Demo
+
+* Einfaches Report-Beispiel
+
+<div class="stretch">
+<iframe src="https://martinreinhardt-online.de/jenkins/view/Galen/job/Galen_sample_JUnit/Galen_Report/" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+
+--
+
+# Oberflächen Testing mit Stil - Serenity
+
+* Tool für ATDD (acceptance test driven development)
+	* Macht Oberflächen-Tests lesbarer, wartbarer und wiederwendbar
+	* Selenium als technische Basis
+	* Spring-Integration
+	* Java, Cucumber JBehave-Varianten
+* PageObject-Pattern als Grundlage
+* Stellt Reporting für Tracking & Fehlersuche zur Verfügung
+* Verbindung mit Ticket-System
+* Anforderungen auf Tests mappen
+
+
+>NOTES:
+* Passt zum CD Gedanken
+* Wartung der Tests ist einfacher, z.B. kann Vererbung in Seiten/Pages genutzt werden um gemeinsame Elemente, wie Navigation abzubilden
+* Testcode wird sehr leicht lesbar
+* Komponenten können wieder verwendet werde
+
+--
+
+# Serenity - Tests
+
+* Anforderungen werden im Test abgeglichen
+* BDD-like:
+
+```java
+@RunWith(ThucydidesRunner.class)
+public class GoogleSearchTest {
+    @Managed(uniqueSession = true)
+    public WebDriver webdriver;
+
+    @ManagedPages(defaultUrl = "https://www.google.com")
+    public Pages pages;
+
+    @Steps
+    public GoogleSteps googleSteps;
+
+    @Test
+    public void googleSearchTest(){
+        googleSteps.performSearch(“evozon”);
+        googleSteps.findSearchResult(“on Twitter”);
+        googleSteps.verifyUrl(“twitter.com/evozon”);
+    }
+}
+```
+
+* CSV-Dateien für Testdaten nutzbar
+
+
+>NOTES:
+* Anforderung: Als Nutzer möchte zum Ergebnis meiner Suche navigieren
+* Testfall:
+    * Starte Google-Suche
+    * Tippe Suchbegriff ein
+    * Suche Ergebnis in Trefferliste
+    * Navigiere zu Ergebnis
+    * Validiere Ergebnis
+
+--
+
+# Serenity - Report Beispiel
+
+<div class="stretch">
+<iframe src="https://martinreinhardt-online.de/jenkins/job/serenity_maven_sample/15/Serenity_Report/" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+>NOTES:
+* Anforderungen werden auf Tests verteilt
+* Es können auch direkt Tickts (z.B. in JIRA an Tests verlinkt werden)
+
+---
+
+
+# Fazit & Ausblick
+
+* Feedback ist ein Muss
+    * Teststufen kontinuierlich Feedback über aktuellen Qualitätsstand
+    * Tools müssen das unterstützen
+* Im Bereich von CD viele Tools im Bereich Testing & Automatisierung <!-- .element: class="fragment" -->
+* Gefahr von "Over-Engineering" der Schritte in Pipeline<!-- .element: class="fragment" -->
+* Bewegung im Tool-Bereich (Thoughtworks Go, Docker ...)<!-- .element: class="fragment" -->
+* Jenkins Workflow<!-- .element: class="fragment" -->
+    * Entwicklungs- und Workflow-Prozesse definieren und Abläufe über verschiedene Build-Projekte hinweg koordinieren
+    * Groovy DSL zur Stepbeschreibung
+    * besserer Koordination und mehr Einblick über die Continuous-Delivery-Kette
+    * schlanke Definition von Jobs
+    * Parellisierung von Schritten
+    * Wiederholung von Schritten
+
+
+>NOTES:
+* Tools lösen nicht alle Probleme
+
+---
+
+# Links
+
+* [FeatureToggle Pattern](http://martinfowler.com/bliki/FeatureToggle.html)
+* [Galen Vorstellung auf der enterJS] (http://holisticon.github.io/presentations/enterjs_galen/)
+* [Layout Testing mit Galen] (https://www.holisticon.de/2015/05/layout-testing-mit-galen/)
+* [GitHub-Projekt mit Quellen](https://github.com/hypery2k/cd_demo)
+* [Beispiel Thucydides-Report](https://martinreinhardt-online.de/jenkins/job/thucydides_sample/thucydides/)
+* Jenkins
+    * [Docker image for workflow demo](https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md)
+    * [Workflow-Beispiel Job](https://martinreinhardt-online.de/jenkins/job/BMP_workflow-plugin_sample1/13/flowGraphTable/)
+
+
+---
+
+# About me
+
+* Martin Reinhardt (Holisticon AG)
+
+![img](https://pbs.twimg.com/profile_images/488919098240139264/KRAs7ITF.png)<!-- .element: class="big-image no-border" style="width:40%;height:40%"-->
+
+* [github.com/hypery2k](https://github.com/hypery2k)
+* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
