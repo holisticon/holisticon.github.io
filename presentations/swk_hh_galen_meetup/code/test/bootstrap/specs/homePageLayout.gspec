@@ -1,0 +1,14 @@
+@import shared/common.gspec
+
+@objects
+  bootstrap-logo		span.bs-docs-booticon
+
+# common layout checks
+@import shared/commonLayout.gspec
+
+# concrete layout tests
+
+= Bootstrap logo should be visible =
+
+  bootstrap-logo:
+    visible
