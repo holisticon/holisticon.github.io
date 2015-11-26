@@ -1,0 +1,88 @@
+{
+  "testId" : "10-javascript-page-on-mobile-in-firefox-browser",
+  "name" : "javascript page on Mobile in Firefox browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium firefox http://getbootstrap.com 320x600",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "check specs/javascriptPageLayout.gspec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/javascriptPageLayout.gspec included tags: ",
+          "status" : "error",
+          "time" : 1439919738766,
+          "includedTags" : [ ],
+          "excludedTags" : [ ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 8
+                },
+                "name" : "below navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Ad should be centered",
+            "objects" : [ {
+              "name" : "ad",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/javascriptPageLayout.gspec",
+                  "lineNumber" : 22
+                },
+                "name" : "centered horizontally on ad-container",
+                "highlight" : [ "ad", "ad-container" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 0, 0, 320, 50 ]
+            },
+            "ad" : {
+              "area" : [ 0, 520, 320, 142 ]
+            },
+            "ad-container" : {
+              "area" : [ 15, 520, 290, 142 ]
+            }
+          },
+          "screenshot" : "layout-10-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1439919737995,
+        "type" : "node"
+      } ],
+      "time" : 1439919734205,
+      "type" : "node"
+    } ]
+  }
+}
