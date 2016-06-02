@@ -1,0 +1,1783 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>JavaScript Workshop</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'bower_components/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Workshop: JavaScript für OO-Entwickler
+
+![](images/enterJS.png)<!-- .element: class="inline" style="max-height:5%; vertical-align: top; " -->
+
+Präsentation: [bit.ly/1Y4vyTT](http://holisticon.github.io/presentations/enterjs_workshop-js2016/)
+
+*<a href="mailto:oliver.zeigermann@gmail.com">Oliver Zeigermann</a> | <a href="http://www.embarc.de/oliver-zeigermann/" target="_blank">http://www.embarc.de</a>*
+
+<a href="mailto:Martin.Reinhardt@holisticon.de">Martin Reinhardt</a> | <a href="https://www.holisticon.de/author/martin-reinhardt/" target="blank">https://www.holisticon.de</a>
+
+<a href="mailto:oliver.ochs@holisticon.de">Oliver Ochs</a> | <a href="https://www.holisticon.de/author/oliver-ochs/" target="blank">https://www.holisticon.de</a>
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@holisticon](https://twitter.com/holisticon)&nbsp;&nbsp;![Twitter - Embarc](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@embarced](https://twitter.com/embarced)
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agenda EnterJS
+
+* Basiswissen
+* **12:30 - 13:30 Uhr Mittagessen**
+* Objekte und Prototypen
+* Patterns für Vererbung
+* **15:00 - 15:15 Uhr Kaffeepause**
+* ES2015-Klassen und -Module
+* **16:45 - 17 Uhr: kleine Kaffeepause**
+* Unit-Tests, Entwicklungsprozess
+* **18 Uhr: Ende**
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Basiswissen
+
+--
+
+# Scripting im Browser
+
+
+<pre><code class="xml" contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World!&lt;/title&gt;
+    &lt;script&gt;
+      alert("Hello World");
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+[Run](samples/helloworld.html)
+
+
+>NOTES:
+<ul><li>1995 	Mocha 		Netscape Navigator<br>
+  <li>LiveScript 	Netscape Navigator
+  <li>1996	JavaScript 1.0 	Sun|Netscape Alliance
+  <li>JScript 		Internet Explorer 3.0
+  <li>ECMAScript	ECMA
+</ul>
+
+--
+
+# Scripting für HTML
+
+<pre><code class="xml" contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World!&lt;/title&gt;
+  &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="log">&lt;/div>
+      &lt;script&gt;
+          var element = document.getElementById("log");
+          element.innerHTML = "&lt;h1>Hello World&lt;/h1>";
+      &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<a href="samples/helloworld2.html" target="_blank">Run</a>
+
+>NOTES:
+<ul>
+  <li>Scheme im Web-Browser
+  <li>HTML scripting language
+  <li>make it look like Java
+  <li>made it look like C and AWK
+  <li>Mistakes (some recapitulating LISP) were frozen early
+  <li>Copy/paste snippets of code into HTML
+  	<li>-Tolerate “minor” errors (e.g., missing semicolons)
+  <li>Simpliﬁed event handling
+  	<li>-onclick, onmouseover
+  	<li>-inspired by HyperCard
+  <li>Pick a few hard-working, powerful primitives
+  	<li>-First class functions for procedural abstraction 	(AWK more than Scheme)
+  	<li>-Objects everywhere, prototype-based 	(Self, but only one parent per object)
+  <li>Leave all else out!
+</ul>
+
+--
+
+# Evolution
+
+* <!-- .element: class="fragment" -->**1998**: ECMAScript 2
+* <!-- .element: class="fragment" -->**1999**: ECMAScript 3
+* <!-- .element: class="fragment" -->**2000 - 2009**: ECMAScript 4 auf und ab
+  * <!-- .element: class="fragment" -->sehr fortschrittlicher Ansatz
+  * <!-- .element: class="fragment" -->u.a. Klassen und deklarierte Typen
+  * <!-- .element: class="fragment" -->ActionScript 3 als Implementierung
+* <!-- .element: class="fragment" --> **2005**: Ajax und damit SPAs kommen auf
+  * <!-- .element: class="fragment" -->Renaissance der Sprache JavaScript
+  * <!-- .element: class="fragment" -->Bibliotheken: jQuery, Dojo u.a.
+* <!-- .element: class="fragment" -->**2007**: Als Gegenbewegung zu ECMAScript 4 bringen Microsoft und Yahoo ECMAScript 3.1 auf den Weg
+
+--
+
+# ES5
+
+* **2009**: ECMAScript 3.1 wird in ECMAScript 5 umbenannt und man spielt wieder miteinander
+  * <!-- .element: class="fragment" -->ECMAScript 4 und ActionScript 3 enden als Sackgassen
+  * <!-- .element: class="fragment" -->Alle Browser ab IE9, Firefox 3 unterstützen ECMAScript 5
+  * <!-- .element: class="fragment" -->ECMAScript 5 hat einen nicht rückwärts kompatiblen <code>strict mode</code>
+  * <!-- .element: class="fragment" -->**2011**: ECMAScript 5.1 ohne neue Features, lediglich Klärungen in der Spezifikation
+
+--
+
+# ES5
+
+* **2009**: ECMAScript 3.1 wird in ECMAScript 5 umbenannt und man spielt wieder miteinander
+  * <!-- .element: class="fragment" -->ECMAScript 4 und ActionScript 3 enden als Sackgassen
+  * <!-- .element: class="fragment" -->Alle Browser ab IE9, Firefox 3 unterstützen ECMAScript 5
+  * <!-- .element: class="fragment" -->ECMAScript 5 hat einen nicht rückwärts kompatiblen <code>strict mode</code>
+  * <!-- .element: class="fragment" -->**2011**: ECMAScript 5.1 ohne neue Features, lediglich Klärungen in der Spezifikation
+
+--
+
+# ES6 aka ES2015
+
+* **Juni 2015**: Release von ES6
+  * <!-- .element: class="fragment" -->Klassen
+  * <!-- .element: class="fragment" -->Lexikalisches Scoping
+  * <!-- .element: class="fragment" -->Fat Arrow
+  * <!-- .element: class="fragment" -->Destructuring
+  * <!-- .element: class="fragment" -->Template literals
+  * <!-- .element: class="fragment" -->Spread operator
+  * <!-- .element: class="fragment" -->Default Parameter
+
+--
+
+# Wo läuft ES6 schon jetzt?
+
+<ul>
+    <li class="fragment">Chrome 50+
+    <li class="fragment">Firefox 45+
+    <li class="fragment">Microsoft Edge 13
+    <li class="fragment">Webkit (latest)
+    <li class="fragment">node.js
+        <a target="_blank" href="https://nodejs.org/en/docs/es6/">https://nodejs.org/en/docs/es6/</a>
+    <li class="fragment">Transpiler
+        <ul>
+            <li class="fragment"><a target="_blank" href="https://babeljs.io/">https://babeljs.io/</a>, ehemals 6to5
+            <li class="fragment"><a target="_blank" href="http://www.typescriptlang.org/">http://www.typescriptlang.org/</a> (plus statische Typen)
+        </ul>
+    </li>
+    <li class="fragment">Wie viel läuft wo?: <a target="_blank" href="http://kangax.github.io/es5-compat-table/es6">http://kangax.github.io/es5-compat-table/es6</a></li>
+</ul>
+
+--
+
+# ES7 aka ES 2016
+
+<ul>
+    <li class="fragment">Jedes <a target="_blank" href="https://github.com/tc39/ecma262/blob/master/README.md">neue Feature </a> geht durch eine Reihe von <a target="_blank" href="http://www.2ality.com/2015/11/tc39-process.html">Reife-Schritten</a>
+    <li class="fragment">Jede 'Stage' muss bestimmte <a target="_blank" href="https://tc39.github.io/process-document/">Anforderungen erfüllen </a>
+    </li>
+    <li class="fragment">Wie viel läuft wo bereits jetzt (in Stages gruppiert): <a target="_blank" href="http://kangax.github.io/compat-table/es7">http://kangax.github.io/compat-table/es7</a></li>
+</ul>
+
+--
+
+# Umgebungen
+
+* Interpreter
+* Compiler
+* JIT
+
+>NOTES:
+
+* Erst nur interpreter
+* Compiler schneller
+* Lars Bak (Hotspot) ist zu Google gewechselt
+* Hat dort an V8 gearbeitet
+* Wettrennen zwischen JS Engines
+
+--
+
+# Node
+
+<pre><code class="javascript" contenteditable>
+node -e "console.log('Hello World');"
+</code></pre>
+
+
+>NOTES:
+* NodeJS - serverseitiges JavaScript, ES5/ES6 weil man Umgebung unter Kontrolle hat</aside>
+
+--
+
+# Dev Tools
+
+![img](images/Devtools-Screenshot.png)
+
+
+>NOTES:
+* Entwicklung direkt im Webbrowser, z.B. mit den Chrome Dev Tools</aside>
+
+--
+
+# JS Bin
+
+![img](images/JS_Bin.png)
+
+<a href="http://jsbin.com/vadiyi/edit?js,console" target="_blank">JS Bin Öffnen</a>
+
+>NOTES:
+* JS-Bin zum Ausprobieren und Teilen von Code, Übungen können in JS-Bin gemacht werden, darf jetzt schon geöffnet werden.
+
+--
+
+# Object
+
+<pre><code class="javascript" contenteditable>var map = {
+    feld1: 'Huhu',
+    zweites$Feld: "Auch sowas geht!"
+};
+console.log(typeof map === "object"); // true
+console.log(map.feld1); // Huhu
+console.log(map["zweites$Feld"]); // Auch sowas geht!
+
+map.hund = "Ganz neu geht auch";
+</code></pre>
+
+>NOTES:
+* Self: The Power of Simplicity
+* 1980er Jahre: Xerox PARC & Sun Microsystems
+* Ziel: mehr Freiheit als bei OO-Sprachen wie Smalltalk
+*	Wenige Konstrukte:
+*	Slots
+*	Traits
+*	Prototypen
+*	keine Typen und Klassen
+*	Keine Unterscheidung zwischen
+  *	dem Verhalten eines Objekts (Methoden einer Klasse)
+	*	dem Zustand des Objekts (Eigenschaften einer Klasse)
+*	Ein Objekt besteht aus Slots.
+	*	Slots haben Namen.
+	*	Slots können Methoden oder Attribute aufnehmen.
+
+--
+
+# Typen
+
+<pre><code class="javascript" contenteditable>var string = "String";
+typeof string === "string";
+
+var int = 1;
+typeof int === "number";
+
+var float = 1.0;
+typeof float === "number";
+
+var bool = true;
+typeof bool === "boolean";
+
+var func = function() {};
+typeof func === "function";
+
+typeof michGibtEsNicht === "undefined";</code></pre>
+
+>NOTES:
+* Basistypen sind
+* Zahlen (number)
+*	Strings (string)
+* Boolean (boolean)
+*	undefined
+  *	Diese sind unveränderlich.
+	*	null ist ein Objekt.
+*	Literale
+  *	lassen sich direkt verwenden
+	*	sind unveränderlich
+  *	haben Methoden
+	*	nutzen Autoboxing
+
+* JS ist keine statisch typisierte Sprache
+* Keine Cast-Operator, stattdessen implizite Typkonvertierung
+
+* Dynamische Sprache und Gleichheit
+
+5 + "5" === "55";  // true
+5 == "5"; // true
+5 !== "5"; // true
+3..toString();    // "3"
+
+--
+
+# null und undefinded
+
+**„You might consider undefined to represent system-level, unexpected,
+or error-like absense of value and null to represent program-level,
+normal, or expected absence of value.“**
+*-- David Flanagan – „JavaScript: The Definitive Guide“*
+
+--
+
+# true und false
+
+Folgende Werte sind falsy
+* false
+* null
+* undefined
+* '' (leerer String)
+* 0 (die Zahl Null)
+* NaN (der Zahlenwert „Not a Number“)
+
+*Alle* andere Werte evaluieren sind truthy
+
+
+>NOTES:
+
+http://jsbin.com/xedoti/edit?js,console
+
+--
+
+# Zahlen
+
+* es gibt nur einen Number-Typ
+* 64 bit Fließkommazahl
+
+>NOTES:
+http://jsbin.com/goqihi/edit?js,console
+
+--
+
+# Array
+
+<pre><code class="javascript" contenteditable>
+var array = ["a", "b", "c"];
+var el = array[2];
+array[1] = 20;
+typeof array === "object";
+// fügt die 4 am Ende hinzu
+array.push(4);
+</pre></code>
+
+>NOTES:
+* http://jsbin.com/wayegu/edit?js,console
+
+--
+
+# Funktionen
+
+<pre><code class="javascript" contenteditable>
+function f2() {
+    console.log("Called!");
+}
+var result2 = f2();
+// result2 === undefined;
+
+var f1 = function(p1, p2) {
+    return p1 + p2;
+};
+var result1 = f1(1,2);
+// result1 === 3;
+                        </code></pre>
+
+>NOTES:
+* Funktionsliteral
+* Return undefined || value
+* Parameter
+
+
+--
+
+# Optionale Parameter
+
+<pre><code class="javascript" contenteditable>function f1(p1) {
+    if (typeof p1 === 'undefined') {
+        return null;
+    } else {
+        return p1;
+    }
+}
+
+var result1 = f1(1);
+console.log(result1 === 1);
+
+var result2 = f1();
+console.log(result2 === null);</code></pre>
+
+>NOTES:
+	<ul>
+		<li>Funktionen lassen sich nicht anhand der Parameter überladen.
+		<li>Nicht übergebene Parameter sind „undefined“.
+	</ul>
+</aside>
+
+--
+
+# Varargs
+
+<pre><code class="javascript" contenteditable>function summe() {
+    var sum = 0;
+    for (var a in arguments) {
+        sum += arguments[a];
+    }
+    return sum;
+}
+
+var result5 = summe(1,2,3);
+console.log(result5 === 6);</code></pre>
+
+>NOTES:
+	<ul>
+		<li>Zuviel übergebene Parameter stehen im Bonusparameter „arguments“ zur Verfügung
+		<li>Das Array arguments ist kein echtes Array. Es hat zwar ein length-Attribut und man kann über dieses iterieren, allerdings fehlen ihm die Methoden eines echten Array-Objekts.
+	</ul>
+
+--
+
+# Scopes
+
+--
+
+# So nicht!
+
+<pre><code class="javascript" contenteditable>
+{
+    var huch = "Ich bin noch da";
+}
+
+console.log(huch); // Ich bin noch da
+    </code></pre>
+
+>NOTES:
+
+--
+
+# So!
+
+<pre><code class="javascript" contenteditable>
+(function () {
+    var achso = "Ich bin weg";
+}());
+
+console.log(achso); // ReferenceError
+</code></pre>
+
+<a target="_blank" href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately-Invoked Function Expression (IIFE)</a>
+
+--
+
+# Hositing
+
+**„Variables are created when the execution scope is entered. A Block does not define a new execution scope. Only Program and Function Declaration produce a new scope. Variables are initialised to undefined when created. A variable with an Initialiser is assigned the value of its Assignment Expression when the Variable Statement is executed, not when the variable is created.“**
+*-- ECMA“*
+
+>NOTES:
+* Hoisting -> Variables are created when the execution scope is entered.
+* Fallstricke des Hoistings umgehen: Deklariere alle Variablen in einem Scope (z.B. in einer Function) in einer Zeile zum Beginn des Scopes.
+
+--
+
+# Hoisting
+
+<pre><code class="javascript" contenteditable>
+foo(); // TypeError "foo is not a function"
+bar(); // valid
+baz(); // TypeError "baz is not a function"
+spam(); // ReferenceError "spam is not defined"
+
+var foo = function () {}; // anonymous function expression ('foo' gets hoisted)
+function bar() {}; // function declaration ('bar' and the function body get hoisted)
+var baz = function spam() {}; // named function expression (only 'baz' gets hoisted)
+
+foo(); // valid
+bar(); // valid
+baz(); // valid
+spam(); // ReferenceError "spam is not defined"
+
+// -- http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting
+</code></pre>
+
+>NOTES:
+Deklariere alle Variablen in einem Scope (z.B. in einer Function) in einer Zeile zu beginn des Scopes.
+function declaresSomeVars() {
+	var hello = "world",
+	x,
+	y;
+	// here comes the code
+}
+
+---
+
+# Übung: Basiswissen
+
+* Erzeuge ein Array mit Personen-Objekten mit mindestens den Eigenschaften
+  * Name
+  * Alter
+  * Geschlecht
+* Gib alle Personen nacheinander aus
+  * Erstelle eine Funktion, die eine Person auf der Console ausgibt
+  * Rufe diese Funktion in einer Schleife auf
+
+
+>NOTES:
+<a target="_blank"  href="http://jsbin.com/repawa/edit?js,console">http://jsbin.com/repawa/edit?js,console</a>
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Objekte und Prototypen
+
+*  <!-- .element: class="fragment" -->Objekte können auch Funktionen als Properties haben
+*  <!-- .element: class="fragment" -->Diese funktionieren dann wie Methoden, d.h. <code>this</code> ist an das Objekt gebunden über das sie aufgerufen werden
+
+<pre class="fragment"><code class="javascript" contenteditable>var obj = {
+    field: 10,
+    log: function() {
+        console.log(this.field);
+    }
+};
+
+obj.log(); // 10
+</code></pre>
+
+>NOTES:
+		Methoden sind keine Eigenschaft der Sprache.
+		Dies ist ein "Design Pattern": Method Invocation Pattern
+		TODO: Aufmalen, das Objekt brauchen wir auf der nächsten Folie!
+
+--
+
+# Call / Apply
+
+*  <!-- .element: class="fragment" -->call und apply sind Methoden auf Funktionen
+*  <!-- .element: class="fragment" -->Erlauben das freie Binden an einen anderen Kontext
+
+<pre class="fragment"><code class="javascript" contenteditable>var field = "Reingelegt";
+obj.log.call(this);
+// => ???
+</code></pre>
+
+>NOTES:
+Bild malen
+<pre>
+	plus.call({x : "Hello"}, 1, 1);​
+	plus.apply({x: 40}, [1, 1]);
+</pre>
+Wenn ein Event eine Methode aufruft, dann wird das this der Methode an den Event-Emitter gebunden
+
+--
+
+# Erweiterte Objekt-Literale in ES6
+
+<pre><code class="javascript" contenteditable>var name = 'Oma';
+var person = {
+    // ES5: name: name
+    name,
+    // ES5: toString: function()
+    toString() {
+        return this.name;
+    }
+};
+console.log(person.name); // Oma
+console.log(person.toString()); // Oma
+</code></pre>
+
+--
+
+# Klassen mit JavaScript
+
+* <!-- .element: class="fragment" -->Klassen und Konstruktoren sind Mechanismen, um mehrere, strukturell gleiche oder ähnliche Objekte zu erzeugen
+* <!-- .element: class="fragment" -->Auch in JavaScript können eigene Klassen definiert werden
+* <!-- .element: class="fragment" -->Einfachvererbung ist ebenso möglich
+* <!-- .element: class="fragment" -->Der Mechanismus war vor ES6 nicht direkt in die Sprache eingebaut
+* <!-- .element: class="fragment" -->Stattdessen nutzten wir Best-Practice-Pattern
+* <!-- .element: class="fragment" -->Grundlage für diese Pattern ist die prototypische Vererbung
+
+>NOTES:
+* Self - leichter als Smalltalk
+* Prototypen
+* Neues Objekt auf Basis einer Kopiervorlage....
+
+--
+
+# Prototypen
+
+* <!-- .element: class="fragment" -->Jedes Objekt hat zusätzlich eine Referenz auf seinen Prototyp
+  * <code>Object.getPrototypeOf()</code> in neueren Browsern</li>
+* <!-- .element: class="fragment" --><code>Object</code> hat keinen Prototypen, ist aber Prototyp aller anderen Objekte
+* <!-- .element: class="fragment" -->Lesende Property-Zugriffe können transitiv an Prototypen delegiert werden
+* <!-- .element: class="fragment" -->Dies heißt prototypische Vererbung
+
+--
+
+# Setzen des Prototypen aka das Typen-System
+
+Der Prototyp kann nicht direkt, aber durch Aufruf von <code>new</code> gesetzt werden
+
+<pre class="fragment"><code class="javascript" contenteditable>/** @constructor */
+function Person(name) {
+    this.name = name;
+}</code></pre>
+    <pre class="fragment"><code class="javascript" contenteditable>// Methode
+Person.prototype.getName = function() {
+    return this.name;
+};</code></pre>
+    <pre ><code class="javascript" contenteditable>
+var olli = new Person('Olli');
+olli.getName() === 'Olli';
+    </code></pre>
+
+>NOTES:
+
+## Ablauf eines Konstruktoraufrufs
+
+1. ein leeres, neues Objekt wird erzeugt
+2. die Konstruktor-Funktion hat ein Property prototype, dies wird als Prototyp des neuen Objekts verwendet
+3. **this** wird an dieses neue Objekte gebunden
+4. die Konstruktor-Funktion wird aufgerufen (mit this gebunden)
+5. das neue Objekt wird implizit zurückgegeben (wenn die Funktion kein explizites return hat)
+
+
+* Wird die new-Anweisung vergessen, dann wird die Funktion nicht als Konstruktor-Funktion aufgerufen.
+* Es steht dann kein neues Objekt als this-Objekt zur Verfügung.
+* Das this-Objekt ist dann beispielsweise das globale Objekt.
+* Das heißt, der Funktion wird die übergebenen Parameter dem globalen Objekt zuweisen.
+
+* Protoype-Chain aufmalen
+
+--
+
+# Ablauf eines Konstruktoraufrufs mit <code>new</code>
+
+1. <!-- .element: class="fragment" -->ein leeres, neues Objekt wird erzeugt
+2. <!-- .element: class="fragment" -->die Konstruktor-Funktion hat ein Property <code>prototype</code>, dies wird als Prototyp des neuen Objekts verwendet
+3. <!-- .element: class="fragment" --><code>this</code> wird an dieses neue Objekte gebunden, d.h. man kann darauf über <code>this</code> zugreifen
+4. <!-- .element: class="fragment" -->die Konstruktor-Funktion wird aufgerufen (mit <code>this</code> gebunden)
+5. <!-- .element: class="fragment" -->das neue Objekt wird implizit zurückgegeben (wenn die Funktion kein explizites <code>return</code> hat)
+
+--
+
+# "Typsystem"
+
+Ein Objekt ist <code>instanceof</code> aller seiner Prototypen
+
+<pre><code class="javascript" contenteditable>var olli = new Person('Olli');
+Object.getPrototypeOf(olli) === Person.prototype;
+olli instanceof Object;
+olli instanceof Person;
+</code></pre>
+
+--
+
+# Prototypen erweitern
+
+<pre><code class="javascript" contenteditable>
+// zwei Rechtecke erzeugen
+var firstRectangle = new Rectangle(5, 5);
+var secondRectangle = new Rectangle(10,10);
+
+// den Prototypen _aller_ Rechtecke erweitern
+Rectangle.prototype.color = "blue";
+firstRectangle.color; // blue
+</code></pre>
+
+>NOTES:
+
+* https://jsbin.com/yepaha/edit?js,console
+
+--
+
+# Reflection
+
+<pre><code class="javascript" contenteditable>
+Rectangle.prototype.color = "blue";
+firstRectangle.color; // blue
+firstRectangle.hasOwnProperty("color"); // false
+</code></pre>
+
+--
+
+# Chaining
+
+<pre><code class="javascript" contenteditable>
+Rectangle.prototype.color = "blue";
+firstRectangle.color = "red";
+firstRectangle.color; // red
+
+delete firstRectangle.color; // true
+firstRectangle.color; // blue
+</code></pre>
+
+---
+
+# Übung: Objekte und Prototypen
+
+* Schreibe eine Klasse für Person
+  * Lasse im Konstruktor die drei bekannten Parameter für <code>name</code>, <code>alter</code> und <code>geschlecht</code> zu
+  * Mache aus allen Funktionen, die auf Personen arbeiten, Methoden
+* Erzeuge ein Objekt vom Typ Person und rufe Methoden darauf auf
+
+
+>NOTES:
+<a target="_blank" href="http://jsbin.com/meboyo/edit?js,console
+">http://jsbin.com/meboyo/edit?js,console</a>
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template">
+# Design Patterns für Vererbung
+
+* <!-- .element: class="fragment" -->Klassen-Hierarchien und Instanzen nutzen beide Prototypische Vererbung
+* <!-- .element: class="fragment" -->Klassen-Hierarchien werden einmal aufgebaut und als Prototypen der Instanzen verwendet
+* <!-- .element: class="fragment" -->Klassen-Hierarchien werden ebenso über Prototypen erstellt
+* <!-- .element: class="fragment" -->Object.create erzeugt ein neues Object mit einem anderen Objekt als Prototypen
+* <!-- .element: class="fragment" -->Aufruf von Super-Konstruktoren und Super-Methoden über call / apply
+
+--
+
+# Vererbung #1
+
+<pre><code class="javascript" contenteditable>function Person(name, gender) {
+    this.name = name;
+    this.gender = gender;
+}
+Person.prototype.getName = function() {
+    return this.name;
+};
+
+function Male(name) {
+    Person.call(this, name, "Male"); // super call
+}
+Male.prototype = Object.create(Person.prototype);</code></pre>
+
+--
+
+# Vererbung #2
+
+<pre><code class="javascript" contenteditable>Male.prototype.getName = function() {
+    // super call
+    return "Mr " + Person.prototype.getName.call(this);
+};
+
+var katharina = new Person('Katharina');
+var olli = new Male('Olli');
+olli.getName() === 'Mr Olli';
+olli.gender === 'Male';
+olli instanceof Male;
+olli instanceof Person;
+olli instanceof Object;</code></pre>
+
+>NOTES:
+* Weiterhin aufmalen
+
+--
+
+# Vererbungshierarchien - revisited
+
+*  <!-- .element: class="fragment" -->Das verwirrendste Thema in JavaScript
+*  <!-- .element: class="fragment" -->Viele Bibliotheken nehmen sich dieses Themas an
+*  <!-- .element: class="fragment" -->Alternative zu Klassen-Hierarchien sind Mixins
+*  <!-- .element: class="fragment" -->Bei Mixins werden alle Properties eines Prototypen in einen anderen hineinkopiert
+
+>NOTES:
+Ein Trait ist ein Begriff aus der objektorientierten Programmierung und beschreibt eine wiederverwendbare Sammlung von Methoden und Attributen, ähnlich einer Klasse. Die Idee der Traits entspringt der Programmiersprache Self und findet mittlerweile in vielen modernen objektorientierten Sprachen Verwendung.<br />
+
+Die Verwendung von Traits erlaubt das horizontale Wiederverwenden einer Methodensammlung. JS untestützt nicht direkt Traits, sondern erlaubt Mixins.
+
+--
+
+# Mixins
+
+<pre><code class="javascript" contenteditable>function mixin() {
+    child = {};
+    for (var arg = 0; arg < arguments.length; arg ++) {
+        for (var prop in arguments[arg]) {
+             if (arguments[arg].hasOwnProperty(prop)) {
+                child[prop] = arguments[arg][prop];
+             }
+        }
+    }
+    return child;
+}
+</code></pre>
+
+
+>NOTES:
+Bei Mixins werden alle Properties eines Objekts in einen anderen hineinkopiert, aufmalen</aside>
+
+
+--
+
+# Mixins
+
+<pre><code class="javascript" contenteditable>var wolpertinger = mixin(
+    {fly : function() {console.log("fly");}},
+    {swim: function() {console.log("swim");}},
+    {bark: function() {console.log("bark");}}
+)
+
+wolpertinger.bark(); // bark
+</code></pre>
+
+
+# jQuery.extend
+
+```
+// http://api.jquery.com/jQuery.extend/
+// Merge the contents of two or more objects together
+// into the first object
+var wolpertinger = $.extend({}, duck, dog);
+```
+
+>NOTES:
+http://jsbin.com/joroqo/edit?js,console
+
+http://jsbin.com/joroqo/edit?js,console
+
+---
+
+# Übung: Vererbung
+
+* Schreibe die Klasse Customer
+  * Customer soll von Person erben
+  * Berechne im Konstruktor aus den Parametern zumindest ein zusätzliches Feld, das den vermuteten bevorzugten Kaufgegenstand angibt
+  * Rufe aus dem Customer-Konstruktor den Person-Konstruktor auf
+  * Überschreibe die Methode <code>getName</code>
+  * Füge die Methode <code>shop</code> hinzu, die den bevorzugten Gegenstand ausgibt
+* Erzeuge mindestens ein Objekt vom Typ Customer und rufe Methoden darauf auf
+
+>NOTES:
+<a target="_blank" href="http://jsbin.com/lapaku/edit?js,console
+">http://jsbin.com/lapaku/edit?js,console</a></aside>
+
+
+
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Closures
+
+Module in JavaScript werden über <code>Closures</code> realisiert
+
+--
+
+# Closure in einem Satz
+
+   <p>Eine innere Funktion hat immer Zugriff auf alle Variablen und Parameter ihrer äußeren Funktion, <em>auch wenn diese äußere Funktion bereits beendet ist</em>.</p>
+    <p><small>Frei nach <em>Douglas Crockford</em></small></p>
+
+--
+
+# Beispiel Closure
+```javascript
+function outer() {
+	var used = "Olli";
+	var unused = "weg";
+	return (function() {
+    	return "Text: " + used;
+	});
+}
+
+
+var inner = outer();
+console.log(inner());
+```
+
+<aside class="notes">Aufmalen</aside>
+
+--
+
+#Closure Definition
+<p class="fragment">Eine Closure ist eine spezielle Art von Objekt, welche zwei Dinge kombiniert</p>
+<ul>
+    <li class="fragment">Eine Funktion</li>
+    <li class="fragment">die Umgebung in welcher diese Funktion erzeugt wurde
+        - diese Umgebung besteht aus allen lokalen Variablen und Parametern, die sichtbar waren als die Closure erzeugt wurde</li>
+</ul>
+<p class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">Aus der Definition auf MDN</a></p>
+
+--
+
+#Revealing Module Pattern
+
+<pre><code class="javascript" contenteditable>var humanresources = (function () {
+    function InternalStuff() {
+    }
+
+    function Person(name) {
+        this.name = name;
+        // uses internal stuff
+    }
+
+    return {
+        Person: Person
+    };
+})();
+</code></pre>
+
+--
+
+# Sichtbarkeit bei Revealing Module Pattern
+
+<pre><code class="javascript" contenteditable>
+var olli = new humanresources.Person('Olli');
+olli.name === 'Olli';
+// TypeError: undefined is not a function
+new humanresources.InternalStuff();</code></pre>
+
+
+---
+
+#Übung: Closure
+
+<ul>
+    <li>Schreibe ein Modul, in das du die vorhandenen Typendefinitionen verschiebst. Dieses Modul soll
+        <ul>
+            <li>nach außen nur die <code>Customer</code>-Klasse exportieren
+        </ul>
+    </li>
+    <li>Schreibe den aufrufenden Code so um, dass er mit den neuen Modulen arbeitet
+    <li>Benutze das Revealing Module Pattern
+</ul>
+<aside class="notes"><a target="_blank" href="http://jsbin.com/pogece/edit?js,console
+">http://jsbin.com/pogece/edit?js,console</a></aside>
+
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Klassen in ES2015
+
+<pre class="fragment"><code class="javascript" contenteditable>class Person {
+    constructor(name) {
+        this._name = name;
+    }
+    get name() {
+        return this._name;
+    }
+}
+class Programmer extends Person {
+    constructor(name, language) {
+        super(name);
+        this.language = language;
+    }
+    code() {
+        return this.name + " codes in " + this.language;
+    }
+}</code></pre>
+<pre><code class="javascript" contenteditable>const programmer = new Programmer('Erna', 'JavaScript');
+       console.log(programmer.code());
+       console.log(programmer instanceof Programmer); // true
+       console.log(programmer instanceof Person); // true</code></pre>
+
+--
+
+# Übung: ES2015-Klassen
+
+## Schreibe deine Klassen auf die neue Klassensyntax von ES2015 um</h3>
+
+* Nutze das workspace-Verzeichnis in diesem Repository</p>
+* Hier ist eine Tool-Chain mit Webpack und Babel-Node vorbereitet</p>
+* Node installieren über <a target="_blank" href="https://www.nodejs.org">nodejs.org</a> (Windows) oder <a href="https://github.com/creationix/nvm" target="_blank">NVM</a> (Unix)
+* Evtl. dafür einen <a target="_blank" href="http://wil.boayue.com/blog/2013/06/14/using-npm-behind-a-proxy/">Proxy</a> konfigurieren</li>
+<pre><code contenteditable>cd workspace
+npm install
+npm run webpack
+open public/index.html</code></pre>
+* Als Alternative kannst du diese Übung auch mit <em>node</em> oder <em>babel-node</em> machen</li>
+<pre><code contenteditable>cd code/src/es6
+../../node_modules/.bin/babel-node main.js</code></pre>
+
+--
+
+# Schritt #2: ES2015-Klassen</h3>
+
+* Entwickle deine Klassen in <em>ES6</em> und passe dort <em>main.js</em> an
+* Setze Vererbung mit <em>extends</em> um
+
+---
+
+# Modulsysteme
+
+--
+
+# AMD und CommonJS
+
+<ul>
+    <li class="fragment">AMD
+        <ul>
+            <li class="fragment">Module werden nicht blockierend und potentiell asynchron geladen
+            <li class="fragment">Module werden über bower oder manuell installiert
+            <li class="fragment">Verwendung auf Client-Seite
+            <li class="fragment">Default-Implementierung: RequireJS
+            <!--<li class="fragment">Für blockierendes Laden auf Server-Seite: r.js-->
+        </ul>
+    </li>
+    <li class="fragment">CommonJS
+        <ul>
+            <li class="fragment">Module werden blockierend und synchron geladen
+            <li class="fragment">Module werden über npm installiert
+            <li class="fragment">Verwendung auf Server-Seite
+            <li class="fragment">Default-Implementierung: NodeJS
+            <!--<li class="fragment">Für nicht blockierendes Laden auf Client-Seite: Browserify-->
+        </ul>
+    </li>
+    <li class="fragment">Webpack kann sowohl CommonJs als auch AMD Module gleichzeitig verwenden.
+</ul>
+
+--
+
+#CommonJS Module (Node)
+<h4>Definition</h4>
+<pre class="fragment"><code class="javascript" contenteditable>// in der Datei "eater.js"
+var eatThis = function (name) {
+    console.log(name);
+};
+exports.eatThis = eatThis;</code></pre>
+                        <h4>Einbinden</h4>
+<pre class="fragment"><code class="javascript" contenteditable>var eaterModule = require("eater");
+
+eaterModule.eatThis(name);
+</code></pre>
+
+--
+
+# AMD Modul mit requireJS
+
+
+<h4>Definition</h4>
+<pre class="fragment"><code class="javascript" contenteditable>// Ein Modul pro Datei:
+// js/modules/accounting.js
+define(function () {
+    return {
+        getIdNumberForName: function(name) {
+            // ...
+        }
+    };
+});
+</code></pre>
+
+<h4>Einbinden</h4>
+<pre class="fragment"><code class="javascript" contenteditable>
+require(['js/modules/accounting'], function (Accounting) {
+    var name = // ...
+    var id = Accounting.getIdNumberForName(name);
+    // ...
+});
+</code></pre>
+
+--
+
+# ES6 Module, Importe und Exporte
+
+--
+
+# Export einer einzigen Klasse
+<pre><code class="javascript" contenteditable>// Person.js
+class Person {
+  // ...
+}
+export default Person;
+</code></pre>
+
+
+--
+
+# Import
+<pre><code class="javascript" contenteditable>// Programmer.js
+import Person from './Person';
+
+export default class Programmer extends Person {
+  // ...
+}
+</code></pre>
+
+
+--
+
+# Benannte Exporte
+
+<pre><code class="javascript" contenteditable data-trim>// util.js
+export function displayInPage(text) {
+    document.body.innerHTML +=
+        `${text}<br>` ;
+}
+// or
+export { displayInPage };
+</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>import {displayInPage} from "./util";
+displayInPage('Hello, World');
+</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>import {displayInPage as display} from "./util";
+display('Hello, World');
+</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>import * as util from "./util";
+util.displayInPage('Hello, World');
+</code></pre>
+
+>NOTES:
+
+* Require: große Bilbiotheken
+* Common: zu kleine Microlibraries
+* ES6 Modules mit Rollup.js: Named Im-/Exports können beim Bundling verwendet werden, um die Packages klein zu halten
+
+---
+
+#Übung: Modulsysteme
+
+<ul>
+  <li>Baue Deine ES6-Klassen auf ES6-Module um
+  <li>Jede Klasse kommt in ein eigenes Modul
+  <li>Nutze die unterschiedlichen Möglichkeiten des Imports und Exports
+</ul>
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Funktionen in ES6
+
+--
+
+#Lexikalisches Scoping
+
+<pre><code class="javascript stretch" contenteditable>(function(){
+  'use strict';
+  {
+    let a = 10;
+    // or
+    const b = 10;
+    a = 20;
+    // when a is const:
+    // => TypeError: Assignment to constant variable.
+  }
+  console.log(a); // => ReferenceError: a is not defined
+})();
+</code></pre>
+<aside class="notes">
+	<a href="http://jsbin.com/jigoxu/edit?js,console" target="_blank">http://jsbin.com/jigoxu/edit?js,console</a>
+</aside>
+
+--
+
+# Fat Arrow
+
+<pre><code class="javascript" contenteditable>
+(function(){
+	'use strict';
+	 let arr = ['a', 'e', 'i', 'o', 'u'];
+	 arr.sort( (a, b)=> a < b? 1: -1 );
+	 console.log(arr);
+})();
+</code></pre>
+<aside class="notes">
+        Binden von this für Callbacks etc. mit <em>=></em>,
+
+<a target="_blank" href="http://jsbin.com/wuxadu/edit?js,console
+">http://jsbin.com/wuxadu/edit?js,console</a>
+</aside>
+
+--
+
+# Destructuring
+
+<pre><code class="javascript" contenteditable>const person = {
+  name: 'Olli',
+  address: {
+    city: 'Hamburg'
+  },
+  email: 'oliver@example.com'
+};</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable>const {name, email: contact} = person;
+console.log(`name=${name}`);
+// name=Olli
+console.log(`contact=${contact}`);
+// contact=oliver@example.com
+</code></pre>
+
+--
+
+# Destructuring bei Parametern
+
+<pre><code class="javascript" contenteditable>const person = {
+  name: 'Olli',
+  address: {
+    city: 'Hamburg'
+  },
+  email: 'oliver@example.com'
+};</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable data-trim>
+function print({email: contact}) {
+    console.log(`contact=${contact}`);
+}
+print(person);
+// contact=oliver@example.com
+</code></pre>
+ <pre class="fragment"><code class="javascript" contenteditable data-trim>
+function g({name: x, y, z=10}) {
+  console.log(`x=${x}`); // x=olli
+  console.log(`y=${y}`); // y=undefined
+  console.log(`z=${z}`); // z=10
+}
+g({ name: 'olli' });
+</code></pre>
+
+--
+
+
+# Spread-Operator
+
+<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">
+Alles was 'iterable' ist kann in einzelne Parameter transformiert werden
+</a></p>
+
+<pre><code class="javascript" contenteditable>const array1 = ['Olli', 'how are you'];
+const array2 = ['Hi', ...array1, '?'];
+console.log(array2);
+// => ["Hi", "Olli", "how are you", "?"]
+</code></pre>
+   <pre class="fragment"><code class="javascript" contenteditable>console.log(...array1);
+</code></pre>
+
+--
+
+# Default Parameter
+
+<pre><code class="javascript" contenteditable>const displayInPage = (text = '\n') =>
+    console.log(text);</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable>displayInPage();
+</code></pre>
+
+--
+
+# Rest-Parameters
+
+<pre><code class="javascript" contenteditable>const displayInPage = (...texts) =>
+    texts.forEach(text => console.log(text));
+</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable>displayInPage('Hi', 'Folks');
+// Hi
+// Folks
+</code></pre>
+</script></section>
+		<!-- 
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Weitere nützliche Features in ES6
+
+* Templates
+* Set
+* Map
+* Iterator
+
+--
+
+# Template Literals</h3>
+<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings">
+String-Literale mit Lücken
+</a>
+
+<pre><code class="javascript" contenteditable>const person = 'Oma';
+const language = 'Haskell';
+
+console.log(`${person} programs
+${10 * 1024 * 1024} lines of code
+in ${language}.`);
+// Output:
+// Oma programs
+// 10485760 lines of code
+// in Haskell.
+</code></pre>
+
+--
+
+# Set
+
+<pre><code class="javascript" contenteditable>const programmers = new Set();
+programmers.add(programmer);
+programmers.add(new Programmer('Oma', 88));
+</code></pre>
+
+<pre class="fragment"><code class="javascript" contenteditable>for (const p of programmers) {
+    p.log();
+}</code></pre>
+
+<pre class="fragment"><code class="javascript" contenteditable>set.forEach((value) => console.log(value));
+</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable>const serialized = JSON.stringify([...programmers]);
+const deserialized = new Set(JSON.parse(serialized));</code></pre>
+
+--
+
+# Map
+<pre><code class="javascript" contenteditable>const map = new Map();
+// keys are not restricted to strings
+const KEY1 = {name: 'KEY1'};
+map.set(KEY1, 1);
+</code></pre>
+
+<pre class="fragment"><code class="javascript" contenteditable>console.log(map.get(KEY1)); // 1
+console.log(map.has(KEY1)); // true
+console.log(map.size); // 1
+</code></pre>
+
+<pre class="fragment"><code class="javascript" contenteditable>// maps are iterable objects
+for (let e of map) {
+    console.log(e); // array consisting of key and value
+}
+//[ { name: 'KEY1' }, 1 ]
+</code></pre>
+
+<pre class="fragment"><code class="javascript" contenteditable>map.forEach((value, key) => console.log(`${key}=${value}`));
+</code></pre>
+
+<pre class="fragment"><code class="javascript" contenteditable>map.delete(KEY1);
+console.log(map.has(KEY1)); // false</code></pre>
+
+--
+
+# Iterieren mit for..of
+
+<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of">
+         Iterieren über alles was 'iterable' ist
+</a></p>
+
+<pre><code class="javascript" contenteditable>for (const e of array2) {
+    console.log(e);
+}
+// Hi
+// Olli
+// how are you
+// ?
+</code></pre>
+
+---
+
+# Übung: Nutze nützliche Features
+
+<ul>
+  <li>Ersetze das Array von Objekten mit einem Set (oder einer Map, wenn das sinnvoll ist)
+  <li>Nutze for..of zum iterieren
+  <li>Nutze Template Strings für das Zusammenbauen von Strings
+  <li>Versuche, jedes neue Feature mindestens einmal in deinem Programm einzubauen
+</ul>
+
+
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Promises
+
+--
+
+# Definition
+
+<h3>Ein Promise ist ein Versprechen auf einen Wert</h3>
+<h4 class="fragment">Wird evtl. erst in der Zukunft eingelöst</h4>
+
+--
+
+#Erzeugen und asynchron reagieren
+
+<pre class="fragment"><code class="javascript" contenteditable>const promise = new Promise(resolve =>
+    setTimeout(
+        () => resolve('Result from promise'),
+        1000)
+);
+</code></pre>
+<pre><code class="javascript" contenteditable>promise1.then(value => console.log(value));
+// Output after 1 second: Result from promise
+</code></pre>
+
+--
+
+# Verkettete Ausführung
+<pre><code class="javascript" contenteditable>const promise = new Promise(resolve => setTimeout(
+    () => resolve('Result from promise'),
+    1000)
+);
+</code></pre>
+<pre class="fragment"><code class="javascript" contenteditable>// then returns a new promise
+const promise2 = promise.then(value => `${value} plus stuff`);</code></pre>
+    <pre class="fragment"><code class="javascript" contenteditable>promise2.then(value => console.log(value));
+// Output after 1 second: Result from promise plus stuff
+</code></pre>
+
+--
+
+# Error Handling
+
+<h3>Fehler führen zum Abbruch der Chain</h3>
+<h4 class="fragment">Allerdings muss man etwas tun, um das mitzubekommen</h4>
+
+--
+
+# Catch-Klausel
+
+<pre><code class="javascript" contenteditable>Promise
+    // creates and directly resolves promise
+    .resolve('Result from promise')
+    .then(x => {
+        // this will be printed
+        console.log(x);
+    })
+    .then(() => {
+        console.log('This will be printed');
+    })
+    // this will NOT be printed as no error occured
+    .catch(e => console.log('error: ', e))
+&nbsp;
+  // Output:
+  // Result from promise
+  // This will be printed</code></pre>
+
+--
+
+# Catch-Klausel im Fehlerfall
+<pre><code class="javascript" contenteditable>Promise
+// creates and directly resolves promise
+.resolve('Result from promise')
+.then(x => {
+    // this will be printed
+    console.log(x);
+    throw Error('Something went wrong');
+})
+.then(() => {
+    console.log('This will NOT be printed');
+})
+// this will be printed
+.catch(e => console.log('error: ', e))
+
+// Output:
+// Result from promise
+// error:  [Error: Something went wrong]</code></pre>
+
+--
+
+# Catch-Klausel bei Ablehnung
+<pre><code class="javascript" contenteditable>Promise
+// creates and directly rejects promise
+.reject('Promise rejected')
+.then(x => {
+    // this will NOT be printed
+    console.log(x);
+})
+.then(() => {
+    console.log('This will NOT be printed');
+})
+// this will be printed
+.catch(e => console.log('error: ', e))
+
+// Output:
+// error:  Promise rejected</code></pre>
+
+--
+
+# Anwendungsbeispiel: fetch
+
+<pre><code class="javascript" contenteditable>const url = `${BACKEND_URL}${path}`;
+
+return fetch(url)
+    .then(response => response.json())
+    .then(json => /* ... */)
+    .catch(ex => console.error('request failed', ex));
+</code></pre>
+
+---
+
+# Übung: Daten vom Server laden mit fetch und Promises
+
+<ul>
+    <li>Lade Daten vom Server und verarbeite sie asynchron mit Promises
+    <li>Mach dazu mit fetch einen GET-Request auf
+    https://mortgage-demo.appspot.com/mortgage_calculator/rs/200000/10/7.5/30
+    <li>Wandle das Ergebnis von JSON und resolve das Promise mit dem Feld "monthly"
+    <li>Nutze das Promise und gib das Endergebnis aus
+    <li>Baue Fehlerbehandlung ein und löse sie aus
+</ul>
+</script></section>
+			-->
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Testen mit Jasmine
+
+--
+
+# Grundlagen Jasmine
+
+* <!-- .element: class="fragment" -->weit verbreitetes JavaScript Unit-Testframework
+* <!-- .element: class="fragment" -->Stil BDD orientiert, etwas anders als JUnit
+* <!-- .element: class="fragment" -->Ausführung im Browser
+* <!-- .element: class="fragment" --><code>describe</code>: eine komplette Test-Suite
+* <!-- .element: class="fragment" --><code>it</code>: ein einzelner Testfall
+* <!-- .element: class="fragment" --><code>expect</code>: erwartetes Ergebnis ausdrücken
+* <!-- .element: class="fragment" --><code>beforeEach / afterEach</code>: Vorbereitung / Aufräumarbeiten
+* <!-- .element: class="fragment" --><a href="http://jasmine.github.io/2.0/introduction.html" target="_blank">Hauptseite Jasmine</a></li>
+
+--
+
+# Test-Suite
+
+<pre><code class="javascript stretch" contenteditable>describe("Calculator", function () {
+    var data;
+    beforeEach(function () {
+        // calculateMortgage(price, down, interest, term)
+        data = calculateMortgage(200000, 10, 7.5, 30);
+    });
+    afterEach(function() {
+    });
+
+    it("principle", function () {
+        expect(data.principle).toEqual(199990.00);
+    });
+    it("invalid", function () {
+        expect(function () {
+            calculateMortgage(1, 10, 7.5, 30);
+        }).toThrowError("You do not need any money");
+    });
+});</code></pre>
+
+--
+
+# Beispiel-Test-Lauf
+
+<div class="stretch ">
+	<iframe src="samples/jasmine-example/SpecRunner.html" width="100%" height="100%"/>
+</div>
+
+---
+
+# Übung: Teste deine eigenen Klassen
+
+* Nutze dafür dieses JsBin-Projekt als Grundlage <a target="_blank" href="http://jsbin.com/behica/10/edit?js,output">jsbin.com/behica/10/</a>
+* **Clone das Projekt** und verschiebe deine Klassen in den JavaScript-Bereich
+* Schreibe mit Jasmine sinnvolle Spezifikationen für deine Klassen
+* Achtung: Aus technischen Gründen, läuft Jasmine hier in der älteren Version 1.3.1
+
+
+>NOTES:
+* Wenn du nicht bei Null anfangen möchtest, kannst du auch dieses Projekt clonen <a target="_blank" href="http://jsbin.com/hiyuxometi/3/edit?js,output">http://jsbin.com/hiyuxometi/3/edit?js,output</a>
+* <a target="_blank" href="http://jsbin.com/kixife/edit?js,output
+">http://jsbin.com/kixife/edit?js,output</a>
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Entwicklungsworkflow
+
+--
+
+## Yeoman
+
+![img](images/yeoman.jpg)
+
+= Maven für JavaScript
+
+--
+
+## Projekt mit Yo erzeugen
+
+<pre><code contenteditable># Installation yo, grunt etc.
+npm install -g gulp bower yo
+
+# Generator Template installieren
+npm install -g generator-webapp
+
+# Erzeugen
+mkdir sandbox && cd sandbox
+yo webapp --test-framework=jasmine
+
+# Unit Tests
+gulp serve:test
+
+# Starten
+gulp serve
+</code></pre>
+
+>NOTES:
+* Unit-Tests: In index.html /bower_components/jasmine-core/ durch /bower_components/jasmine/ ersetzen
+* Gulp = Build Tool (alternativ Grunt)
+* Typischerweise Karma als Testrunner
+* zu **code** wechseln
+
+--
+
+# Code Quality
+
+* Coverage: Istanbul
+* Hint/Lint: ESLint oder JSHint
+* Reporting: Plato (ähnlich SonarQube)
+
+>NOTES:
+* Zeige Istanbul
+* Zeige Plato
+
+--
+
+# Continous Delivery & Integration
+
+* Node Version Manager nutzen
+* Pipelines nutzen
+  * Build & Unit-Tests
+  * Integration/E2E Tests
+
+>NOTES:
+* nvm ermöglicht es auf einem System mehrere Node-Versionen parallel zu nutzen
+* E2E für Browser z.B. mit Protractor für Angular WebApps
+* Beispiel: https://server.holisticon.de/jenkins/job/Holisticon/job/js-workshop/
+
+--
+
+# Dokumentation
+
+[JsDoc](http://usejsdoc.org)
+
+<pre><code class="javascript stretch" contenteditable>/**
+ * Represents a book.
+ * @constructor
+ * @param {string} title - The title of the book.
+ * @param {string} author - The author of the book.
+ */
+function Book(title, author) {
+}</code></pre>
+
+>NOTES:
+* npm run docs
+
+
+---
+
+# Übung: Entwicklungsworkflow
+
+* aktiviere ESLint
+* binde ESLint in die package.json ein, so dass es beim Test mitläuft
+
+>NOTES:
+* npm install eslint --save-dev -E
+  * package.json anpassen:
+    "test": "jasmine test/es6/*.spec.js && eslint test/es6/*.spec.js",
+* npm install plato --save-dev -E
+  * package.json anpassen:
+    "docs": "jsdoc src/es6/*.js --destination dist/docs/jsdoc && webpack && plato -d dist/docs/plato public/dist/*.js",
+
+---
+
+# Danke
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
