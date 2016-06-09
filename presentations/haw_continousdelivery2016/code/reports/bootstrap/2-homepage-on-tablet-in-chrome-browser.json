@@ -1,0 +1,85 @@
+{
+  "testId" : "2-homepage-on-tablet-in-chrome-browser",
+  "name" : "homepage on Tablet in Chrome browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium chrome http://getbootstrap.com 640x480",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "check specs/homePageLayout.gspec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/homePageLayout.gspec included tags: ",
+          "status" : "error",
+          "time" : 1439919701679,
+          "includedTags" : [ ],
+          "excludedTags" : [ ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 8
+                },
+                "name" : "below navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Bootstrap logo should be visible",
+            "objects" : [ {
+              "name" : "bootstrap-logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/homePageLayout.gspec",
+                  "lineNumber" : 14
+                },
+                "name" : "visible",
+                "highlight" : [ "bootstrap-logo" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 0, 0, 625, 50 ]
+            },
+            "bootstrap-logo" : {
+              "area" : [ 240, 80, 144, 144 ]
+            }
+          },
+          "screenshot" : "layout-2-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1439919701390,
+        "type" : "node"
+      } ],
+      "time" : 1439919697700,
+      "type" : "node"
+    } ]
+  }
+}

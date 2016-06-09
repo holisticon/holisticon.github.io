@@ -1,0 +1,89 @@
+{
+  "testId" : "9-javascript-page-on-desktop-in-chrome-browser",
+  "name" : "javascript page on Desktop in Chrome browser",
+  "report" : {
+    "nodes" : [ {
+      "name" : "selenium chrome http://getbootstrap.com 1024x800",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "check specs/javascriptPageLayout.gspec --include \"\"",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: specs/javascriptPageLayout.gspec included tags: ",
+          "status" : "error",
+          "time" : 1439919733639,
+          "includedTags" : [ ],
+          "excludedTags" : [ ],
+          "sections" : [ {
+            "name" : "Overall layout",
+            "objects" : [ {
+              "name" : "content",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 4
+                },
+                "name" : "visible",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 8
+                },
+                "name" : "below navbar 370 to 410 px",
+                "errors" : [ "\"content\" is absent on page" ],
+                "highlight" : [ ]
+              } ]
+            }, {
+              "name" : "navbar",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "specs/shared/commonLayout.gspec",
+                  "lineNumber" : 6
+                },
+                "name" : "visible",
+                "highlight" : [ "navbar" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Ad should be centered",
+            "objects" : [ {
+              "name" : "ad",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "specs/javascriptPageLayout.gspec",
+                  "lineNumber" : 22
+                },
+                "name" : "centered horizontally on ad-container",
+                "errors" : [ "\"ad\" is centered but not horizontally on \"ad-container\"" ],
+                "highlight" : [ "ad", "ad-container" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "navbar" : {
+              "area" : [ 34, 0, 98, 50 ]
+            },
+            "ad" : {
+              "area" : [ 339, 603, 330, 132 ]
+            },
+            "ad-container" : {
+              "area" : [ 34, 603, 940, 132 ]
+            }
+          },
+          "screenshot" : "layout-9-screenshot.png",
+          "type" : "layout"
+        } ],
+        "time" : 1439919733308,
+        "type" : "node"
+      } ],
+      "time" : 1439919728837,
+      "type" : "node"
+    } ]
+  }
+}

@@ -1,0 +1,1221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Continous Delivery ohne Kopfschmerzen</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'bower_components/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Continuous Delivery ohne Kopfschmerzen
+
+Martin Reinhardt (Holisticon AG)
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@mreinhardt](https://twitter.com/mreinhardt)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agenda
+
+* Einführung / Build Pipeline
+* Deployment
+* Toggle Integration
+* Testautomatisierung
+* Ausblick
+* Links
+
+---
+
+# Einführung
+
+* Continuous Delivery ist die logische Fortsetzung von Continuous Integration
+* Die Idee dahinter<!-- .element: class="fragment big-image no-border" -->
+    * Software mit agilen Methoden kann nicht komplett (manuell) getestet werden
+    * Alle 2 Wochen gesamten Funktionsumfang abtesten ist utopisch
+    * Testumgebungen stehen meist nicht ausreichend zur Verfügung 
+
+![img](images/001_bigpicture.png)<!-- .element: class="fragment big-image no-border" -->
+
+* Jobs = Bausteine der Stages ("Unit of Work")<!-- .element: class="fragment big-image no-border" -->
+    * Bestehen aus Tasks wie Build, Deploy, Copy, Test
+
+>NOTES:
+* Eventuell mehrere Pipelines sinnvoll
+* Stages
+    * Commit Stage als zentrales Eingangs-Gate
+    * Typische Stages: UAT, Performance Tests, Production Deployment
+    * Stages verbunden durch Trigger (automatisch oder manuell)
+
+---
+
+# Warum Build Pipelines
+
+* Agile Softwareentwicklung arbeitet kleinteilig<!-- .element: class="fragment no-border" -->
+    * Software oft und zuverlässig in Produktion 
+    * Nutzung der IDE != Automatisierung
+    * Wesentlich ist dabei die Build Pipeline
+* Wie?<!-- .element: class="fragment no-border" -->
+    * Geschwindigkeit
+    * Automatisierung
+
+![img](images/002_buildpipeline.png) <!-- .element: class="fragment big-image no-border" -->
+
+>NOTES:
+* Pipeline mehrmals durchlaufen
+    * jeder einzelnen Schritt der Pipeline schnell und zuverlässig
+    * wird durch **Automatisierung** erreicht
+* Schritte
+    * Entwicklung
+    * Qualitätssicherung
+    * Auslieferung
+* Tests liefern schnelles Feedback über Seiteneffekte und Regressionen
+* Deployment auf Knopfdruck und innerhalb von Minuten auf dem Produktionssystem
+* Pipeline wird mit jeder Änderung durchlaufen
+    * neuer Softwarestand hinein
+    * qualitätsgesichertes, produktionsreifes und installierbares Softwarepaket
+
+---
+
+# Build Pipeline
+
+* wesentliches Ziel ist schnelles Feedback, also Geschwindigkeit<!-- .element: class="fragment no-border" -->
+    * Einzelne Schritt schnell abarbeiten (5 - 10 Minuten)
+    * Möglichst früh Fehler finden (**Unit-Tests**)
+* unabhängig vom (Build-)Tool<!-- .element: class="fragment no-border" -->
+    * Build muss reproduzierbar sein
+* CI-Tools <!-- .element: class="fragment no-border" -->
+    * Jenkins, Go, Travis CI, XCode Bots ... 
+    * TestTools
+* Quellcode muss Continuous Delivery gerecht werden <!-- .element: class="fragment no-border" -->
+
+
+>NOTES:
+* Feature Toggles
+* Einer der Grundsätze des Continuous Integration besagt, dass es lediglich einen Master-Branch und keine weiteren Feature-Branches geben soll, in den der Code eingecheckt und damit eben diese Merge-Hölle vermieden wird.
+
+--
+
+# Continuous Delivery
+
+* CI Server stellt dabei auch die finale Software auf dem Zielsystem bereit
+    * "Infrastructure as code" (Puppet, Chef, Docker)
+    * Deployment Pipeline
+* Jeder gängige CI Server bietet Pipeline Bausteine an <!-- .element: class="fragment no-border" -->
+    * somit CD Server
+    * logische 1. Schritt ist Visualisierung 
+    * Übersicht aller Pipelines eines CD Servers
+    * Zeitliche Aktivitäten
+
+>NOTES:
+* Konkrete Namen können variieren
+    * Teils historische Gründe, teils Abgrenzung zur Konkurrenz
+    * Jenkins: Build Jobs, Build Steps, Post-build Actions, diverse Plugins
+    * Go: Go Pipelines, Stages, Jobs, Tasks
+* Bisherige Aktivitäten einer Pipeline
+
+--
+
+# Build Pipeline sinnvoll nutzen
+
+* 3 Grundprinzipien
+    * Zeit, Schritte schnell abschließen (3 - 5 min)
+    * Automatisierung
+    * Reproduzierbarkeit
+* Tests müssen schnell gefixt werden und stabil sein
+* Tests gruppieren & parallelisieren
+* Kritische Tests immer in Pipeline laufen lassen
+* weitere Teststrecken aufbauen
+    * Code Quality
+    * Migrationstests
+    * Nightly Builds
+    * Weitere Pipelines
+
+
+
+>NOTES:
+* Integrations-Tests aufsplitten
+* Neben der Optimierung der Tests kann Selektion von Tests helfen (Gruppierung)
+* Integrations-Tests parallelisieren (gerade UI tests)
+
+--
+
+## Jenkins Build Pipeline Plugin
+
+* Feature von Jenkins 2
+* Deployment Pipeline Erzeugung in Jenkins benötigt viele Plugins
+* Build Pipeline Ansicht bietet detailiierten Überblick über einzelne Schritte der Pipeline
+
+![img](images/CD_PipelineView.png)
+
+[Beispiel](https://server.holisticon.de/jenkins/job/Public/job/ContinousDelivery_Demo/)
+
+
+
+>NOTES:
+* Deployment Pipeline Erzeugung in Jenkins ist mit Jenkins 2 deutlich einfacher geworden, vorher waren viele Plugins nötig
+    * Build Pipeline, Copy Artifact, Parameterized Trigger, Promoted Builds
+    * Plugins arbeiten nicht ideal zusammen
+* Jenkins 2 ist  auf Pipeline Erstellung ausgelegt
+* üblichen Verdächtigen
+    * Selektives „Überspringen“ von Stages, z.B. Deployen auf Produktion aber nicht auf Test Umgebung (z.B. bei Hotfix)
+    * Erneutes Ausführen einzelner Stages
+
+--
+
+## Jenkins 2 Build DSL
+
+```groovy
+node {
+   env.JAVA_HOME = tool 'jdk-8-oracle'
+   def mvnHome = tool 'Maven 3.3.1'
+   env.PATH="${env.JAVA_HOME}/bin:${mvnHome}/bin:${env.PATH}"
+
+   stage 'Checkout'
+   git url: 'https://github.com/holisticon/continous-delivery-demo.git'
+
+   stage 'Build'
+   sh "${mvnHome}/bin/mvn clean package"
+
+   stage 'Unit-Tests'
+   sh "${mvnHome}/bin/mvn test"
+
+   stage 'Integration-Tests'
+   wrap([$class: 'Xvfb']) {
+        sh "export DOCKER_HOST=tcp://localhost:4243 &&\
+        	${mvnHome}/bin/mvn -Pdocker clean verify"
+   }
+
+   step([
+       $class: 'ArtifactArchiver', 
+       artifacts: '**/target/*.jar', 
+       fingerprint: true
+    ])
+   step([
+       $class: 'JUnitResultArchiver', 
+       testResults: 'angular-spring-boot-webapp/target/surefire-reports/TEST*.xml,
+       	target/failsafe-reports/TEST*.xml'
+   ])
+   publishHTML(target: [
+       reportDir:'angular-spring-boot-webapp/target/site/serenity/',
+       reportFiles:'index.html',
+       reportName:'Serenity Test Report', 
+       keepAll:true, 
+       alwaysLinkToLastBuild:true,
+       allowMissing: false
+    ])
+}
+```
+
+
+---
+
+## Deployment
+
+* Wichtiger Punkt bei Planung
+* Versionierung meist zu grob (1.0.3-SNAPSHOT)
+    
+```
+mvn package -Dversion=20140325092556-d4dafcd-2341
+```
+
+* Einfaches Groovy Script (EnvInject-Plugin in Jenkins)
+* kann mit Jenkins 2 direkt im Build-Skript hinterlegt werden
+
+```groovy
+def date = new Date()
+def datestring = date.format("yyyyMMddHHmmss")
+def version = datestring + "-" + SHA + "-" + BUILD_NUMBER;
+return [VERSION: version]
+```
+* Verschiedene Arten neue Version bereitzustellen<!-- .element: class="fragment no-border" -->
+    * Big Bang
+    * Feature-Toggle (nur eine Version)
+    * simultane Versionen (Blue/Green im Cluster)
+    * Beta-Release für Nutzergruppen
+* Gerade letzten beiden Versionen erfordern vom Backend mehrere Versionen in DB etc. zu unterstützen<!-- .element: class="fragment no-border" -->
+
+
+>NOTES:
+* recht trivial erscheinenden Änderung steckt eine grundsätzlich andere Herangehensweise an den Entwicklungsprozess
+    * kein unnwichtigen Development Branch (fehlerhafter oder unfertiger Code eingecheckt)
+    * keine wichtige Release Branches (jede Änderung nur mit großer Sorgfalt vorgenommen wird)
+    * im Hauptenwicklungszweig jeder Commit = potenzielles Release 
+* Anfügen eines Zeitstempels wg. zeitlich aufeinanderfolgende Builds auch aufsteigende Versionsnummern
+* Feature Toggles prinzipiell bei allen Arten genutzt werden
+
+--
+
+# Toggle-Integration
+
+* praxis-bewährtes Konzept - [FeatureToggle Pattern](http://martinfowler.com/bliki/FeatureToggle.html)
+* Features nicht nur nach ihrem Fertigstellungsgrad nutzbar, sondern abhängig von<!-- .element: class="fragment no-border" -->
+    * Benutzer
+    * Umgebung
+    * ...
+* Togglz<!-- .element: class="fragment no-border" -->
+    * Bibliothek für Java
+    * Integration in Spring, JEE, CDI, JSF
+    * Flexible [Persistierung](http://www.togglz.org/documentation/repositories.html) (Datei, Datenbank, ...)
+    * Admin-Konsole zu Verwaltung
+
+
+>NOTES:
+* Nach Finalisierung der neuen Funktionen lässt es sich in allen Umgebungen aktivieren und damit in der Software zur Verfügung stellen.
+
+--
+
+## Togglz (1)
+
+* Verschiedene Module integrierbar
+
+```xml
+<dependency><!-- Togglz core module (mandatory) -->
+  <groupId>org.togglz</groupId>
+  <artifactId>togglz-core</artifactId>
+</dependency>
+<dependency><!-- Togglz for Servlet environments (mandatory for webapps) -->
+  <groupId>org.togglz</groupId>
+  <artifactId>togglz-servlet</artifactId>
+</dependency>
+<dependency><!-- CDI integration (optional) -->
+  <groupId>org.togglz</groupId>
+  <artifactId>togglz-cdi</artifactId>
+</dependency>
+```
+* Admin-Konsole kann ebenso optional integriert werden
+
+--
+
+## Togglz (2)
+
+* Admin-Konsole
+
+![img](images/togglz-admin-console.png)
+
+
+--
+
+## Togglz (3)
+
+* Features als Enum-Klassen
+
+```java
+public enum AppFeatures implements Feature {
+  @Label("Portal")
+  PORTAL,
+
+  @EnabledByDefault
+  @Label("Enable project support in CV")
+  FEATURE_CV_PROJECT_SUPPORT;
+
+  public boolean isActive() {
+    return FeatureContext.getFeatureManager().isActive(this);
+  }
+```
+
+* Direkte Nutzung in Code
+
+```java
+    if (AppFeatures.PORTAL.isActive()) {
+    ...
+```
+
+--
+
+## Togglz (4)
+
+* Nutzung in [Tests](http://www.togglz.org/documentation/testing.html)
+
+```java
+public class AuthFilterTest {
+  @Rule
+  public TogglzRule togglzRule = TogglzRule.allEnabled(AppFeatures.class);
+
+  @Test
+  public void testNoRedirectToLoginWithUser() throws Exception{
+    final StringBuffer requestURL = new StringBuffer("abc/xyz");
+    final User user = new User.Builder().withUsername("test")...
+
+    final UserSession userSession = mock(UserSession.class);
+    final HttpSession httpSession = mock(HttpSession.class);
+    final FilterChain chain = mock(FilterChain.class);
+    request = mock(HttpServletRequest.class);
+    response = new HttpServletResponse();
+    when(request.getRequestURL()).thenReturn(requestURL);
+    when(request.getSession()).thenReturn(httpSession);
+    when(userSession.getUser()).thenReturn(user);
+    // all features are active by default
+    assertTrue(AppFeatures.PORTAL.isActive());
+    AuthFilter filter = new AuthFilter();
+    filter.setUserSession(userSession);
+    filter.doFilter(request, response, chain);
+
+    verify(chain).doFilter(request, response);
+    assertThat(response.getStatus(), 
+        is(not(HttpServletResponse.SC_NOT_FOUND)));
+  }
+
+  @Test
+  public void testRedirectToLoginWithNoUser() throws Exception{
+    final StringBuffer requestURL = new StringBuffer("abc/xyz");
+
+    final UserSession userSession = mock(UserSession.class);
+    final HttpSession httpSession = mock(HttpSession.class);
+    final FilterChain chain = mock(FilterChain.class);
+    request = mock(HttpServletRequest.class);
+    response = new HttpServletResponse();
+    when(request.getRequestURL()).thenReturn(requestURL);
+    when(request.getSession()).thenReturn(httpSession);
+    // all features are active by default
+    assertTrue(AppFeatures.PORTAL.isActive());
+    AuthFilter filter = new AuthFilter();
+    filter.setUserSession(userSession);
+    filter.doFilter(request, response, chain);
+    // then
+    verifyZeroInteractions(chain);
+    assertThat(response.getStatus(), 
+        is(not(HttpServletResponse.SC_NOT_FOUND)));
+  }
+
+  @Test // toggle off
+  public void testRedirectWithInactivePortalToggle() throws Exception{
+    final StringBuffer requestURL = new StringBuffer("abc/xyz");
+    togglzRule.disable(AppFeatures.PORTAL);
+
+    final UserSession userSession = mock(UserSession.class);
+    final HttpSession httpSession = mock(HttpSession.class);
+    final FilterChain chain = mock(FilterChain.class);
+    request = mock(HttpServletRequest.class);
+    response = new HttpServletResponse();
+    when(request.getRequestURL()).thenReturn(requestURL);
+    when(request.getSession()).thenReturn(httpSession);
+
+    assertFalse(AppFeatures.PORTAL.isActive());
+    AuthFilter filter = new AuthFilter();
+    filter.setUserSession(userSession);
+    filter.doFilter(request, response, chain);
+
+    verifyZeroInteractions(chain);
+    assertThat(response.getStatus(), 
+            is(HttpServletResponse.SC_NOT_FOUND));
+  }
+}
+```
+
+
+---
+
+# Testautomatisierung
+
+* Anchluss der Unit-Tests erzeugten Artefakte weiter testen
+    * Ablage in Repository
+    * Deployment in Test-Umgebung
+* Testumgebungen problemebehaftet
+    * Dedizierte Slaves (Labels)
+    * Docker Images
+* Docker besonders hilfreich (lokales Testen, Ressourcennutzung)
+    * [Maven-Plugin](https://github.com/alexec/docker-maven-plugin) verfügbar
+* Feedback ist ein Muss
+    * TestTools müssen aussaugekräftige Reports liefern
+    * reproduzierbar & nachvollziehbar
+    * gerade bei Oberflächen-Tests
+
+
+
+---
+
+
+# Responsive Testing mit Galen
+
+
+* Unterschiedliche Darstellungsformen für Bilder, wie Produktabbildungen, je nach verwendetem Endgerät<!-- .element: class="fragment"-->
+* Mobile und Desktop-Ansichten liefern gleiche User Experience im Repsonsive Design wie getrennt gepflegte Varianten<!-- .element: class="fragment"-->
+* Responsive Webdesign erhöht Testaufwand für verschiedene Auflösungen/Geräteklassen<!-- .element: class="fragment"-->
+* Agile Entwicklung wiederholt gerade Testschritte in mehreren Sprints<!-- .element: class="fragment"-->
+
+>NOTES:
+* Browser-Wanking
+* Kombinationen für Layout-Tests multiplizieren sich mit jeder Klasse
+     * 20 Seiten in 4 Browsern
+     * X4 Geräteklassen
+* Dann nochmal Wiederholung in mehreren Sprints
+     * Features gesplittet.
+     * Änderungen an Features
+* Menschen nicht geeignet um so etwas wiederholt zu verifizieren, Komplexität des Layouts!
+* Mitarbeit im Galen-Projekt
+
+--
+
+# Über Galen
+
+![Galen Logo](images/galen_logo.png)
+
+>  "Galen is a OSS tool for testing html layout in a real browser"
+
+* Grundprinzipen<!-- .element: class="fragment"-->
+	* Test beschreiben im BDD-Stil das gewünschte Verhalten
+	* "menschlich lesbar"
+	* Verhalten wie ein Nutzer
+* Features<!-- .element: class="fragment"-->
+	* DSL für die Beschreibung der Specs
+	* Eigene Testsyntax mit Data-Providern (optional)
+	* Selenium für die Ausführung
+	* Ausführliches Reporting
+
+>NOTES:
+* Interaktion mit WebDriver möglich
+* positiv UND negativ Feedback
+
+--
+
+# Architektur
+
+* Test Spezifikationen und Device Infos werden interpretiert
+* Tests werden mit Selenium ausgeführt
+
+![Galen Release 2](images/Galen_AoD_v1.png)
+
+* Schnittstellen zu Java und JavaScript<!-- .element: class="fragment"-->
+
+>NOTES:
+* Galen ist in Java geschrieben
+* Rhino als Schnittstelle zwischen Galen und JavaScript
+
+--
+
+## Analyse design
+
+
+![Responsive Design](images/responsive_design.png)
+
+* Galen wurde aufgrund von Responsive Webdesign entwickelt
+* Geräte stehen stellvertretend für Browser und Bildschirmgröße
+* Tags sorgen für Zuordnung
+* Zur Ausführung wird Browsergröße angepasst und Test ausgeführt
+
+--
+
+# Galen Spec Language
+
+![Spec Language](images/galen_spec.png)
+
+* Elemente werden zunächst bekannt gemacht
+* Geräte(klassen) werden über Tags festgelegt
+* Elemente erhalten Regeln, die geprüft werden
+
+
+--
+
+# Beispiel
+
+```python
+@objects
+  content       #content
+    heading     .tile_head_line_icon
+
+= Content should not exceed screen width =
+    content:
+      width 90 to 100% of viewport/width
+
+= Content should not exceed component width =
+    @on mobile
+      content.heading:
+        inside parent ~0px left
+    @on desktop
+      content.heading:
+        inside parent ~5px left
+
+```
+* Ohne Tag gilt es für alle Varianten
+
+
+--
+
+## Wiederverwendung
+
+Prinzipiell mehrere Arten
+
+* Importieren von Specs
+* Auslagerung in Komponenten
+* Rules
+
+--
+
+## Import von allgemeinen Specs
+
+```python
+@objects
+    tile-image-*  .tile_inline_first
+    tile-text-*   .tile_inline_second
+
+@import shared/commonLayout.gspec
+
+= Content should not exceed screen width =
+    tile-image-*:
+        aligned horizontally all tile-image-1
+
+```
+
+--
+
+## Komponenten
+
+* Komponenten verhalten sich wie Widgets, z.B. Menüeinträge oder Listeneinträge
+* Pseudo-Element 'parent' für Referenzierung
+
+
+```python
+@objects
+    tile-image-*  .tile_inline_first
+    tile-text-*   .tile_inline_second
+
+= Content should not exceed screen width =
+    tile-image-*:
+        aligned horizontally all tile-image-1
+
+= Info section =
+    tile-text-*:
+        component shared/tileTextComponent.gspec
+```
+
+--
+
+## Custom Rules
+
+* werden als Extra-Datei abgelegt
+
+```python
+# Check elements horizontal alignment top e.g.
+@rule %{objectPattern} are aligned horizontally top next to each other
+    @if ${count(objectPattern) > 1}
+        @forEach [${objectPattern}] as item, next as nextItem
+            ${item}:
+                aligned horizontally top ${nextItem}
+```
+
+* Über Pattern-Matching nutzbar und mit Pipe in Spec nutzbar
+
+```python
+@objects  
+  login_box   #login 
+    label-*   .label
+    username  #username
+    password  #password
+    submit    button
+
+@groups
+  login_box_elements login.label-*,login.username,login.password,login.submit
+
+= Login box looks good =
+    @on desktop, tablet
+        | &login_box_element are aligned horizontally top next to each other
+
+```
+
+
+>NOTES:
+Gerade bei umfangreichen Layouts ergeben sich häufig „Patterns“, die man immer wieder verwenden möchte. Darum bietet das Framework „custom rules“ an. Das Prinzip ist ähnlich wie in Cucumber. Es werden Pattern-Regeln erstellt und über das Matching ruft das Framework die entsprechend Regel vom Framework auf:
+
+---
+
+## Aufbau von Tests
+
+* Galen erlaubt Parametrisierung:
+
+```python
+@@ table devices
+  | device    | size     |
+  | mobile    | 500x700  |
+  | tablet    | 900x600  |
+  | desktop   | 1300x700 |
+
+@@ parameterized using devices
+homepage on ${device}
+  ${websiteUrl} ${size}
+    check specs/homepage.spec --include "${device}"
+
+```
+Ausführung über Kommandozeile
+
+```
+galen test my.test -DwebsiteUrl='https://getbootstrap.com' --htmlreport reports/
+```
+
+--
+
+
+# Testausführung
+
+Einzelne Tests können auch direkt ausgeführt werden
+
+
+```python
+$ galen check home-page.spec 
+    --url "http://example.com/home" 
+    --size 1024x800 
+    --include desktop 
+    --htmlreport report.html
+```
+
+--
+
+# Bildvergleich
+
+* Pagedump kann Screenshots der aktuellen Seite erzeugen
+
+```python
+galen dump "specs/homepage.spec"
+    --url "http://galenframework.com"
+    --size "1024x768"
+    --export "dumps/homepage-dump" 
+    --max-width "200" 
+    --max-height "200"
+```
+
+>NOTES:
+* Pagedump eignet sich auch zum "Sammeln der Elemente"
+
+--
+
+# Vergleich in Spec
+
+```python
+header-logo
+    image: file imgs/header-logo.png, error 4% 
+```
+
+![Responsive Design](images/galen_image-comparison.png)
+
+---
+
+# Report
+
+![Responsive Design](images/galen_report.png)
+
+
+* Report hilft durch direkte Anzeige der Elemente bei Fehlersuche
+
+
+--
+
+# Beispiel-Report
+
+<div  class="stretch">
+<iframe src="code/reports/bootstrap/report.html" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+--
+
+# Pagedump
+
+<div  class="stretch">
+<iframe src="code/test/bootstrap/dumps/javascript/page.html" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+<a target="_blank" href="code/test/bootstrap/dumps/javascript/page.html"> Neuer Tab</a>
+
+```
+galen dump "specs/javascriptPageLayout.gspec" \
+	--url "http://getbootstrap.com/javascript/" \
+    --size "1024x768" --export "dumps/javascript" \
+    --max-width "200" max-height "200"
+```
+
+---
+
+# Demo
+
+```python 
+# basic.test
+@@ table browsers
+    | browerName | browser |
+    | Chrome     | chrome  |
+    | Firefox    | firefox |
+@@ table devices
+    | deviceName | tags      | size     |
+    | Mobile     | mobile    | 320x600  |
+    | Desktop    | desktop   | 1024x800 |
+@@ parameterized using browsers
+@@ parameterized using devices
+@@ groups home, page
+homepage on ${deviceName} in ${browerName} browser
+  selenium ${browser} ${websiteUrl} ${size}
+    check specs/homePageLayout.spec --include "${device}"
+# run
+galen test basic.test -DwebsiteUrl="getbootstrap.com" \
+	--htmlreport reports
+```
+
+>NOTES:
+* iterm: umst + cmd +7
+
+
+--
+
+# Saucelabs
+
+* Testing in Cloud möglich
+
+```python 
+@@ set 
+    sauceKey        aff16b42-9c23-4cb6-adf7-38da9e02193a
+    sauceUser       hypery2k
+    gridLogin       ${sauceUser}:${sauceKey}
+    gridUrl         http://${gridLogin}@ondemand.saucelabs.com:80/wd/hub
+    website         http://testapp.galenframework.com
+@@ table browsers
+    | browserName   | gridArgs                                                               |
+    | Safari on Mac | --browser "safari" --version 6   --dc.platform "OS X 10.8"             |
+    | Opera         | --browser "opera" --version 12   --dc.platform "Linux"                 |
+    | Firefox       | --browser "firefox" --version 34 --dc.platform "Linux"                 |
+    | Chrome        | --browser "chrome" --version 39 --dc.platform "Linux"                  |
+    | IE 11         | --browser "internet explorer" --version 11 --dc.platform "Windows 8.1" |
+@@ parameterized using browsers
+Home page on ${browserName} browser
+    selenium grid ${gridUrl} --page ${website} ${gridArgs}
+        check homepage.spec
+```
+
+>NOTES:
+* Alternative zum eigenen Grid
+* [Dashboard](https://saucelabs.com/beta/dashboard)
+
+
+--
+
+# Interaktion
+
+* [GalenPages API](http://galenframework.com/docs/reference-galenpages-javascript-api/) hilft bei Interaktionen
+* Einfache PageObject-Pattern Biblothek
+
+```javascript
+var login = arg.login, password = arg.password; // test data
+this.LoginPage = $page("Login page", {
+  email: "input.email", // css locator
+  password: "xpath: //input[@class='password']", // xpath locator
+  submitButton: "id: submit", // id locator
+
+  load: function () {
+    this.open("http://example.com/login");
+    return this.waitForIt();
+  },
+  loginAs: function (userName, password) {
+    this.email.typeText(userName);
+    this.password.typeText(password);
+    this.submitButton.click();
+  }
+});// now you can use it like this
+new LoginPage(driver).load().loginAs(login, password);
+```
+
+--
+
+# Kombination von GalenPages und Specs
+
+```python
+@@ table browsers
+    | browerName | browser |
+    | Chrome     | chrome  |
+    | Firefox    | firefox |
+@@ table devices
+    | deviceName | tags      | size     |
+    | Mobile     | mobile    | 320x600  |
+    | Desktop    | desktop   | 1024x800 |
+
+@@ parameterized using browsers
+@@ parameterized using devices
+@@ groups login, page
+login on ${deviceName} in ${browerName} browser
+  selenium ${browser} ${websiteUrl} ${size}
+    check specs/loginPageLayout.gspec --include "${device}"
+    run login.js '{login: "user", password: "password"}'
+    check specs/eventPageLayout.gspec --include "${device}"
+
+```
+
+
+---
+
+
+# Oberflächen Testing mit Stil - Serenity
+
+* Tool für ATDD (acceptance test driven development)
+* Macht Oberflächen-Tests lesbarer, wartbarer und wiederwendbar
+* Nutzt Selenium als technische Basis
+* Kann als Java und JBehave-Variante genutzt werden
+* Nutzt PagePattern
+    * Page als Model der Webseite mit allen Elemente. 
+    * Steps als Gruppierung der möglichen Interaktionsmöglickeiten, z.B. Klicken
+    * Test ist eine Kollektion von Tests die Benutzereingaben reflektieren und das Ergebnis verifizieren
+* Stellt Reporting für Tracking & Fehlersuche zur Verfügung
+* Verbindung mit Ticket-System
+* Anforderungen auf Tests mappen
+
+
+>NOTES:
+* Passt zum CD Gedanken
+* WebDriver is a browser automation API
+    * Used for UI Functional testing
+* Thucydides is a Testing framework using WebDriver
+    * Used for running tests, advanced reporting
+
+--
+
+# Serenity (2) -  Page-Object Pattern
+
+* Testautomatisierungspattern für effiziente und lesbare Tests
+* Jede UI Seite wird auf eine Page-Klasse gemappt
+* Interaktion wird über Steps-Klassen umgesetzt
+* Tests nutzen Steps um Anwendungsverhalten zu simulieren
+
+![img](images/serenity_page_pattern.png) <!-- .element: class="big-image no-border" -->
+
+>NOTES:
+* Wartung der Tests ist einfacher, z.B. kann Vererbung in Seiten/Pages genutzt werden um gemeinsame Elemente, wie Navigation abzubilden
+* Testcode wird sehr leicht lesbar
+* Komponenten können wieder verwendet werde
+* Testerstellung einfacher
+* Umsetzungen für verschiedene Plattformen
+     * IDE: Visual Studio, Eclipse, IntelliJ, Visual Studio
+     * Sprachen: C#, Java, Ruby, Python, Perl, JavaScript, ObjectiveC
+
+--
+
+# Serenity (3) - Beispiel
+
+* Anforderung: Als Nutzer möchte zum Ergebnis meiner Suche navigieren
+* Testfall:    
+    * Starte Google-Suche
+    * Tippe Suchbegriff ein
+    * Suche Ergebnis in Trefferliste
+    * Navigiere zu Ergebnis
+    * Validiere Ergebnis
+
+
+--
+
+# Serenity (4) - Seitenstruktur
+
+
+```java
+public class GoogleSearchPage extends PageObject {
+    private WebElement searchInput;    //add your WebElement to the Page
+    
+    public GoogleSearchPage (WebDriver driver){
+        super(driver);//add constructor due to PageObject
+    }
+}
+```
+
+![img](images/serenity_demo_2.png) <!-- .element: class="fragment big-image no-border" -->
+
+>NOTES:
+* Support für ng-data Attribute
+
+--
+
+# Serenity (5) - Seitenstruktur
+
+* Suchergebnisse werden in Page-Klasse extrahiert
+
+```java
+public class GoogleResultsPage extends PageObject{
+  ...
+  @FindBy(id="search")
+  private WebElement searchResults;
+    
+  public void findResult(String resultsTerm){
+   element(searchResults).waitUntilVisible();
+   waitFor(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                                    By.cssSelector("div#search li.g")));
+   List<WebElement> resultList = searchResults.findElements(
+                                    By.cssSelector("li.g"));
+
+   theFor:
+    for(WebElement elementNow:resultList)
+        if(elementNow.getText().contains(resultsTerm)){
+            element(elementNow).waitUntilPresent();
+            elementNow.findElement(By.cssSelector("h3.r a")).click();
+            break theFor;
+        }
+  }
+}
+```
+
+--
+
+# Serenity (6) - Interaktion über Steps
+
+* Jegliche Benutzerinteraktion wird in Steps abgebildet
+* Steps werden im Report aufgezeigt
+* Parameter werden im Report angezeigt
+* Methodennamen werden CamelCase gesplittet
+
+```java
+public class GoogleSteps extends ScenarioSteps{
+    ...
+
+    @Step
+    public void inputSearchTerm(String search){
+        googleSearchPage().inputTerm(search);
+    }
+
+    @Step
+    public void clickOnSearch(){
+        googleSearchPage(). clickOnSearch();
+    }
+
+    @StepGroup
+    public void performSearch(String search){
+        inputSearchTerm(search);
+        clickOnSearch();
+    }
+} 
+```
+
+>NOTES: 
+* Steps nutzen um Inhalte zu verifizieren
+* Wichtig für Reporting
+* Fehler von Assertions werden nur in Steps ausgewertet
+
+--
+
+# Serenity (7) - Tests
+
+* Anforderungen werden im Test abgeglichen
+* BDD-like:
+
+```java
+@RunWith(SerenityRunner.class)
+public class GoogleSearchTest {
+    @Managed(uniqueSession = true)
+    public WebDriver webdriver;
+
+    @ManagedPages(defaultUrl = "https://www.google.com")
+    public Pages pages;
+
+    @Steps
+    public GoogleSteps googleSteps;
+
+    @Test
+    public void googleSearchTest(){
+        googleSteps.performSearch(“evozon”);
+        googleSteps.findSearchResult(“on Twitter”);
+        googleSteps.verifyUrl(“twitter.com/evozon”);
+    }
+}
+```
+
+* CSV-Dateien für Testdaten nutzbar 
+
+
+>NOTES: 
+* Pro Umgebung auch andere Testdaten nutzbar
+
+--
+
+# Serenity (8) - Report Beispiel
+
+![img](images/serenity_demo_6.png)
+
+>NOTES: 
+* Weitere Testdaten in Report einbindbar
+
+--
+
+# Serenity (9) - Demo
+
+<div  class="stretch">
+<iframe src="https://martinreinhardt-online.de/jenkins/view/Demos/job/serenity_gradle_sample/53/Serenity_Report/" width="100%" height="100%" style=" margin: 0px; padding: 0px;"></iframe>
+</div>
+
+>NOTES: 
+* Angular-Beispiel mit GitHub Tags
+* Anforderungen werden auf Tests verteilt
+* Anforderungen werden dann auch im Report auf den Tests verlinkt
+* Es können auch direkt Tickts (z.B. in JIRA an Tests verlinkt werden), siehe [Doku](http://thucydides.info/docs/serenity/#_integrating_with_jira)
+* Können auch tags genutzt werden.
+
+---
+
+
+# Fazit & Ausblick
+
+* Feedback ist ein Muss
+    * Teststufen kontinuierlich Feedback über aktuellen Qualitätsstand <!-- .element: class="fragment" -->
+    * Tools müssen das unterstützen <!-- .element: class="fragment" -->
+* Im Bereich von CD viele Tools im Bereich Testing & Automatisierung <!-- .element: class="fragment" -->
+* Gefahr von "Over-Engineering" der Schritte in Pipeline<!-- .element: class="fragment" -->
+* Bewegung im Tool-Bereich (Thoughtworks Go, Docker ...)<!-- .element: class="fragment" -->
+* Continuous Integration zwingend für Continuous Delivery<!-- .element: class="fragment" -->
+
+---
+
+# Links
+
+* [FeatureToggle Pattern](http://martinfowler.com/bliki/FeatureToggle.html)
+* [Beispiel Anwendung](https://github.com/holisticon/continous-delivery-demo)
+* [GitHub-Projekt Serenity](https://github.com/hypery2k/serenity_sample)
+* [Galen Beispiele]()
+* [Rock CI mit Jenkins 2 und Docker](https://www.holisticon.de/2016/04/rock-ci-mit-docker-und-jenkins-2/)
+* [Beispiel Serenity](https://martinreinhardt-online.de/jenkins/view/Demos/job/serenity_gradle_sample/)
+* Jenkins
+    * [Docker image for workflow demo](https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md)
+    * [Workflow-Beispiel Job](https://martinreinhardt-online.de/jenkins/job/BMP_workflow-plugin_sample1/6/)
+
+---
+
+> There is no one-size-fits-all solution to the complex problem of 
+implementing a deployment pipeline.”
+   *Continuous Delivery*, J. Humble, D. Farley
+
+
+---
+
+# About me
+
+* Martin Reinhardt (Holisticon AG)
+
+![img](https://pbs.twimg.com/profile_images/488919098240139264/KRAs7ITF.png)<!-- .element: class="big-image no-border" style="width:40%;height:40%"-->
+
+* [github.com/hypery2k](https://github.com/hypery2k)
+* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
+
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
