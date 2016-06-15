@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Hello React!</title>
+	<script src="react.js"></script>
+	<script src="react-dom.js"></script>
+	<script src="babel-core-browser-5.8.23.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+	var Movie = React.createClass({
+		propTypes : {
+			item : React.PropTypes.object
+		},
+		render() {
+			return (
+				<div style={{display: 'table-row'}}>
+					<span style={{display: 'table-cell'}}><img src={this.props.item.posters.thumbnail} width="80px" /></span>
+					<span style={{display: 'table-cell'}}>{this.props.item.title}</span>
+					<span style={{display: 'table-cell'}}>{this.props.item.year}</span>
+			</div>
+		);
+		}
+	});
+
+
+	var MovieList = React.createClass({
+		REQUEST_URL: 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json',
+		render() {
+			return (
+				<div style={{display: 'table', width: '100%'}}>
+					{this.state.movies.map((result) => {
+						return (<Movie key={result.id} item={result}></Movie>)
+					})}
+				</div>
+			)
+		},
+		getInitialState() {
+			return {
+				movies:[]
+			}
+		},
+		fetchData() {
+			fetch(this.REQUEST_URL)
+					.then((response) => response.json())
+					.then((data) => {
+						this.setState({
+							movies : data.movies
+						})
+					});
+		},
+		componentDidMount : function(){
+			this.fetchData();
+		},
+
+	});
+
+
+	ReactDOM.render(
+	<div style={{display: 'table', width: '100%'}}>
+		<Movie item={{
+			title: "Hello EnterJS",
+				year: "2016",
+				posters: {
+			thumbnail: "https://www.enterjs.de/images/logo.svg"
+			}}
+		}></Movie>
+	</div>, document.getElementById('app')
+	);
+</script>
+</body>
+</html>
