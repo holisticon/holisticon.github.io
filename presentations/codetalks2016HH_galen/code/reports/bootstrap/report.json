@@ -1,0 +1,73 @@
+{
+  "tests" : [ {
+    "name" : "Home page on Safari on Mac browser",
+    "startedAt" : 1460482334700,
+    "endedAt" : 1460482371226,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 2,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 4
+    },
+    "testId" : "1-home-page-on-safari-on-mac-browser",
+    "failed" : true,
+    "duration" : 36526
+  }, {
+    "name" : "Home page on Opera browser",
+    "startedAt" : 1460482371227,
+    "endedAt" : 1460482385872,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 2,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 4
+    },
+    "testId" : "2-home-page-on-opera-browser",
+    "failed" : true,
+    "duration" : 14645
+  }, {
+    "name" : "Home page on Firefox browser",
+    "startedAt" : 1460482385872,
+    "endedAt" : 1460482400687,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 2,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 4
+    },
+    "testId" : "3-home-page-on-firefox-browser",
+    "failed" : true,
+    "duration" : 14815
+  }, {
+    "name" : "Home page on Chrome browser",
+    "startedAt" : 1460482400687,
+    "endedAt" : 1460482424888,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 2,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 4
+    },
+    "testId" : "4-home-page-on-chrome-browser",
+    "failed" : true,
+    "duration" : 24201
+  }, {
+    "name" : "Home page on IE 11 browser",
+    "startedAt" : 1460482424888,
+    "endedAt" : 1460482444037,
+    "failed" : true,
+    "statistic" : {
+      "passed" : 2,
+      "errors" : 2,
+      "warnings" : 0,
+      "total" : 4
+    },
+    "testId" : "5-home-page-on-ie-11-browser",
+    "failed" : true,
+    "duration" : 19149
+  } ]
+}
