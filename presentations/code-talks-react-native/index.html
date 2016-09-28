@@ -68,7 +68,6 @@
 * Open Source View Rendering Library
 * von Facebook für eigene Anwendungen  <!-- .element: class="fragment" -->
 * Motivation: UI-Komponenten besser (vorhersehbarer) entwickeln<!-- .element: class="fragment" -->
-* könnte also auch für unsere Mediatheken-App verwendet werden <!-- .element: class="fragment" -->
 
 
 ---
@@ -105,11 +104,6 @@ var Movie = React.createClass({
 		}
 });
 ```
-
----
-
-# Properties werden von außen in die Komponente gereicht
-
 ```jsx
 	<Movie item={{
 		   		title: "Hello CodeTalks",
@@ -120,10 +114,11 @@ var Movie = React.createClass({
 	}}></Movie>
 ```
 
+
 ---
 
 
-# Komponenten haben einen internen Zustand
+# Komponenten haben einen Zustand
 
 ```jsx
 	var MovieList = React.createClass({
@@ -173,7 +168,7 @@ var Movie = React.createClass({
 
 ---
 
-# Was ist daran das besondere?
+# Was ist daran das Besondere?
 
 * Deklarative Programmierung (wie HTML)
 * Virtual DOM / Virtual DOM Diffing <!-- .element: class="fragment" -->
@@ -188,7 +183,7 @@ var Movie = React.createClass({
 
 * Wir haben bereits eine Website
 * Wir können die Webseite in einem WebView rendern <!-- .element: class="fragment" -->
-* Mögliche Technologie: Apache Cordova bzw. Adobe PhoneGap <!-- .element: class="fragment" -->
+* Mögliche Technologie: Apache Cordova bzw. Adobe PhoneGap, Ionic <!-- .element: class="fragment" -->
 
 ---
 
@@ -302,13 +297,6 @@ AppRegistry.registerComponent('MyFirstProject', () => MyFirstProject);
 
 ---
 
-# Hands On
-
-![helloReact](images/hello-react-native.png)<!-- .element: style="width:40%" -->
-
-
----
-
 # Movie Component in React
 
 ```jsx
@@ -364,7 +352,7 @@ var Movie = React.createClass({
 		   		title: "Hello CodeTalks",
 		   		year: "2016",
 		   		posters: {
-			 		thumbnail: "https://developer.aboutyou.de/..../code.talks13.jpg"
+			 		thumbnail: "https://developer.aboutyou.de/blog/wp-content/uploads/2014/10/code.talks13.jpg"
 		   		}
 	}}></Movie>
 ```
@@ -559,11 +547,6 @@ navigator.push({
 
 ---
 
-# Code
-
-![ListView](images/listview.png)<!-- .element: style="width:40%" -->
-
----
 
 # Plattformspezifische Komponenten
 
@@ -680,7 +663,7 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 
 ---
 
-# Thank you
+# Danke
 
 
 Slides: [holisticon.github.io/presentations/code-talks-react-native](https://holisticon.github.io/presentations/code-talks-react-native)
