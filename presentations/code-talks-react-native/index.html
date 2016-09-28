@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Holisticon - React Native</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+	<style>
+	.reveal pre  {
+		width: 100%;
+	}
+	.reveal pre code {
+	    max-height: 600px;
+	</style>
+	
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'bower_components/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># React Native
+
+[oliver.ochs@holisticon.de](mailto:oliver.ochs@holisticon.de)
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@holisticon](https://twitter.com/holisticon)
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+
+---
+
+
+# React
+
+* Open Source View Rendering Library
+* von Facebook für eigene Anwendungen  <!-- .element: class="fragment" -->
+* Motivation: UI-Komponenten besser (vorhersehbarer) entwickeln<!-- .element: class="fragment" -->
+* könnte also auch für unsere Mediatheken-App verwendet werden <!-- .element: class="fragment" -->
+
+
+---
+
+# Komponenten sind Klassen mit einer Render-Methode
+
+```jsx
+var Movie = React.createClass({
+		render() {
+			return (
+				<div>Hello CodeTalks</div>
+			);
+		}
+});
+```
+
+---
+
+# Komponenten haben Properties
+
+```jsx
+var Movie = React.createClass({
+		propTypes : {
+			item : React.PropTypes.object
+		},
+		render() {
+			return (
+				<div>
+					<span><img src={this.props.item.posters.thumbnail} width="80px" /></span>
+					<span>{this.props.item.title}</span>
+					<span>{this.props.item.year}</span>
+				</div>
+			);
+		}
+});
+```
+
+---
+
+# Properties werden von außen in die Komponente gereicht
+
+```jsx
+	<Movie item={{
+		   		title: "Hello CodeTalks",
+		   		year: "2016",
+		   		posters: {
+			 		thumbnail: "https://developer.aboutyou.de/..../code.talks13.jpg"
+		   		}
+	}}></Movie>
+```
+
+---
+
+
+# Komponenten haben einen internen Zustand
+
+```jsx
+	var MovieList = React.createClass({
+		    getInitialState() {
+				return {
+    				movies:[]
+    			}
+    		},
+    		fetchData() {
+				fetch('MoviesExample.json')
+				.then((response) => response.json())
+				.then((data) => {
+					this.setState({
+						movies : data.movies
+					})
+				});
+			},
+			componentDidMount : function(){
+				this.fetchData();
+			},
+	});
+```
+
+---
+
+# Komponenten lassen sich in einer Hierarchie rendern
+
+```jsx
+	var MovieList = React.createClass({
+			render() {
+				return (
+					<div>
+						{this.state.movies.map((result) => {
+							return (<Movie key={result.id} item={result}></Movie>)
+						})}
+					</div>
+				)
+			},
+	});
+```
+
+---
+
+# Hands On Code
+
+![helloWorld](images/hello-world-react.png)<!-- .element: style="width:90%" -->
+
+---
+
+# Was ist daran das besondere?
+
+* Deklarative Programmierung (wie HTML)
+* Virtual DOM / Virtual DOM Diffing <!-- .element: class="fragment" -->
+* Wiederverwendbare Komponenten <!-- .element: class="fragment" -->
+* Methoden und Markup gehören zusammen<!-- .element: class="fragment" -->
+* Bleeding Edge JavaScript <!-- .element: class="fragment" -->
+* Großes Ökosystem (Redux, Relay, GraphQL, ...) <!-- .element: class="fragment" -->
+
+---
+
+# Going native
+
+* Wir haben bereits eine Website
+* Wir können die Webseite in einem WebView rendern <!-- .element: class="fragment" -->
+* Mögliche Technologie: Apache Cordova bzw. Adobe PhoneGap <!-- .element: class="fragment" -->
+
+---
+
+# User Experience
+
+* Jede Plattform hat ihre Besonderheiten
+* Spezifische UI-Controls (z.B. Progress Bar, Radio, ...) <!-- .element: class="fragment" -->
+* Unterschiedliche Betriebssystemversionen (iOS 6 vs. iOS 7 - 10) <!-- .element: class="fragment" -->
+* Eingeschränkte Gestensteuerung <!-- .element: class="fragment" -->
+* Fühlt sich nie echt an <!-- .element: class="fragment" -->
+* Ein Smartphone ist kein Desktop-Rechner <!-- .element: class="fragment" -->
+* Mark Zuckerbergs "biggest mistake" <!-- .element: class="fragment" -->
+
+
+---
+
+
+![tech crunch](images/biggest-mistake.png)<!-- .element: style="width:80%" -->
+
+Quelle: [techcrunch.com](http://techcrunch.com/2012/09/11/mark-zuckerberg-our-biggest-mistake-with-mobile-was-betting-too-much-on-html5/)
+
+---
+
+# Native App
+
+* Optimale UX auf allen Plattformen
+* Entwicklung für alle Plattformen aufwändig (Swift vs. Java)<!-- .element: class="fragment" -->
+* Developer Experience mäßig durch langsamen Roundtrip <!-- .element: class="fragment" -->
+* Release Zyklus durch Reviews langsam <!-- .element: class="fragment" -->
+* Optimierung (A/B-Tests) schwierig <!-- .element: class="fragment" -->
+
+---
+
+# React Native - A framework for building native apps using react
+
+* Angekündigt 2015, inzwischen relativ stabil
+* Deklarative UI (wie HTML)<!-- .element: class="fragment" -->
+* Logik in JS (wie im Web)<!-- .element: class="fragment" -->
+* Developer Experience wie im Web <!-- .element: class="fragment" -->
+* <!-- .element: class="fragment" -->**Learn once, write everywhere**
+* kein HTML, kein Browser, keine WebViews <!-- .element: class="fragment" -->
+* Native Components <!-- .element: class="fragment" -->
+* Touch Handling <!-- .element: class="fragment" -->
+* Style & Layout <!-- .element: class="fragment" -->
+
+
+---
+
+# Projekt aufsetzen
+
+```bash
+    brew install watchman
+    brew install flow
+	npm install -g react-native-cli
+	react-native init MyFirstProject
+```
+
+
+---
+
+# Ergebnis
+
+```bash
+drwxr-xr-x  5 ios
+drwxr-xr-x  5 android
+drwxr-xr-x  5 node_modules
+-rw-r--r--  1 index.android.js
+-rw-r--r--  1 index.ios.js
+-rw-r--r--  8 package.json
+```
+
+---
+
+# Was ist drinnen?
+
+```jsx
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+
+class MyFirstProject extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.ios.js
+        </Text>
+        <Text style={styles.instructions}>
+          Press Cmd+R to reload,{'\n'}
+          Cmd+D or shake for dev menu
+        </Text>
+      </View>
+    );
+  }
+}
+//...
+AppRegistry.registerComponent('MyFirstProject', () => MyFirstProject);
+
+```
+
+---
+
+# Projekt ausführen
+
+```bash
+	react-native run-android
+	react-native run-ios
+```
+
+---
+
+# Hands On
+
+![helloReact](images/hello-react-native.png)<!-- .element: style="width:40%" -->
+
+
+---
+
+# Movie Component in React
+
+```jsx
+var Movie = React.createClass({
+		propTypes : {
+			item : React.PropTypes.object
+		},
+		render() {
+			return (
+				<div>
+					<span>
+						<img src={this.props.item.posters.thumbnail} width="80px" />
+					</span>
+					<span>{this.props.item.title}</span>
+					<span>{this.props.item.year}</span>
+				</div>
+			);
+		}
+});
+```
+
+---
+
+# Movie Component in React Native
+
+```jsx
+var Movie = React.createClass({
+  render() {
+      return(
+              <View style={styles.container}>
+              		<View style={styles.imageContainer}>
+						<Image
+                          style={styles.poster}
+                          source={{uri: this.props.item.posters.thumbnail}}
+                        />
+					</View>
+					<View style={styles.infoContainer}>
+						<Text style={styles.title}>{this.props.item.title}</Text>
+						<Text style={styles.info}>{this.props.item.year}</Text>
+                    </View>
+              </View>
+      );
+  }
+});
+```
+
+---
+
+# Verwendung der Movie Component
+
+```jsx
+	<Movie item={{
+		   		title: "Hello CodeTalks",
+		   		year: "2016",
+		   		posters: {
+			 		thumbnail: "https://developer.aboutyou.de/..../code.talks13.jpg"
+		   		}
+	}}></Movie>
+```
+
+---
+
+
+# Styling
+
+```jsx
+const styles = StyleSheet.create({
+  title: {
+		fontSize: 20,
+		textAlign: 'left',
+		paddingLeft: 8
+	},
+	year: {
+		textAlign: 'left',
+		padding: 8
+	},
+	info: {
+		textAlign: 'left',
+		padding: 8
+	},
+	poster: {
+		width: 150,
+		height: 243,
+		borderRadius: 12,
+	},
+);
+
+```
+
+---
+
+# Flexbox
+
+* Flexbox ist ein CSS-Modul, das Elemente in einem Container anordnet
+* Flexbox kommt aus dem Response Web Design, um unterschiedliche Bildschirmgrößen effektiv zu nutzen<!-- .element: class="fragment" -->
+
+
+---
+
+
+# Flexbox
+
+
+```css
+container: {
+	flex: 1,
+	flexDirection: 'column',
+	justifyContent: 'center',
+	alignItems: 'center',
+	backgroundColor: '#F5FCFF'
+},
+```
+<!-- .element: style="float: right; width: 40%" -->
+
+![helloReact](images/flexbox-1.png)<!-- .element: style="width:40%" -->
+
+---
+
+# Flexbox
+
+
+```css
+container: {
+	flex: 1,
+	flexDirection: 'row',
+	justifyContent: 'center',
+	alignItems: 'center',
+	backgroundColor: '#F5FCFF'
+},
+infoContainer: {
+	flex: 1,
+	flexDirection: 'row'
+},
+```
+<!-- .element: style="float: right; width: 40%" -->
+
+![helloReact](images/flexbox-3.png)<!-- .element: style="width:40%" -->
+
+---
+
+# Flexbox
+
+
+```css
+container: {
+	flex: 1,
+	flexDirection: 'row',
+	justifyContent: 'center',
+	alignItems: 'center',
+	backgroundColor: '#F5FCFF'
+},
+infoContainer: {
+	flex: 1,
+	flexDirection: 'column'
+},
+```
+<!-- .element: style="float: right; width: 40%" -->
+
+![helloReact](images/flexbox-2.png)<!-- .element: style="width:40%" -->
+
+---
+
+# Flexbox Hands On
+
+
+![helloReact](images/hands-on-flexbox.png)<!-- .element: style="width:35%" -->
+
+---
+
+# ListView
+
+* Kernkomponente
+* Vertikaler Scroll-View <!-- .element: class="fragment" -->
+* Veränderliche Daten <!-- .element: class="fragment" -->
+*  Array von Einträgen <!-- .element: class="fragment" --> ```ListView.DataSource``` <!-- .element: class="fragment" -->
+*  <!-- .element: class="fragment" -->```renderRow``` ist ein Renderer für einen Eintrag
+
+```jsx
+<ListView
+	dataSource={this.state.dataSource}
+	renderRow={this.renderMovie}
+	style={styles.listView}
+/>
+```
+<!-- .element: class="fragment" -->
+
+---
+
+# ListView
+
+```javascript
+this.state.dataSource = new ListView.DataSource({
+	rowHasChanged: (row1, row2) => row1 !== row2,
+})
+this.state.dataSource.cloneWithRows([movie1, movie2, movie3, ....])
+
+```
+
+```javascript
+renderMovie(movie) => {
+	return (
+		<View style={styles.container}>
+			<Image
+				source={{uri: movie.posters.thumbnail}}
+				style={styles.thumbnail}
+			/>
+			<View style={styles.rightContainer}>
+				<Text style={styles.title}>{movie.title}</Text>
+				<Text style={styles.year}>{movie.year}</Text>
+			</View>
+		</View>
+	);
+}
+```
+
+---
+
+
+# Navigation
+
+* Übergang zwischen Scenes
+* Identifikation der Scene über ein Route-Objekt <!-- .element: class="fragment" -->
+* Navigation mit einem Navigator-Objekt <!-- .element: class="fragment" -->
+
+
+```jsx
+<Navigator
+	initialRoute={{name: 'Start', index: 0}}
+	renderScene={this.renderScene}
+/>
+```
+<!-- .element: class="fragment" -->
+
+---
+
+# Navigation
+
+* Navigator ist vergleichbar mit einem Stack
+
+
+```jsx
+navigator.push({
+ 	name: 'MovieDetails',
+ 	index: nextIndex,
+});
+```
+<!-- .element: class="fragment" -->
+
+
+```jsx
+<NavigationBar backFunc={navigator.pop} />
+```
+<!-- .element: class="fragment" -->
+
+---
+
+# Code
+
+![ListView](images/listview.png)<!-- .element: style="width:40%" -->
+
+---
+
+# Plattformspezifische Komponenten
+
+```bash
+-rw-r--r--  1 	MoviePlayer.ios.js
+-rw-r--r--  1 	MoviePlayer.android.js
+```
+<!-- .element: class="fragment" -->
+
+
+```jsx
+import MoviePlayer from './components/MoviePlayer';
+```
+<!-- .element: class="fragment" -->
+
+---
+
+# Plattformspezifischer Code
+
+```jsx
+if (Platform.OS === 'ios') {
+ 	// iOS
+} else {
+	// Android
+}
+```
+<!-- .element: class="fragment" -->
+
+
+```jsx
+BackAndroid.addEventListener('hardwareBackPress', () => {
+	if (navigator && navigator.getCurrentRoutes().length > 1) {
+		navigator.pop();
+	}
+});
+
+```
+<!-- .element: class="fragment" -->
+
+---
+
+# Performance
+
+
+* JavaScript ist single threaded
+* Rendering vom eigentlichen Applikations-Thread getrennt <!-- .element: class="fragment" -->
+* JavaScript-Thread (JavaScriptCore) für die Applikations-Logik <!-- .element: class="fragment" -->
+* Nativer UI-Thread für das Rendern der Komponenten  <!-- .element: class="fragment" -->
+* Geschwindigkeit vergleichbar mit "naiv" geschriebenem nativen Code  <!-- .element: class="fragment" -->
+* Weitere native Threads möglich für langlaufende Berechnungen o.ä.  <!-- .element: class="fragment" -->
+* FPS (Frames per Second) Monitor <!-- .element: class="fragment" -->
+
+---
+
+
+# Debugging und Profiling
+
+* Error Reporting
+* Inspector, Network etc. <!-- .element: class="fragment" -->
+* JavaScript-Thread (JavaScriptCore) für die Applikations-Logik... <!-- .element: class="fragment" -->
+* ...lässt sich verlagern in den Chrome-Browser <!-- .element: class="fragment" -->
+* <!-- .element: class="fragment" -->Logging: ``react-native log-ios`` <!-- .element: class="fragment" -->
+* <!-- .element: class="fragment" -->Warning: ``console.warn('Yellow box');`` <!-- .element: class="fragment" -->
+
+---
+
+# Weitere Themen
+
+* Testing mit [Jest](http://facebook.github.io/jest/)
+* <!-- .element: class="fragment" -->Typisierung mit [Flow](https://flowtype.org/)
+* <!-- .element: class="fragment" -->Managing State mit [Redux](https://github.com/reactjs/redux)
+* <!-- .element: class="fragment" -->Routing mit [React Native Router](https://github.com/aksonov/react-native-router-flux)
+* <!-- .element: class="fragment" -->Software-Updates via [Microsoft Code Push](https://github.com/Microsoft/react-native-code-push)
+
+---
+
+# Geeignet für Entwicklung?
+
+* Lary Wall: "Easy things should be easy, and hard things should be possible"
+* <!-- .element: class="fragment" -->Leichte Dinge sind möglich (siehe Beispiel)
+* <!-- .element: class="fragment" -->Für schwierige Dinge können eigene Components (auch nativ) entwickelt werden
+
+---
+
+# Probleme
+
+* Entwicklung stabil <span>nur unter macOS</span><!-- .element: class="fragment" -->
+* Bridging Code selbst schreiben oder suchen<!-- .element: class="fragment" -->
+* 3rd Party Module brechen manchmal<!-- .element: class="fragment" -->
+* <!-- .element: class="fragment" -->[Platform Parity](https://facebook.github.io/react-native/docs/image.html)
+* Leaky Abstraction Layer<!-- .element: class="fragment" -->
+
+---
+
+# Alternativen
+
+* <!-- .element: class="fragment" -->Stop! <span>Wir entwickeln nicht mit React, sondern mit Angular?!</span><!-- .element: class="fragment" -->
+* <!-- .element: class="fragment" -->[Telerik Native Script](http://docs.nativescript.org/angular/tutorial/ng-chapter-0)
+
+```javascript
+@Component({
+  selector: "my-app",
+  template: `
+    <TextField hint="Email Address" keyboardType="email"
+      autocorrect="false" autocapitalizationType="none"></TextField>
+    <TextField hint="Password" secure="true"></TextField>
+    <Button text="Sign in"></Button>
+    <Button text="Sign up for Groceries"></Button>
+  `
+})
+```
+<!-- .element: class="fragment" -->
+
+
+---
+
+# Thank you
+
+
+Slides: [holisticon.github.io/presentations/enterjs-react-native](https://holisticon.github.io/presentations/enterjs-react-native)
+
+Beispiele: [github.com/simonox/enterjs-react-native](https://github.com/simonox/enterjs-react-native)
+
+[oliver.ochs@holisticon.de](mailto:oliver.ochs@holisticon.de)
+
+[www.holisticon.de](https://www.holisticon.de/blog)
+
+![Twitter - Oliver](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@oochs](https://twitter.com/oochs)
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
