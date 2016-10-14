@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Holisticon Presentation Template</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'bower_components/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Angular 2 - TypeScript to the Rescue?
+
+(Typ)sicher unterwegs
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@holisticon](https://twitter.com/holisticon)<br />
+![Twitter - Martin Reinhardt](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@mreinhardt](https://twitter.com/mreinhardt)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agenda
+
+* ECMAScript
+* Wieso TypeScript?
+* Angular 2 und die Konzepte dahinter
+* TypeScript und Angular 2
+* NativeScript
+* Ausblick
+
+
+---
+
+# Die (kurze) Geschichte von JavaScript
+* <!-- .element: class="fragment" -->**1998**: ECMAScript 2
+* <!-- .element: class="fragment" -->**1999**: ECMAScript 3
+* <!-- .element: class="fragment" -->**2000 - 2009**: ECMAScript 4 auf und ab
+  * sehr fortschrittlicher Ansatz
+  * u.a. Klassen und deklarierte Typen
+  * ActionScript 3 als Implementierung
+* <!-- .element: class="fragment" --> **2005**: Ajax und damit SPAs kommen auf
+  * Renaissance der Sprache JavaScript
+  * Bibliotheken: jQuery, Dojo u.a.
+* <!-- .element: class="fragment" -->**2007**: Als Gegenbewegung zu ECMAScript 4 bringen Microsoft und Yahoo ECMAScript 3.1 auf den Weg
+
+--
+
+# ES5
+
+* **2009**: ECMAScript 3.1 wird in ECMAScript 5 umbenannt und man spielt wieder miteinander
+  * <!-- .element: class="fragment" -->ECMAScript 4 und ActionScript 3 enden als Sackgassen
+  * <!-- .element: class="fragment" -->Alle Browser ab IE9, Firefox 3 unterstützen ECMAScript 5
+  * <!-- .element: class="fragment" -->ECMAScript 5 hat einen nicht rückwärts kompatiblen <code>strict mode</code>
+  * <!-- .element: class="fragment" -->**2011**: ECMAScript 5.1 ohne neue Features, lediglich Klärungen in der Spezifikation
+
+--
+
+# ES6 aka ES2015
+
+* **Juni 2015**: Release von ES2015
+  * <!-- .element: class="fragment" -->Klassen
+  * <!-- .element: class="fragment" -->Lexikalisches Scoping
+  * <!-- .element: class="fragment" -->Fat Arrow
+  * <!-- .element: class="fragment" -->Destructuring
+  * <!-- .element: class="fragment" -->Template literals
+  * <!-- .element: class="fragment" -->Spread operator
+  * <!-- .element: class="fragment" -->Default Parameter
+
+--
+
+# Wo läuft ES2015 schon jetzt?
+
+* <!-- .element: class="fragment" -->Browser
+  * Chrome 510+
+  * Safari 10+
+  * Firefox 45+
+  * Edge 13+
+* <!-- .element: class="fragment" -->Engines
+  * Webkit
+  * node 6+
+* <!-- .element: class="fragment" -->Wie viel läuft wo?
+    * [kangax.github.io/es5-compat-table/es6](http://kangax.github.io/es5-compat-table/es6)
+
+--
+
+# Wozu nun TypeScript?
+
+* “Mit TypeScript kann JavaScript auch einem Java-Entwickler Spaß machen”
+* Alle ECMAScript-3-kompatibel
+* **Optionales** Typensystem
+* Größere JavaScript-Projekte schwer zu refactoren
+
+![](images/es5-es6-typescript.svg) <!-- .element: style="height:450px" -->
+
+
+--
+
+# Aus der Praxis
+
+
+* <!-- .element: class="fragment" -->Story einer Javascript App
+    * IDE-Support teilweise irreführend
+    * Schneller Start mit ersten Ergebnissen
+    * **House of Cards**
+    * Testen schwierig (Wartbarkeit)
+    * Conventions
+* <!-- .element: class="fragment" -->Story einer TypeScript App
+    * Sehr gute IDE-Unterstützung
+    * Steilere Lernkurve, hohe Einstiegshürde
+    * Sicherheit durch Typen (wo **nötig!**)
+    * Code als Convention (Interfaces, Types)
+    * Syntax-Zucker
+        - Optionales
+        - Annotationen
+
+--
+
+# Ein Bild sagt mehr ...
+
+<!-- .element: class="fragment" -->![](images/typescript_in_action.png)
+
+
+--
+
+# Quo vadis TypeScript
+
+* <!-- .element: class="fragment" -->Community
+    * schnelle, aktive und offene Weiterentwicklung (Google, Microsoft)
+    * Library-Support
+* <!-- .element: class="fragment" -->Viele Fehler bereits bei Entwicklung aufdecken
+    * Typen
+    * APIs
+* <!-- .element: class="fragment" -->Abstraktion von ESx
+    * Module in TypeScript (Transpilieren)
+    * Code-Reuse
+* <!-- .element: class="fragment" -->Eigenheiten bei Nicht-JS Sprachelementen
+    * Interfaces
+    * Enums
+
+--
+
+# Ein Beispiel
+
+<div class="stretch ">
+	<iframe src="https://www.typescriptlang.org/play/#src=var%20add%20%3D%20(number1%3Anumber%2C%20number2%3Anumber)%3A%20number%20%3D%3E%20%7B%0D%0A%20%20%20%20return%20number1%20%2B%20number2%3B%0D%0A%7D%0D%0A%0D%0Avar%20result%20%3D%20add(1%2C%20'a')%3B" width="100%" height="100%"/>
+</div>
+
+
+
+--
+
+# Objekte
+
+<div class="stretch ">
+	<iframe src="https://www.typescriptlang.org/play/#src=class%20Animal%20%7B%0D%0A%20%20%20%20constructor(public%20name%3A%20string)%20%7B%20%7D%0D%0A%20%20%20%20move(distanceInMeters%3A%20number%20%3D%200)%20%7B%0D%0A%20%20%20%20%20%20%20%20console.log(%60%24%7Bthis.name%7D%20moved%20%24%7BdistanceInMeters%7Dm.%60)%3B%0D%0A%20%20%20%20%7D%0D%0A%7D%0D%0A%0D%0Aclass%20Snake%20extends%20Animal%20%7B%0D%0A%20%20%20%20constructor(name%3A%20string)%20%7B%20super(name)%3B%20%7D%0D%0A%20%20%20%20move(distanceInMeters%20%3D%205)%20%7B%0D%0A%20%20%20%20%20%20%20%20console.log(%22Slithering...%22)%3B%0D%0A%20%20%20%20%20%20%20%20super.move(distanceInMeters)%3B%0D%0A%20%20%20%20%7D%0D%0A%7D%0D%0A%0D%0Aclass%20Horse%20extends%20Animal%20%7B%0D%0A%20%20%20%20constructor(name%3A%20string)%20%7B%20super(name)%3B%20%7D%0D%0A%20%20%20%20move(distanceInMeters%20%3D%2045)%20%7B%0D%0A%20%20%20%20%20%20%20%20console.log(%22Galloping...%22)%3B%0D%0A%20%20%20%20%20%20%20%20super.move(distanceInMeters)%3B%0D%0A%20%20%20%20%7D%0D%0A%7D%0D%0A%0D%0Alet%20sam%20%3D%20new%20Snake(%22Sammy%20the%20Python%22)%3B%0D%0Alet%20tom%3A%20Animal%20%3D%20new%20Horse(%22Tommy%20the%20Palomino%22)%3B%0D%0A%0D%0Asam.move()%3B%0D%0Atom.move(34)%3B" width="100%" height="100%"/>
+</div>
+
+
+---
+
+# Angular 2
+
+* <!-- .element: class="fragment" -->RIP
+    * $scope
+    * HTML template syntax
+    * Dirty checking
+    * Controllers
+    * angular.module
+    * jqLite
+    * Interceptoren
+* <!-- .element: class="fragment" -->Welcome
+    * Object.observe hybrid
+    *  ECMAScript 6 / TypeScript
+    * Komponenten
+    * @ngModule
+    * Reactive Programmierung (RxJs)
+* <!-- .element: class="fragment" -->Hello Again
+    * Services
+    * Directives
+    * Dependency Injection MVC
+
+--
+
+# Warum die Änderungen?
+
+* <!-- .element: class="fragment" -->Browserentwicklung
+* <!-- .element: class="fragment" -->ECMAScript 6
+* <!-- .element: class="fragment" -->Web Components
+* <!-- .element: class="fragment" -->Performance
+* <!-- .element: class="fragment" -->Mobile
+* <!-- .element: class="fragment" -->Wartbarkeit/Refactoring
+
+--
+
+# Konzepte
+
+* <!-- .element: class="fragment" -->Angular 2 nicht beschränkt auf (Web-)Browser
+    * Server-Implementierung
+    * Webbrowser    
+* <!-- .element: class="fragment" -->Einfach zu lernen und zu nutzen
+* <!-- .element: class="fragment" -->Migration von AngularJS 1.x möglich
+* <!-- .element: class="fragment" -->Architekturkonzepte
+    * Wiederverwendbare Komponenten
+    * Module
+    * Routing
+    * Pipes
+    * Properties
+
+--
+
+# Komponenten
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-component',
+  template: `<div>  Hello my name is {{name}}.
+                <button (click)="sayMyName()">Say my name</button>
+  </div>`
+})
+export class MyComponent {
+  constructor() {
+    this.name = 'Max'
+  }
+  sayMyName() {
+    console.log('My name is', this.name)
+  }
+}
+```
+
+* ES6-Template Syntax
+
+--
+
+# Template bindings
+
+* <!-- .element: class="fragment" -->{{ }} - interpolation
+* <!-- .element: class="fragment" -->[] - property binding
+* <!-- .element: class="fragment" -->() for event binding
+* <!-- .element: class="fragment" --># for variable declaration
+* <!-- .element: class="fragment" -->* for structural directives
+
+--
+
+# Beispiel
+
+```javascript
+// event handling
+
+<button (click)="read($event)">
+
+// Two-Way-Binding
+
+<my-cmp [(title)]="name">
+
+// variable
+
+<p #paragraph ...
+
+```
+
+--
+
+# Input
+
+```
+<user-profile [user]="currentUser"></user-profile>
+```
+
+* Komponenten Daten übergeben:
+
+
+```
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'user-profile',
+  template: '<div>{{user.name}}</div>'
+})
+export class UserProfile {
+  @Input() user;
+  constructor() {}
+}
+
+```
+
+--
+
+# Output
+
+
+```typescript
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'user-profile',
+  template: '<div>Hi, my name is </div>'
+})
+export class UserProfile {
+  @Output() userUpdated = new EventEmitter();
+
+  constructor() {
+    // Update user
+    // ...
+    this.userUpdated.emit(this.user);
+  }
+}
+```
+
+```
+  <user-profile (userUpdated)="userUpdated($event)"></user-profile>
+```
+
+```typescript
+  export class SettingsPage {
+  constructor(){}
+
+  userUpdated(user) {
+    // Handle the event
+  }
+}
+```
+
+---
+
+# Services
+
+
+```typescript
+import {Injectable} from '@angular/core';
+import {User} from '@common/domain';
+
+@Injectable()
+export class UserService {
+    getUsers():User {
+        ...
+    }
+}
+```
+* ES6-Klassen + Injector-Annotation
+
+
+--
+
+```typescript
+@Component({
+    selector: 'user-root',
+    providers: [UserService],
+    template: `
+    <span>Anzahl an Nutzern: {{users.length}}</span>
+    `
+})
+export class AppComponent {
+    public users = User[];
+
+    constructor(private userService: UserService) {
+        this.users = this.userService.getUsers();
+    }
+}
+
+```
+
+* Services lassen sich in Komponenten injecten
+* Singelton pro Modul
+* private Konstruktur-Parameter dank TypeScript
+
+
+--
+
+# Beispiel für Interfaces in Services
+
+
+```typescript
+import {Injectable} from '@angular/core';
+import {SettingsService} from '@common/settings';
+
+@Injectable()
+export class WebSettingsService implements SettingsService {
+
+  ...
+
+  getString(key: string): string {
+    return sessionStorage.getItem(key);
+  }
+
+  setString(key: string, value: string): void {
+    sessionStorage.setItem(key, value);
+  }
+
+  removeString(key: string): void {
+    sessionStorage.removeItem(key);
+  }
+  ...
+}
+
+```
+
+---
+
+# Module
+
+
+```typescript
+import { HttpModule } from '@angular/http';
+
+@NgModule({
+
+  // ...
+
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule
+  ]
+
+  // ...
+})
+export class AppModule { }
+```
+<br>
+
+* Module haben eigenen Scope
+* SharedModules to the Rescue!
+
+---
+
+# Component Lifecycle
+
+* <!-- .element: class="fragment" -->**ngOnInit** - Komponente wird Initialisiert (nach erstem ngOnChanges → Eigenschaften initialisiert)
+* <!-- .element: class="fragment" -->**ngOnDestroy** - bevor Komponente zerstört wird
+* <!-- .element: class="fragment" -->**ngDoCheck** - eigene Änderungserkennung
+* <!-- .element: class="fragment" -->**ngOnChanges(changes)** - Änderungen in Bindings wurden erkannt
+* <!-- .element: class="fragment" -->**ngAfterContentInit** - Inhalt wurde initialisiert
+* <!-- .element: class="fragment" -->**ngAfterContentChecked** - jedes Mal, wenn Inhalt überprüft wurde
+* <!-- .element: class="fragment" -->**ngAfterViewInit** - Views wurden initialisiert
+* <!-- .element: class="fragment" -->**ngAfterViewChecked** - jedes Mal, wenn Views überprüft wurden
+
+--
+
+* Implementierung des Lifecycle-Hooks
+* Observable in Service nutzen
+
+```typescript
+import {Component, OnInit} from '@angular/core';
+import {UserService,User} from '@common';
+
+...
+export class AppComponent implements OnInit {
+
+    constructor(private userService: UserService) {
+    }
+
+    ngOnInit() {
+        this.userService
+          .getUsers()
+          .subscribe((users: Array<User>) => this.users = users);
+    }
+}
+
+```
+
+---
+
+# Los gehts
+
+```javascript
+npm install -g angular-cli
+ng new PROJECT_NAME
+cd PROJECT_NAME
+ng serve
+
+```
+
+--
+
+# Angular CLI
+
+* schneller Einstieg  
+
+Scaffold  | Usage
+---       | ---
+Component | `ng g component my-new-component`
+Directive | `ng g directive my-new-directive`
+Pipe      | `ng g pipe my-new-pipe`
+Service   | `ng g service my-new-service`
+Class     | `ng g class my-new-class`
+Interface | `ng g interface my-new-interface`
+Enum      | `ng g enum my-new-enum`
+Module    | `ng g module my-module`
+
+---
+
+# Angular 2
+
+* <!-- .element: class="fragment" -->TypeScript öffnet bereits jetzt für viele PHP und Java Entwickler die Tür in die JavaScript Welt
+* <!-- .element: class="fragment" -->Klare Semantik, weniger Magie
+* <!-- .element: class="fragment" -->Flexible Architektur
+* <!-- .element: class="fragment" -->MVC
+
+---
+
+# NativeScript
+
+* Open-Source-Framework zur Entwicklung mobiler Apps
+    * <!-- .element: class="fragment" -->JavaScript
+    * <!-- .element: class="fragment" -->TypeScript
+    * <!-- .element: class="fragment" -->Angular 2
+* <!-- .element: class="fragment" -->Plattform-Unterstützung
+    * Android
+    * iOS
+    * (Universal Windows Platform)*
+* <!-- .element: class="fragment" -->Native UI
+    * Performance
+    * Look and Feel
+* <!-- .element: class="fragment" -->Reuse Code
+
+--
+
+# App gehts ...
+
+![](images/tns_groceries.png)
+
+--
+
+# Da geht noch mehr ...
+
+![](images/nativescript_advanced_seed.gif)
+
+--
+
+# Demo
+
+* Desktop (**npm run start.desktop**)
+* <!-- .element: class="fragment" -->Web (**npm run start.deving**)
+* <!-- .element: class="fragment" -->App (**npm run start.livesync.ios**)
+
+--
+
+# Best Practices / Lessons Learned
+
+* <!-- .element: class="fragment" -->Stabilisierung der Angular2-Integration
+* <!-- .element: class="fragment" -->Nativ
+    * <!-- .element: class="fragment" -->Fluch und Segen zugleich
+    * <!-- .element: class="fragment" -->iOS "einfacher"
+    * <!-- .element: class="fragment" -->Android
+* <!-- .element: class="fragment" -->TypeScript hilft bei CodeSharing
+    * Java2TS
+    * WebPack Build
+
+---
+
+>*“Angular 2 wird sein ganzes Potential wohl erst in einigen Jahren entfalten können”*
+> **Robin Böhm**, angularjs.de
+
+
+---
+
+# Links
+
+* [eBook](https://www.gitbook.com/book/basarat/typescript/details)
+* [Two-Way-Binding](http://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html)
+* [AngularJS-Projekte sicher auf Angular 2 migrieren](http://heise.de/-3319156)
+* [Angular 2 Cheat Sheet](https://angular.io/docs/ts/latest/guide/cheatsheet.html)
+* [NativeScript-Demos](http://www.nativescriptsnacks.com/video.html)
+* [Groceries-Demo](https://github.com/NativeScript/sample-Groceries)
+* [Sharing Code Between Web and Native Apps](https://www.youtube.com/watch?v=R3nyG2xtzeQ)
+* [Beispiel-App mit NativeScript](http://bit.ly/nativescript-angular-seed)
+* [Java2TS](https://github.com/vojtechhabarta/typescript-generator)
+
+---
+
+![QR Link](images/qr_link.png)
+
+* [Präsentation](https://holisticon.github.io/presentations/devfest2016HH_angular2/) holisticon.github.io/presentations/devfest2016HH_angular2
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
