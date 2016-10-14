@@ -5,6 +5,7 @@ by Jason Costello, @jsncostello
 
 @import url(pygment_trac.css);
 
+
 /*******************************************************************************
 MeyerWeb Reset
 *******************************************************************************/
@@ -57,6 +58,11 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-align: justify;
+}
+
+.logo{
+  width:200px;
+  max-width:100%
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -138,17 +144,10 @@ img {
   position: relative;
   margin: 0 auto;
   max-width: 739px;
-  padding: 5px;
-  margin: 10px 0 10px 0;
-  border: 1px solid #ebebeb;
-
-  box-shadow: 0 0 5px #ebebeb;
-  -webkit-box-shadow: 0 0 5px #ebebeb;
-  -moz-box-shadow: 0 0 5px #ebebeb;
-  -o-box-shadow: 0 0 5px #ebebeb;
-  -ms-box-shadow: 0 0 5px #ebebeb;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
-
 p img {
   display: inline;
   margin: 0;
@@ -286,16 +285,7 @@ Full-Width Styles
 }
 
 #header_wrap {
-  background: #D6D6D6;
-  background: -moz-linear-gradient(top, #FFFFFF, #D6D6D6);
-  background: -webkit-linear-gradient(top, #FFFFFF, #D6D6D6);
-  background: -ms-linear-gradient(top, #FFFFFF, #D6D6D6);
-  background: -o-linear-gradient(top, #FFFFFF, #D6D6D6);
-  background: linear-gradient(top, #FFFFFF, #D6D6D6);
-}
-
-#header_wrap .inner {
-  padding: 50px 10px 30px 10px;
+  background: #FFFFFF;
 }
 
 #project_title {
@@ -363,8 +353,8 @@ Full-Width Styles
 
 #footer_wrap {
   height: 150px;
-  background: #FFFFFF;
-  background: url(../images/grass_footer.png);  
+  background: #D6D6D6;
+  background: url(../images/grass_footer.png);
 }
 
 
