@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Continuous Security in Modernen Webanwendungen</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'node_modules/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Continuous Security in Modernen Webanwendungen
+
+## Sicherheit eingebaut
+
+Martin Reinhardt (Holisticon AG)
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@mreinhardt](https://twitter.com/mreinhardt)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agenda
+
+* Continuous Delivery
+* IT-Sicherheit
+    * Methodik
+    * Agil & Security
+* Continuous Security
+    * Automatisierung
+    * Tools
+* Ausblick
+* Links
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Continuous Delivery
+
+* logische Fortsetzung von Continuous Integration
+![img](images/001_bigpicture.png)<!-- .element: class="fragment big-image no-border" -->
+* Die Idee dahinter<!-- .element: class="fragment big-image no-border" -->
+    * Software mit agilen Methoden kann nicht komplett (manuell) getestet werden <!-- .element: class="fragment big-image no-border" -->
+    * Alle 2 Wochen gesamten Funktionsumfang abtesten ist utopisch <!-- .element: class="fragment big-image no-border" -->
+    * Fast Feedback durch schnelle Releases <!-- .element: class="fragment big-image no-border" -->
+    * 15 min from patch to prod <!-- .element: class="fragment big-image no-border" -->
+
+
+--
+
+
+# Warum Build Pipelines
+
+
+> *"One of the challenges of an automated build and test environment is you want your build to be fast, so that you can get fast feedback, but comprehensive tests take a long time to run. A deployment pipeline is a way to deal with this by breaking up your build into stages. Each stage provides increasing confidence, usually at the cost of extra time. Early stages can find most problems yielding faster feedback, while later stages provide slower and more through probing. Deployment pipelines are a central part of Continuous Delivery"*
+>
+> **Martin Fowler**
+
+
+--
+
+* Agile Softwareentwicklung arbeitet kleinteilig
+    * Software oft und zuverlässig in Produktion
+    * Nutzung der IDE != Automatisierung
+    * Wesentlich ist dabei die Build Pipeline
+* Wie?<!-- .element: class="fragment no-border" -->
+    * Geschwindigkeit
+    * Automatisierung
+
+![img](images/002_buildpipeline.png) <!-- .element: class="fragment big-image no-border" -->
+
+>NOTES:
+* Pipeline mehrmals durchlaufen
+    * jeder einzelnen Schritt der Pipeline schnell und zuverlässig
+    * wird durch **Automatisierung** erreicht
+* Schritte
+    * Entwicklung
+    * Qualitätssicherung
+    * Auslieferung
+* Tests liefern schnelles Feedback über Seiteneffekte und Regressionen
+* Deployment auf Knopfdruck und innerhalb von Minuten auf dem Produktionssystem
+* Pipeline wird mit jeder Änderung durchlaufen
+    * neuer Softwarestand hinein
+    * qualitätsgesichertes, produktionsreifes und installierbares Softwarepaket
+
+---
+
+# Build Pipeline
+
+* wesentliches Ziel ist schnelles Feedback, also Geschwindigkeit
+    * Einzelne Schritt schnell abarbeiten (5 - 10 Minuten)
+    * Möglichst früh Fehler finden (**Unit-Tests**)
+* unabhängig vom (Build-)Tool<!-- .element: class="fragment no-border" -->
+    * Build muss reproduzierbar sein
+* CI-Tools <!-- .element: class="fragment no-border" -->
+    * Jenkins, Go, Travis CI, XCode Bots ...
+    * TestTools
+* Quellcode muss Continuous Delivery gerecht werden <!-- .element: class="fragment no-border" -->
+* Warum nicht auch für Security?<!-- .element: class="fragment big-image no-border" -->
+
+
+>NOTES:
+* Feature Toggles
+* Einer der Grundsätze des Continuous Integration besagt, dass es lediglich einen Master-Branch und keine weiteren Feature-Branches geben soll, in den der Code eingecheckt und damit eben diese Merge-Hölle vermieden wird.
+
+---
+
+#n IT-Sicherheit
+
+![img](images/secdevops_unicorn_fail.png)<!-- .element: class="fragment no-border" -->
+
+
+--
+
+# Warum das Ganze?
+
+* NSA<!-- .element: class="fragment no-border" -->
+* BDSG <!-- .element: class="fragment no-border" -->
+* DSGVO <!-- .element: class="fragment no-border" -->
+* Kosten <!-- .element: class="fragment no-border" -->
+* Exploits<!-- .element: class="fragment no-border" -->
+    * CVE-2016-5000 - Apache POI Information Disclosure via External Entity Expansion (XXE)
+    * CVE-2016-4216 - Adobe XMP Toolkit for Java Information Disclosure via External Entity Expansion (XXE)
+    * CVE-2016-3081 - Remote code execution vulnerability in Apache Struts when dynamic method invocation is enabled
+    * CVE-2015-8103 - Remote code execution vulnerability in Jenkins remoting; related to the Apache commons-collections
+
+--
+
+# Black Duck - Open Source Security Analysis
+
+* Stand von Open Source Security in kommerziellen Anwendungen [bit.ly/2yfsD2x](https://info.blackducksoftware.com/rs/872-OLS-
+526/images/OSSAReportFINAL.pdf)
+    * 95% der Anwendungen enthalten OSS <!-- .element: class="fragment no-border" -->
+    * 67% der Anwendungen enhalten OSS Schwachstellen <!-- .element: class="fragment no-border" -->
+    * Durchschnittsalter von bekannten Schwachstellen in OSS: 1894 Tage <!-- .element: class="fragment no-border" -->
+
+![img](images/mind-blown.gif)<!-- .element: class="fragment no-border" -->
+
+--
+
+# OWASP Top 10
+
+* Kritischsten Risiken in Webanwendungen
+* A9 - Nutzung von Komponenten mit bekannten Schwachstellen <!-- .element: class="fragment no-border" -->
+* Schwer zu erkennen<!-- .element: class="fragment no-border" -->
+* Bewusstsein auf Entwicklungsseite<!-- .element: class="fragment no-border" -->
+* Sichtbarkeit<!-- .element: class="fragment no-border" -->
+* Toolunterstützung nicht vorhanden<!-- .element: class="fragment no-border" -->
+* Patching erfordert erneut Codeänderungen<!-- .element: class="fragment no-border" -->
+
+--
+
+# Arten von Tests
+
+* Funktionale Sicherheitstests<!-- .element: class="fragment no-border" -->
+* Schwachstellen-Scanning / Fuzzing<!-- .element: class="fragment no-border" -->
+* Penetrationstests<!-- .element: class="fragment no-border" -->
+
+
+>NOTES:
+
+* **Funktionale Sicherheitstests** Wir evaluieren alle sicherheitsrelevanten Funktionen des Systems und überprüfen die Einhaltung von Spezifikationen und Standards. Wir überprüfen auch das Verhalten von Algorithmen und die Widerstandsfähigkeit der Implementierung (z. B. Stresstests).
+* **Schwachstellen-Scanning / Fuzzing** Wir testen auf bekannte Schwachstellen in Ihren Systemen, indem wir White Box (Codeanalyse), Black Box (Scanning) und Fuzzing-Methoden anwenden.
+* **Penetrationstests** Auf System- und Geräteebene führen wir Penetrationstests an eingebetteten Systemen, Webanwendungen, IT- und Spezialsystemen (z.B. SAP, Industrial Control Systems) durch.
+
+
+---
+
+# Continuous Security
+
+* Testen ist nicht alles, bei Entwicklung auch nicht
+* Warum also nicht auch bei Security?<!-- .element: class="fragment no-border" -->
+* logischer Schritt für Automatisierung<!-- .element: class="fragment no-border" -->
+* Security muss auf verschieden Ebenen betrachtet werden  <!-- .element: class="fragment no-border" -->
+  * Code & Architektur (Sonar) <!-- .element: class="fragment no-border" -->
+  * Integrations-Tests (bdd-security, zap, owasp)  <!-- .element: class="fragment no-border" -->
+
+>NOTES:
+* Bei Softwareentwicklung auch nicht, Planning etc ...
+* Methodik<!-- .element: class="fragment no-border" -->
+    * Code Reviews
+    * Konferenzen
+    * Bücher
+
+--
+
+# Security ganzheitlich
+
+* Thema einarbeiten
+    * Erstellung von Security Guidelines<!-- .element: class="fragment no-border" -->
+    * Berücksichtigung von Sicherheit im Rahmen der Erstellung von User Stories<!-- .element: class="fragment no-border" -->
+    * Codescans durchführen<!-- .element: class="fragment no-border" -->
+    * Peer-Reviews durch einen Security Champion durchführen<!-- .element: class="fragment no-border" -->
+    * Penetrationstests einplanen<!-- .element: class="fragment no-border" -->
+* Planing<!-- .element: class="fragment no-border" -->
+* Secure Scrum<!-- .element: class="fragment no-border" -->
+* Thread Model<!-- .element: class="fragment no-border" -->
+* Analog zur restlichen Softwareentwicklung<!-- .element: class="fragment no-border" -->
+
+>NOTES:
+
+An nahezu allen Stellen lassen sich Sicherheitsaspekte berücksichtigen. So können User-Stories für die Härtung geschrieben werden oder auch in fachlichen Anforderungen sicherheitsrelevante Punkte berücksichtigt werden. Es ist generell gerade in größeren Projekten ratsam die Rolle des Security Champions zu besetzen und ggf. auch ein- oder mehrere Security-Sprints einzuplanen. Für das methodische Grundgerüst gibt es also verschiedene Punkte die es zu beachten gilt:
+* Security Aspekte
+* Methodik + Testen + Konzeption = gute Software
+
+--
+
+# Secure Scrum
+
+* Setzt auf eigentliche Scrum-Prozess auf
+* Security relevante User-Stories im Team identifizieren<!-- .element: class="fragment no-border" -->
+* Jede User-Story mit Loss-Value versehe und mit S-Marks gekennzeichnet<!-- .element: class="fragment no-border" -->
+* S-Marks verweisen auf S-Tag<!-- .element: class="fragment no-border" -->
+* beschreibt das entsprechende Security-Problem als auch mögliche Lösungsansätze <!-- .element: class="fragment no-border" -->
+* Wird User Story mit einem S-Mark implementiert, muss im selben Sprint der entsprechende S-Tag implementiert werden<!-- .element: class="fragment no-border" -->
+* Alternativ: Security Backlog im regulären Sprint<!-- .element: class="fragment no-border" -->
+
+>NOTES:
+
+* Loss-Value = Verlust der entsteht, wenn die Funktionalität dieser User-Story erfolgreich angegriffen bzw. Daten manipuliert/entwendet
+THE SECURE SCRUM METHODOLOGY
+
+Figure 1 – Integration of Secure Scrum components into standard Scrum. Christophe Pohl and Hans-Joachim Hof, 2015.
+* Identification is the process which diagnoses potential security concerns throughout the application development process. Practically, this is accomplished by marking items in the Product Backlog when security concerns are discovered. The identification process occurs during Product Backlog creation, Product Backlog Refinement, Sprint Planning, and Sprint Review.
+* Implementation is the process which ensures security concerns are properly understood by the development team and is carried out during Sprint Planning and Daily Scrum meetings.
+* Verification evaluates an application’s security is run during Daily Scrums.
+Definition of Done represents a criteria which establishes the threshold for completion with regards to resolving an application security concern. Source: (Christoph Pohl and Hans-Joachim Hof 2015)
+
+* Schritte gebräuchlich im Security Kontext
+* Identification = Angriffsvektoren
+Defining and linking security risks to user stories in a product backlog by marking stories which contain security risks with an “S-Mark” and then describing that concern with “S-Tags” represents the core of the Secure Scrum methodology. Adding an S-Mark and related S-Tags to a user story indicates that a security concern has beenidentified, described, and formally recognized by the development team. S-Tags provide standardized definitions of specific security concerns flagged by an S-Mark. For example, attaching an S-Tag to an S-Marked user story labelled “XSS” represents a potential Cross Site Scripting attack allows developers, including those with no security training, to understand what security risks are present and the path to their mitigation. The success of this methodology was initially confirmed in field tests where university students employing Secure Scrum produced more secure code than the control groups who did not. By guiding developers through identification, implementation, verification, and also the process which defines the conditions of completion, Secure Scrum succeeds in contributing to the development of secure applications.
+
+
+---
+
+# Continuous Security Testing
+
+* Tools mittlerweile verfügbar
+* meist setzen diese auf OWASP auf<!-- .element: class="fragment no-border" -->
+* Integration nicht schwieriger als bei DevOps<!-- .element: class="fragment no-border" -->
+
+
+---
+
+# Node Security Project (NSP)
+
+* Prüfung der Abhängigkeiten auf bekannte Schwachstellen
+* **Ein Paket** zu installieren<!-- .element: class="fragment no-border" -->
+* Schlägt korrigierte Version vor<!-- .element: class="fragment no-border" -->
+
+
+```
+┌───────────────┬───────────────────────────────────────┐
+│               │ Insecure Defaults Allow MITM Over TLS │
+├───────────────┼───────────────────────────────────────┤
+│     Name      │ engine.io-client                      │
+├───────────────┼───────────────────────────────────────┤
+│   Installed   │ 1.5.4                                 │
+├───────────────┼───────────────────────────────────────┤
+│   Vulnerable  │ <= 1.6.8                              │
+├───────────────┼───────────────────────────────────────┤
+│    Patched    │ >= 1.6.9                              │
+├───────────────┼───────────────────────────────────────┤
+│   More Info   │ https://nodesecurity.io/advisories/99 │
+└───────────────┴───────────────────────────────────────┘
+
+```
+<!-- .element: class="fragment no-border" -->
+
+---
+
+# OWASP dependency-check
+
+* Seit 2012 verfügbar
+WASP Top 10 2013 entry: A9 - Using Components with [Known Vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities)<!-- .element: class="fragment no-border" -->
+* Verfügbar in verschiedenen Varianten: Ant, Maven, Gradle, SBT, Jenkins<!-- .element: class="fragment no-border" -->
+* Analyse der Abhängigkeiten zu bekannten Schwachstellen für Java & .NET<!-- .element: class="fragment no-border" -->
+* Experimentielle Unterstützung<!-- .element: class="fragment no-border" -->
+    * CocoaPods
+    * Swift Package Manager
+    * Python
+    * PHP (composer)
+    * Node.js
+    * Ruby
+
+--
+
+* Prinzipiell kann jede gefundenen Schwachstelle zu Buildfehler führen
+
+```
+[ERROR] Failed to execute goal org.owasp:dependency-check-maven:1.4.0:check (default) ...
+[ERROR]
+[ERROR] Dependency-Check Failure:
+[ERROR] One or more dependencies were identified with vulnerabilities
+        that have a CVSS score greater then '5.0':
+[ERROR] commons-httpclient-3.1.jar: CVE-2014-3577
+[ERROR] mysql-connector-java-5.1.37.jar: CVE-2014-0001, CVE-2013-2378,  ....
+[ERROR] tomcat-embed-core-8.0.33.jar: CVE-2016-3092, CVE-2013-2185, CVE-2002-0493
+```
+<!-- .element: class="fragment no-border" -->
+* Nicht praktikabel, deswegen sind Ausnhamen nötig <!-- .element: class="fragment no-border" -->
+    * Kann reduzierter Common Vulnerability Scoring System-Score (CVSS) gewählt werden
+    * Ausnahmen festlegen
+
+--
+
+# HTML - Report
+
+![img](images/owasp_report_before.png)
+
+
+--
+
+* Mit festgelegten Ausnahmen
+
+![img](images/owasp_report_after.png)
+
+
+--
+
+* Ausnahmen werden in eigenem XML-Format festgelegt
+
+```
+<suppress>
+    <notes>
+        <![CDATA[This suppresses false positives identified on spring security. ]]>
+    </notes>
+    <gav regex="true">org\.springframework\.security:spring.*</gav>
+    <cpe>cpe:/a:mod_security:mod_security</cpe>
+    <cpe>cpe:/a:springsource:spring_framework</cpe>
+    <cpe>cpe:/a:vmware:springsource_spring_framework</cpe>
+</suppress>
+```
+
+---
+
+# ![img](images/zap_logo.png)<!-- .element: style="margin:0" --> OWASP Zed Attack Proxy (ZAP)
+
+## Features
+
+* Intercepting Proxy<!-- .element: class="fragment no-border" -->
+* Automated Scanner<!-- .element: class="fragment no-border" -->
+* Passive Scanner<!-- .element: class="fragment no-border" -->
+* Brute Force Scanner<!-- .element: class="fragment no-border" -->
+* Fuzzer<!-- .element: class="fragment no-border" -->
+* Port Scanner<!-- .element: class="fragment no-border" -->
+* Spider<!-- .element: class="fragment no-border" -->
+* Web Sockets<!-- .element: class="fragment no-border" -->
+* REST API Scanning (OpenAPI/Swagger)<!-- .element: class="fragment no-border" -->
+
+>NOTES:
+* Can use OpenAPI spec
+* Selenium Proxy
+
+--
+
+# Funktionsweise
+
+* Installation auf separaten Umgebung
+
+![img](images/owasp-zap-java.png)
+
+* Scan der Anwendung<!-- .element: class="fragment no-border" -->
+* Proxy während Testausführung <!-- .element: class="fragment no-border" -->
+
+--
+
+![img](images/mind-blown2.gif)<!-- .element: class="fragment no-border" -->
+
+--
+
+# Integration in Pipeline
+
+* Maven Plugin: [github.com/hypery2k/zap-maven-plugin](https://github.com/hypery2k/zap-maven-plugin)
+
+![img](images/jenkins_demo.png)
+
+--
+
+![img](images/jenkins_demo_zap.png)
+
+--
+
+# Integration in Build
+
+* Einfache Integration
+* Erweiterung möglich (Selenium Tests)
+
+```
+<plugin>
+    <groupId>de.martinreinhardt-online</groupId>
+    <artifactId>zap-maven-plugin</artifactId>
+    <configuration>
+        <zapHost>localhost</zapHost>
+        <zapPort>44444</zapPort>
+        <failingRiskCodeThreshold>5</failingRiskCodeThreshold>
+        <targetUrl>http://ngspring:41180/</targetUrl>
+        <authenticationType>form</authenticationType>
+        <username>user</username>
+        <password>password</password>
+        <shouldRunAjaxSpider>true</shouldRunAjaxSpider>
+    </configuration>
+    ...
+</plugin>
+```
+
+>NOTES:
+
+* Demo: ZAP in Docker Image
+`mvn -Pdocker,security-check verify`
+
+--
+
+# Sonar Integration
+
+
+![img](images/zap-widget.png)
+
+
+![img](images/zap-quality-gate.png)
+
+
+[github.com/pdsoftplan/sonar-zap](https://github.com/pdsoftplan/sonar-zap)
+
+---
+
+# AWS absichern
+
+* Security Monkey [github.com/Netflix/security_monkey](https://github.com/Netflix/security_monkey)
+* Monitoring für Sicherheitsprobleme <!-- .element: class="fragment no-border" -->
+* Für große verteilte AWS-Anwendungen <!-- .element: class="fragment no-border" -->
+
+>NOTES:
+* These needs are at the heart of what Security Monkey is — an AWS security configuration tracker and analyzer that scales for large and globally distributed cloud environments.
+</script></section>
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template">
+# Fazit & Ausblick
+
+
+* Bibliotheken = Sicherheitsrisiko
+    * gerade im modernen Umfeld <!-- .element: class="fragment" -->
+    * zeitnahe Aktualisierung nötig <!-- .element: class="fragment" -->
+    * automatisierbar<!-- .element: class="fragment" -->
+* Absicherung möglich <!-- .element: class="fragment" -->
+    * Penetrationstests durch DevOps einfach automatisierbar
+    * viele Tools im Bereich Testing & Automatisierung
+    * Spring Vault [projects.spring.io/spring-vault/](http://projects.spring.io/spring-vault/)
+* Feedback ist ein Muss<!-- .element: class="fragment" -->
+* unerlässlich ein Sicherheitsbewusstsein im Team aufzubauen<!-- .element: class="fragment" -->
+
+>NOTES:
+sinnvolle Techniken zur Verwaltung von technischen Logins wie z.B. Spring Vault ([spring-vault]) zu berücksichtigen
+
+
+---
+
+> "There is no one-size-fits-all solution to the complex problem of
+implementing a deployment pipeline."
+
+   **Continuous Delivery**, J. Humble, D. Farley
+
+---
+
+> "**There are only two types of companies**: those that have been hacked, and those that will be"
+
+  **Robert Miller**, FBI Director, 2012
+
+---
+
+# Links
+
+* [Beispiel Anwendung](https://github.com/holisticon/web-security-sample)
+* [OWASP Top 10](https://www.owasp.org/index.php/Germany/Projekte/Top_10)
+* [OWASP Cheat Sheet](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series)
+* [BSI Empfehlungen zu Webanwendungen](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/Download/Vorabversionen/Baustein_Webanwendungen.pdf)
+* [DevOps – Testautomation I – Infrastructure as Code](https://www.informatik-aktuell.de/entwicklung/methoden/testautomation-im-bereich-continuous-delivery.html)
+* [Rock CI mit Jenkins 2 und Docker](https://www.holisticon.de/2016/04/rock-ci-mit-docker-und-jenkins-2/)
+* [Beispiel Serenity](https://martinreinhardt-online.de/jenkins/view/Demos/job/serenity_gradle_sample/)
+* [ZAP Blog](https://zaproxy.blogspot.de)
+* [Your code as a crime scene](https://www.amazon.com/Your-Code-Crime-Scene-Bottlenecks/dp/1680500384)
+* [Secure Scrum](https://pdfs.semanticscholar.org/ece4/559a2c0b15aa8fe57297482a22a961bc4ccf.pdf)
+
+
+---
+
+# About me
+
+* Martin Reinhardt (Holisticon AG)
+
+![img](https://pbs.twimg.com/profile_images/488919098240139264/KRAs7ITF.png)<!-- .element: class="big-image no-border" style="width:40%;height:40%"-->
+
+* [github.com/hypery2k](https://github.com/hypery2k)
+* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
+
+---
+
+# Präsentation
+
+![img](images/qr.png)
+[holisticon.github.io/presentations/isd-continuous-security](https://holisticon.github.io/presentations/isd-continuous-security)
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
