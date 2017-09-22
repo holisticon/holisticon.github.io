@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Serenity BDD</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'node_modules/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Serenity BDD
+
+## Integrations-Tests mit Stil
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@mreinhardt](https://twitter.com/mreinhardt)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agenda
+
+* Über Serenity
+* Konzepte & Beispiel
+* REST Integration
+* Demo
+* Ausblick
+* Links
+
+---
+
+# Oberflächen Testing mit Stil - Serenity
+
+* Tool für ATDD (acceptance test driven development)<!-- .element: class="fragment" -->
+* Macht Oberflächen-Tests lesbarer, wartbarer und wiederwendbar<!-- .element: class="fragment" -->
+* Nutzt Selenium als technische Basis<!-- .element: class="fragment" -->
+* Kann als Java und JBehave-Variante genutzt werden<!-- .element: class="fragment" -->
+* Nutzt PagePattern<!-- .element: class="fragment" -->
+    * Page als Model der Webseite mit allen Elemente.
+    * Steps als Gruppierung der möglichen Interaktionsmöglickeiten, z.B. Klicken
+    * Test ist eine Kollektion von Tests die Benutzereingaben reflektieren und das Ergebnis verifizieren
+* Stellt Reporting für Tracking & Fehlersuche zur Verfügung<!-- .element: class="fragment" -->
+* Verbindung mit Ticket-System<!-- .element: class="fragment" -->
+* Anforderungen auf Tests mappen<!-- .element: class="fragment" -->
+
+
+>NOTES:
+* Passt zum CD Gedanken
+* WebDriver is a browser automation API
+    * Used for UI Functional testing
+* Thucydides is a Testing framework using WebDriver
+    * Used for running tests, advanced reporting
+
+---
+
+# Konzepte - Page-Object Pattern
+
+* Testautomatisierungspattern für effiziente und lesbare Tests<!-- .element: class="fragment" -->
+* Jede UI Seite wird auf eine Page-Klasse gemappt<!-- .element: class="fragment" -->
+* Interaktion wird über Steps-Klassen umgesetzt<!-- .element: class="fragment" -->
+* Tests nutzen Steps um Anwendungsverhalten zu simulieren<!-- .element: class="fragment" -->
+
+![img](images/serenity_page_pattern.png) <!-- .element: class="fragment big-image no-border" -->
+
+>NOTES:
+* Wartung der Tests ist einfacher, z.B. kann Vererbung in Seiten/Pages genutzt werden um gemeinsame Elemente, wie Navigation abzubilden
+* Testcode wird sehr leicht lesbar
+* Komponenten können wieder verwendet werde
+* Testerstellung einfacher
+* Umsetzungen für verschiedene Plattformen
+     * IDE: Visual Studio, Eclipse, IntelliJ, Visual Studio
+     * Sprachen: C#, Java, Ruby, Python, Perl, JavaScript, ObjectiveC
+
+--
+
+# Beispiel
+
+* Anforderung: Als Nutzer möchte ich mich anmelden können<!-- .element: class="fragment" -->
+* Testanwendung:<!-- .element: class="fragment" -->
+    * Web-Anwendung mit Login
+    * Event-Verwaltung
+
+
+
+--
+
+# Interaktion über Steps
+
+* Jegliche Benutzerinteraktion wird in Steps abgebildet<!-- .element: class="fragment" -->
+* Steps werden im Report aufgezeigt<!-- .element: class="fragment" -->
+* Parameter werden im Report angezeigt<!-- .element: class="fragment" -->
+* Methodennamen werden CamelCase gesplittet<!-- .element: class="fragment" -->
+
+```java
+public class LoginSteps extends ScenarioSteps {
+
+    @Step public void inputUsername(String user) {
+        loginPage().inputUserName(user);
+    }
+
+    @Step public void inputPassword(String pass) {
+        loginPage().inputPassword(pass);
+    }
+
+    @Step public void clickOnLogin() {
+        loginPage().clickOnLogin();
+    }
+
+}
+```
+<!-- .element: class="fragment" -->
+
+>NOTES:
+* Steps nutzen um Inhalte zu verifizieren
+* Wichtig für Reporting
+* Fehler von Assertions werden nur in Steps ausgewertet
+
+--
+
+* Zusammenfassung von Steps möglich
+
+```java
+    @Step public void inputUsername(String user) {
+        loginPage().inputUserName(user);
+    }
+
+    ...
+
+    @StepGroup public void performLogin(String email, String pass) {
+        inputUsername(email);
+        inputPassword(pass);
+        clickOnLogin();
+    }
+```
+<!-- .element: class="fragment" -->
+
+--
+
+# Tests
+
+* Anforderungen werden im Test abgeglichen<!-- .element: class="fragment" -->
+* BDD-like<!-- .element: class="fragment" -->
+
+```java
+@RunWith(SerenityParameterizedRunner.class)
+@UseTestDataFrom(value = "testdata/login.csv")
+public class LoginIT extends AbstractSerenityITTestBase {
+
+  @Steps public LoginSteps loginSteps;
+  // test data
+  private String username;
+  private String password;
+  private boolean fail;
+
+  @Test
+  public void loginShouldWork() {
+    loginSteps.performLogin(this.username, this.password);
+    loginSteps.userShouldSeeNoErrorMessage();
+
+```
+<!-- .element: class="fragment" -->
+
+* CSV-Dateien für Testdaten nutzbar<!-- .element: class="fragment" -->
+
+
+>NOTES:
+* Pro Umgebung auch andere Testdaten nutzbar
+
+--
+
+* Tag-Zuweisung möglich
+
+```java
+@WithTags({
+  @WithTag(type = "epic", name = "User management")
+})
+@Narrative(text = "Login")
+@RunWith(SerenityParameterizedRunner.class)
+@UseTestDataFrom(value = "testdata/login.csv")
+public class LoginIT extends AbstractSerenityITTestBase {
+
+  @WithTags({
+    @WithTag(type = "feature", name = "Login")
+  })
+  @Test
+  @Issues(value = {"#9"})
+  public void loginShouldWork() {
+      ...
+```
+<!-- .element: class="fragment" -->
+
+---
+
+#  Report
+
+![img](images/serenity_overview.png)
+
+
+>NOTES:
+* Angular-Beispiel mit GitHub Tags
+* Anforderungen werden auf Tests verteilt
+* Anforderungen werden dann auch im Report auf den Tests verlinkt
+* Es können auch direkt Tickts (z.B. in JIRA an Tests verlinkt werden), siehe [Doku](http://thucydides.info/docs/serenity/#_integrating_with_jira)
+* Können auch tags genutzt werden.
+
+
+--
+
+![img](images/serenity_detail.png)
+
+--
+
+![img](images/serenity_demo_6.png)
+
+>NOTES:
+* Weitere Testdaten in Report einbindbar
+
+---
+
+# Serenity REST
+
+* neben  Selenium auch REST Assured umsetzbar<!-- .element: class="fragment" -->
+* Nutzung von Reports<!-- .element: class="fragment" -->
+* CSV-Dateien nutzbar<!-- .element: class="fragment" -->
+
+--
+
+* Analog zu Selenium Tests werden Steps benötigt
+
+```
+public class EventSteps {
+
+@StepGroup
+  public Response getEvent(String username, String password, String eventId) {
+    return RestAssured.given()
+      .with().baseUri(getBaseUrl()).basePath("")
+      .auth().basic(username, password)
+      .expect()
+      .statusCode(HttpStatus.SC_OK)
+      .when()
+      .get("/api/events/{eventId}", eventId);
+}
+
+@Step
+  public Response getEvents(String username, String password) {
+    return RestAssured.given()
+      .with().baseUri(getBaseUrl()).basePath("")
+      .auth().basic(username, password)
+      .expect()
+      .statusCode(HttpStatus.SC_OK)
+      .when()
+      .get("/api/events/");
+}
+```
+<!-- .element: class="fragment" -->
+
+--
+
+* JUnit-Test unterscheidet sich vom Aufbau nicht
+
+```
+@RunWith(SerenityRunner.class)
+public class EventControllerIT {
+
+  @Steps
+  public EventSteps eventSteps;
+
+  @WithTags({
+    @WithTag(type = "feature", name = "Event API"),
+  })
+  @Test
+  public void shouldGetOneEvent() {
+    eventSteps.getEvent("user", "password", "4");
+  }
+}
+```
+<!-- .element: class="fragment" -->
+
+---
+
+# Demo
+
+![img](images/blueocean_pipeline-run.png)
+
+
+[Jenkins](https://jenkins.holisticon.de/blue/organizations/jenkins/Public%2FContinuousDelivery_Demo/detail/ContinuousDelivery_Demo/3/artifacts/)<!-- .element: target="_blank" -->
+
+
+---
+
+# Ausblick - Screenplay Pattern
+
+* Bessere Teststruktur<!-- .element: class="fragment" -->
+* Nutzung von Akteuren<!-- .element: class="fragment" -->
+* Angepasste Reports<!-- .element: class="fragment" -->
+
+```
+@Test
+   public void should_be_able_to_add_a_todo_item() {
+
+       givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+
+       when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
+
+       then(james).should(seeThat(theDisplayedItems, hasItem("Buy some milk")));
+   }
+```
+<!-- .element: class="fragment" -->
+
+--
+
+![img](images/serenity_journey_actors.png)
+
+--
+
+![img](images/serenity_journey_actor-tasks.png)
+
+--
+
+![img](images/serenity_journey_report.png)
+
+--
+
+* Testausführung
+
+```
+@RunWith(SerenityRunner.class)
+public class AddNewTodos {
+
+    private Actor james = Actor.named("James");
+
+    @Managed
+    private WebDriver hisBrowser;
+
+    @Steps
+    private PlaceholderText thePlaceholderText;
+
+    private DisplayedItems theDisplayedItems = new DisplayedItems();
+
+    @Before
+    public void jamesCanBrowseTheWeb() {
+        james.can(BrowseTheWeb.with(hisBrowser));
+    }
+
+    @Test
+    public void should_be_able_to_add_a_todo_item() {
+
+        givenThat(james).wasAbleTo(OpenTheApplication.onTheHomePage());
+
+        when(james).attemptsTo(AddATodoItem.called("Buy some milk"));
+
+        then(james).should(seeThat(theDisplayedItems, hasItem("Buy some milk")));
+    }
+}
+```
+<!-- .element: class="fragment" -->
+
+---
+
+# Ausblick - Cucumber Integration
+
+* Direkte Unterstützung über **CucumberWithSerenity-Runner**
+* Nutzung von Step-Definitionen `@Given("^I open the webpage $")`
+* Mehr dazu unter [yngenio.com](https://www.syngenio.com/de/blog/posts/Tutorial-Behavior-Driven-Development-BDD-Vom-formulierten-zum-automatischen-Akzeptenztest-Teil-2-2.php)
+
+
+---
+
+
+# Fazit
+
+* Do not fear Continuous Deployment<!-- .element: class="fragment" -->
+* Feedback ist ein Muss<!-- .element: class="fragment" -->
+    * Teststufen kontinuierlich Feedback über aktuellen Qualitätsstand <!-- .element: class="fragment" -->
+    * Tools müssen das unterstützen <!-- .element: class="fragment" -->
+* Im Bereich von CD viele Tools im Bereich Testing & Automatisierung <!-- .element: class="fragment" -->
+* Serenity BDD bedient viele Aspekte<!-- .element: class="fragment" -->
+* Bewegung im Tool-Bereich (Saucelabs, Docker ...)<!-- .element: class="fragment" -->
+* Docker hilft enorm beim Erzeugen von Integrations-Umgebungen <!-- .element: class="fragment" -->
+
+
+---
+
+# Links
+
+* [Beispiel Anwendung](https://github.com/holisticon/continous-delivery-demo)
+* [DevOps – Testautomation I – Infrastructure as Code](https://www.informatik-aktuell.de/entwicklung/methoden/testautomation-im-bereich-continuous-delivery.html)
+* [GitHub-Projekt Serenity](https://github.com/hypery2k/serenity_sample)
+* [Rock CI mit Jenkins 2 und Docker](https://www.holisticon.de/2016/04/rock-ci-mit-docker-und-jenkins-2/)
+* [Jenkins-Beispiel Serenity](https://martinreinhardt-online.de/jenkins/view/Demos/job/serenity_gradle_sample/)
+* [Serenity & Cucumber](https://www.syngenio.com/de/blog/posts/Tutorial-Behavior-Driven-Development-BDD-Vom-formulierten-zum-automatischen-Akzeptenztest-Teil-2-2.php)
+
+---
+
+> There is no one-size-fits-all solution to the complex problem of
+implementing a deployment pipeline.”
+   *Continuous Delivery*, J. Humble, D. Farley
+
+
+---
+
+# About me
+
+* Martin Reinhardt (Holisticon AG)
+
+![img](https://pbs.twimg.com/profile_images/488919098240139264/KRAs7ITF.png)<!-- .element: class="big-image no-border" style="width:40%;height:40%"-->
+
+* [github.com/hypery2k](https://github.com/hypery2k)
+* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
