@@ -231,12 +231,7 @@ node {
 
 ---
 
-# Provisioning
-
-
---
-
-# Ansible
+# Provisioning mit Ansible
 
 * OSS Tool für Konfigurationsmanagement (vgl. Puppet, Chef oder CFengine) <!-- .element: class="fragment" -->
 	* kann ad-hoc ausgeführt werden (vgl. Func oder dsh)<!-- .element: class="fragment" -->
@@ -297,9 +292,9 @@ sshagent(['e96eb307-86ff-4858-82bb-cdc20bf1e4b4']) {
 # Wieso Ansible
 
 * schlank und einfach zu erlernen <!-- .element: class="fragment" -->
-* flexibl und ohne Infrastruktur einsetzbar <!-- .element: class="fragment" -->
+* flexibel und ohne Infrastruktur einsetzbar <!-- .element: class="fragment" -->
 * Mit Ansible Galaxy reichhaltige Bibliothek <!-- .element: class="fragment" -->
-* gute Support in RedHat Distributionen <!-- .element: class="fragment" -->
+* guter Support in RedHat Distributionen <!-- .element: class="fragment" -->
 
 ---
 
@@ -402,7 +397,7 @@ node {
 ---
 
 # Links
-s
+
 * [Beispiel Anwendung](https://github.com/holisticon/continous-delivery-demo)
 * [Jenkins MultiBranch Beispiel](https://jenkins.holisticon.de/job/Public/job/ContinousDelivery_BranchDemo/)
 * [DevOps – Testautomation I – Infrastructure as Code](https://www.informatik-aktuell.de/entwicklung/methoden/testautomation-im-bereich-continuous-delivery.html)
@@ -436,7 +431,7 @@ implementing a deployment pipeline.”
 
 ![img](images/qr.png)
 
-[holisticon.github.io/presentations/2017_ISD_continuous-security/](https://holisticon.github.io/presentations/2017_codetalks_continuous-delivery/)
+[holisticon.github.io/presentations/2017_codetalks_continuous/](https://holisticon.github.io/presentations/2017_codetalks_continuous/)
 </script></section>
     </div>
     <footer>
@@ -444,6 +439,7 @@ implementing a deployment pipeline.”
     </footer>
 
 </div>
+
 <script src="scripts/reveal.js"></script>
 
 <script>
@@ -520,8 +516,7 @@ implementing a deployment pipeline.”
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-                  { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
             { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
             { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
             { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
