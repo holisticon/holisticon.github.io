@@ -66,36 +66,26 @@ Martin Reinhardt (Holisticon AG)
     * Tools
 * Ausblick
 * Links
+
+---
+
+# About me
+
+* Martin Reinhardt (Holisticon AG)
+
+![img](https://pbs.twimg.com/profile_images/488919098240139264/KRAs7ITF.png)<!-- .element: class="big-image no-border" style="width:40%;height:40%"-->
+
+* [github.com/hypery2k](https://github.com/hypery2k)
+* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
 </script></section>
         <section data-markdown  data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-separator-notes="^>NOTES:"><script type="text/template"># Continuous Delivery
 
-* logische Fortsetzung von Continuous Integration
-![img](images/001_bigpicture.png)<!-- .element: class="fragment big-image no-border" -->
-* Die Idee dahinter<!-- .element: class="fragment big-image no-border" -->
-    * Software mit agilen Methoden kann nicht komplett (manuell) getestet werden <!-- .element: class="fragment big-image no-border" -->
-    * Alle 2 Wochen gesamten Funktionsumfang abtesten ist utopisch <!-- .element: class="fragment big-image no-border" -->
-    * Fast Feedback durch schnelle Releases <!-- .element: class="fragment big-image no-border" -->
-    * 15 min from patch to prod <!-- .element: class="fragment big-image no-border" -->
-
-
---
-
-
-# Warum Build Pipelines
-
-
-> *"One of the challenges of an automated build and test environment is you want your build to be fast, so that you can get fast feedback, but comprehensive tests take a long time to run. A deployment pipeline is a way to deal with this by breaking up your build into stages. Each stage provides increasing confidence, usually at the cost of extra time. Early stages can find most problems yielding faster feedback, while later stages provide slower and more through probing. Deployment pipelines are a central part of Continuous Delivery"*
->
-> **Martin Fowler**
-
-
---
-
 * Agile Softwareentwicklung arbeitet kleinteilig
-    * Software oft und zuverlässig in Produktion
-    * Nutzung der IDE != Automatisierung
-    * Wesentlich ist dabei die Build Pipeline
-* Wie?<!-- .element: class="fragment no-border" -->
+    * Software oft und zuverlässig in Produktion<!-- .element: class="fragment" -->
+    * Software mit agilen Methoden kann nicht komplett (manuell) getestet werde<!-- .element: class="fragment" -->
+    * Alle 2 Wochen gesamten Funktionsumfang abtesten ist utopisch<!-- .element: class="fragment" -->
+    * Wesentlich ist dabei die Build Pipeline<!-- .element: class="fragment" -->
+* Wie?<!-- .element: class="fragment" -->
     * Geschwindigkeit
     * Automatisierung
 
@@ -122,13 +112,9 @@ Martin Reinhardt (Holisticon AG)
 * wesentliches Ziel ist schnelles Feedback, also Geschwindigkeit
     * Einzelne Schritt schnell abarbeiten (5 - 10 Minuten)
     * Möglichst früh Fehler finden (**Unit-Tests**)
-* unabhängig vom (Build-)Tool<!-- .element: class="fragment no-border" -->
-    * Build muss reproduzierbar sein
-* CI-Tools <!-- .element: class="fragment no-border" -->
-    * Jenkins, Go, Travis CI, XCode Bots ...
-    * TestTools
 * Quellcode muss Continuous Delivery gerecht werden <!-- .element: class="fragment no-border" -->
 * Warum nicht auch für Security?<!-- .element: class="fragment big-image no-border" -->
+* Continuous Delivery auch eine Chance für Sicherheitsaspekte<!-- .element: class="fragment big-image no-border" -->
 
 
 >NOTES:
@@ -137,7 +123,7 @@ Martin Reinhardt (Holisticon AG)
 
 ---
 
-#n IT-Sicherheit
+# IT-Sicherheit
 
 ![img](images/secdevops_unicorn_fail.png)<!-- .element: class="fragment no-border" -->
 
@@ -235,19 +221,18 @@ An nahezu allen Stellen lassen sich Sicherheitsaspekte berücksichtigen. So ko�
 * Security Aspekte
 * Methodik + Testen + Konzeption = gute Software
 
---
 
 # Secure Scrum
 
 * Setzt auf eigentliche Scrum-Prozess auf
-* Security relevante User-Stories im Team identifizieren<!-- .element: class="fragment no-border" -->
-* Jede User-Story mit Loss-Value versehe und mit S-Marks gekennzeichnet<!-- .element: class="fragment no-border" -->
-* S-Marks verweisen auf S-Tag<!-- .element: class="fragment no-border" -->
-* beschreibt das entsprechende Security-Problem als auch mögliche Lösungsansätze <!-- .element: class="fragment no-border" -->
-* Wird User Story mit einem S-Mark implementiert, muss im selben Sprint der entsprechende S-Tag implementiert werden<!-- .element: class="fragment no-border" -->
-* Alternativ: Security Backlog im regulären Sprint<!-- .element: class="fragment no-border" -->
+* Security relevante User-Stories im Team identifizieren
+* Jede User-Story mit Loss-Value versehe und mit S-Marks gekennzeichnet
+* S-Marks verweisen auf S-Tag
+* beschreibt das entsprechende Security-Problem als auch mögliche Lösungsansätze
+* Wird User Story mit einem S-Mark implementiert, muss im selben Sprint der entsprechende S-Tag implementiert werden
+* Alternativ: Security Backlog im regulären Sprint
 
->NOTES:
+<!-->NOTES-->
 
 * Loss-Value = Verlust der entsteht, wenn die Funktionalität dieser User-Story erfolgreich angegriffen bzw. Daten manipuliert/entwendet
 THE SECURE SCRUM METHODOLOGY
@@ -277,7 +262,6 @@ Defining and linking security risks to user stories in a product backlog by mark
 # Node Security Project (NSP)
 
 * Prüfung der Abhängigkeiten auf bekannte Schwachstellen
-* **Ein Paket** zu installieren<!-- .element: class="fragment no-border" -->
 * Schlägt korrigierte Version vor<!-- .element: class="fragment no-border" -->
 
 
@@ -303,8 +287,7 @@ Defining and linking security risks to user stories in a product backlog by mark
 
 # OWASP dependency-check
 
-* Seit 2012 verfügbar
-WASP Top 10 2013 entry: A9 - Using Components with [Known Vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities)<!-- .element: class="fragment no-border" -->
+* Seit 2012 verfügbar (basiert auf [A9 - Komponenten mit bekannten Schwachstellen](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities))
 * Verfügbar in verschiedenen Varianten: Ant, Maven, Gradle, SBT, Jenkins<!-- .element: class="fragment no-border" -->
 * Analyse der Abhängigkeiten zu bekannten Schwachstellen für Java & .NET<!-- .element: class="fragment no-border" -->
 * Experimentielle Unterstützung<!-- .element: class="fragment no-border" -->
@@ -515,17 +498,6 @@ implementing a deployment pipeline."
 * [Spring Vault](http://projects.spring.io/spring-vault/)
 * [HashiCorp Sentinel](https://www.hashicorp.com/blog/sentinel-announcement-policy-as-code-framework/)
 
-
----
-
-# About me
-
-* Martin Reinhardt (Holisticon AG)
-
-![img](https://pbs.twimg.com/profile_images/488919098240139264/KRAs7ITF.png)<!-- .element: class="big-image no-border" style="width:40%;height:40%"-->
-
-* [github.com/hypery2k](https://github.com/hypery2k)
-* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
 
 ---
 
