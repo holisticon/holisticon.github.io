@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Continuous Delivery ohne Kopfschmerzen</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'node_modules/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^---$" data-separator-vertical="^--$" data-separator-notes="^>NOTES:"><script type="text/template"># Continuous Delivery ohne Kopfschmerzen
+
+Martin Reinhardt (Holisticon AG)
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@mreinhardt](https://twitter.com/mreinhardt)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agenda
+
+* Einführung / Build Pipeline
+* Jenkins Pipeline
+* Jenkins Pipeline Libraries
+* Testautomatisierung
+* Provisioning
+* Links
+
+---
+
+# Einführung
+
+* Continuous Delivery ist die logische Fortsetzung von Continuous Integration
+* Die Idee dahinter<!-- .element: class="fragment big-image no-border" -->
+    * Software mit agilen Methoden kann nicht komplett (manuell) getestet werden
+    * Alle 2 Wochen gesamten Funktionsumfang abtesten ist utopisch
+    * Testumgebungen stehen meist nicht ausreichend zur Verfügung
+
+![img](images/001_bigpicture.png)<!-- .element: class="fragment big-image no-border" -->
+
+--
+
+# Build Pipeline
+
+* Jobs = Bausteine der Stages ("Unit of Work")<!-- .element: class="fragment big-image no-border" -->
+    * Bestehen aus Tasks wie Build, Deploy, Copy, Test
+* Agile Softwareentwicklung arbeitet kleinteilig<!-- .element: class="fragment no-border" -->
+    * Software oft und zuverlässig in Produktion
+    * Nutzung der IDE != Automatisierung
+    * Wesentlich ist dabei die Build Pipeline
+* Wie?<!-- .element: class="fragment no-border" -->
+    * Geschwindigkeit
+    * Automatisierung
+    * Reproduzierbarkeit
+
+![img](images/002_buildpipeline.png) <!-- .element: class="fragment big-image no-border" -->
+
+>NOTES:
+* Eventuell mehrere Pipelines sinnvoll
+* Stages
+    * Commit Stage als zentrales Eingangs-Gate
+    * Typische Stages: UAT, Performance Tests, Production Deployment
+    * Stages verbunden durch Trigger (automatisch oder manuell)
+* Pipeline mehrmals durchlaufen
+    * jeder einzelnen Schritt der Pipeline schnell und zuverlässig
+    * wird durch **Automatisierung** erreicht
+* Schritte
+    * Entwicklung
+    * Qualitätssicherung
+    * Auslieferung
+* Tests liefern schnelles Feedback über Seiteneffekte und Regressionen
+* Deployment auf Knopfdruck und innerhalb von Minuten auf dem Produktionssystem
+* Pipeline wird mit jeder Änderung durchlaufen
+    * neuer Softwarestand hinein
+    * qualitätsgesichertes, produktionsreifes und installierbares Softwarepaket
+--
+
+# Warum Build Pipelines
+
+
+> *"One of the challenges of an automated build and test environment is you want your build to be fast, so that you can get fast feedback, but comprehensive tests take a long time to run. A deployment pipeline is a way to deal with this by breaking up your build into stages. Each stage provides increasing confidence, usually at the cost of extra time. Early stages can find most problems yielding faster feedback, while later stages provide slower and more through probing. Deployment pipelines are a central part of Continuous Delivery"*
+>
+> **Martin Fowler**
+
+---
+
+## Jenkins Build Pipeline Plugin
+
+* Feature von Jenkins 2, Groovy-basiert <!-- .element: class="fragment" -->
+* Klassiche Pipeline in Jenkins benötigt viele Plugins <!-- .element: class="fragment" -->
+* Neue Variante bietet detailiierten Überblick in einem Job <!-- .element: class="fragment" -->
+
+![img](images/CD_PipelineView.png)<!-- .element: class="fragment" -->
+
+[Beispiel](https://jenkins.holisticon.de/job/Public/job/ContinuousDelivery_Demo/)<!-- .element: class="fragment" target="_blank" -->
+
+
+
+>NOTES:
+* Deployment Pipeline Erzeugung in Jenkins ist mit Jenkins 2 deutlich einfacher geworden, vorher waren viele Plugins nötig
+    * Build Pipeline, Copy Artifact, Parameterized Trigger, Promoted Builds
+    * Plugins arbeiten nicht ideal zusammen
+* Jenkins 2 ist  auf Pipeline Erstellung ausgelegt
+* üblichen Verdächtigen
+    * Selektives „Überspringen“ von Stages, z.B. Deployen auf Produktion aber nicht auf Test Umgebung (z.B. bei Hotfix)
+    * Erneutes Ausführen einzelner Stages
+
+--
+
+## Beispiel Pipeline
+
+```groovy
+node {
+    stage('Checkout') {
+          checkout scm
+    }
+    ...
+
+    stage('Unit-Tests') {
+     sh "mvn test"
+    }
+
+    archiveArtifacts '**/target/*.jar'
+    junit '*/target/surefire-reports/TEST*.xml'
+```
+
+[Beispiel](https://github.com/holisticon/continuous-delivery-demo/blob/master/Jenkinsfile)<!-- .element: target="_blank" -->
+
+--
+
+# Warum Jenkins Pipeline
+
+* Transparenz <!-- .element: class="fragment" -->
+* Struktur <!-- .element: class="fragment" -->
+* Wartbarkeit <!-- .element: class="fragment" -->
+* Produktreife <!-- .element: class="fragment" -->
+* Übersicht <!-- .element: class="fragment" -->
+* Nicht nur auf Java-Welt beschränkt <!-- .element: class="fragment" -->
+* Infrastructure as Code (IaC) auch für Build <!-- .element: class="fragment" -->
+
+
+>NOTES:
+ * Build nachvollziehbar, da eingecheckt
+ * Schnellere Fehleridentifikation
+ * Weniger Overhead durch viele Jobs, siehe Job-DSL
+ * Shell-Integration, nvm,ansible,puppet ...
+
+---
+
+# Pipeline Ökosystem wächst
+
+* immer mehr Plugins unterstützen Pipeline direkt <!-- .element: class="fragment" -->
+* Dokumentation wird immer besser <!-- .element: class="fragment" -->
+* mittlerweile sehr viele Anwendungsgebiete abgedeckt <!-- .element: class="fragment" -->
+
+>NOTES:
+* Mehr Beispiel
+
+--
+
+## Multi Branches
+
+* Multibranch Pipeline Jobs bauen automatisch <!-- .element: class="fragment" -->
+* Mit git flow sehr hilfreich <!-- .element: class="fragment" -->
+* Build-Anpassungen können als Branch getestet werden <!-- .element: class="fragment" -->
+
+
+![img](images/branch_classic.png)<!-- .element: class="fragment" -->
+
+
+--
+
+## Blue Ocean
+
+* Gestartet als neues UI für Jenkins <!-- .element: class="fragment" -->
+* Fast Feedback mit modernen UI <!-- .element: class="fragment" -->
+* mittlerweile gute Pluginunterstützung <!-- .element: class="fragment" -->
+
+
+![img](images/branch_blueocean.png)<!-- .element: class="fragment big-image no-border" -->
+
+--
+
+* Gut geeignet für schnellen Überblick durch Farben
+
+![img](images/blueocean_job_red.png)<!-- .element: class="fragment big-image no-border" -->
+![img](images/blueocean_job_green.png)<!-- .element: class="fragment big-image no-border" -->
+
+--
+
+![img](images/blueocean_job_yellow.png)<!-- .element: class="big-image no-border" -->
+
+[Beispiel](https://jenkins.holisticon.de/job/Public/job/ContinousDelivery_BranchDemo/)<!-- .element: target="_blank" class="fragment"  -->
+
+
+---
+
+# Pipeline Libraries
+
+* [Don't repeat yourself](http://programmer.97things.oreilly.com/wiki/index.php/Don%27t_Repeat_Yourself)-Prinzip auch beim Build
+* Build enthält schnell einige Hilfsmethoden<!-- .element: class="fragment" -->
+* Nutzung in anderen Projekten statt 'Copy-and-Pase' <!-- .element: class="fragment" -->
+* Nicht nur auf Hilfsmethoden beschränkt <!-- .element: class="fragment" -->
+	* volle Groovy-Unterstützung
+	* komplette Builds inkl. Steps/Stages [möglich](https://github.com/jenkins-infra/pipeline-library)<!-- .element: target="_blank" -->
+
+--
+
+# Beispiel
+
+```groovy
+@Library('holisticon-build-library')
+def utils = new de.holisticon.ci.jenkins.Utils()
+
+
+node {
+  utils.waitForAppToBeReady('localhost:8080')
+}
+
+```
+
+[Beispiel](https://github.com/holisticon/jenkins-pipeline-library)<!-- .element: target="_blank" -->
+
+
+---
+
+# Testautomatisierung
+
+* Anchluss der Unit-Tests erzeugten Artefakte weiter testen <!-- .element: class="fragment" -->
+    * Ablage in Repository
+    * Deployment in Test-Umgebung
+* Testumgebungen problemebehaftet <!-- .element: class="fragment" -->
+    * Dedizierte Slaves (Labels)
+    * Docker Images
+* Docker besonders hilfreich (lokales Testen, Ressourcennutzung) <!-- .element: class="fragment" -->
+* Feedback ist ein Muss <!-- .element: class="fragment" -->
+    * TestTools müssen aussaugekräftige Reports liefern
+    * reproduzierbar & nachvollziehbar
+    * gerade bei Oberflächen-Tests
+
+--
+
+# Oberflächen Testing mit Stil - Serenity
+
+* Tool für ATDD (acceptance test driven development)<!-- .element: class="fragment" -->
+* Macht Integrations-Tests lesbarer, wartbarer und wiederwendbar<!-- .element: class="fragment" -->
+* Selenium als technische Basis<!-- .element: class="fragment" -->
+* Nutzt Page Object Pattern<!-- .element: class="fragment" -->
+* Stellt Reporting für Tracking & Fehlersuche zur Verfügung<!-- .element: class="fragment" -->
+* Verbindung mit Ticket-System<!-- .element: class="fragment" -->
+* Anforderungen auf Tests mappen<!-- .element: class="fragment" -->
+
+
+>NOTES:
+* Passt zum CD Gedanken
+* WebDriver is a browser automation API
+    * Used for UI Functional testing
+* Thucydides is a Testing framework using WebDriver
+    * Used for running tests, advanced reporting
+
+
+--
+
+# Konzepte - Page-Object Pattern
+
+* Testautomatisierungspattern für effiziente und lesbare Tests<!-- .element: class="fragment" -->
+* Jede UI Seite wird auf eine Page-Klasse gemappt<!-- .element: class="fragment" -->
+* Interaktion wird über Steps-Klassen umgesetzt<!-- .element: class="fragment" -->
+* Tests nutzen Steps um Anwendungsverhalten zu simulieren<!-- .element: class="fragment" -->
+
+![img](images/serenity_page_pattern.png) <!-- .element: class="fragment big-image no-border" -->
+
+--
+
+# Report
+
+![img](images/serenity_detail.png)
+
+[Beispiel](https://jenkins.holisticon.de/job/Public/job/ContinousDelivery_BranchDemo/job/develop/Serenity_Test_Report/)<!-- .element: target="_blank" -->
+
+
+---
+
+# Provisioning mit Ansible
+
+* OSS Tool für Konfigurationsmanagement (vgl. Puppet, Chef oder CFengine) <!-- .element: class="fragment" -->
+	* kann ad-hoc ausgeführt werden (vgl. Func oder dsh)<!-- .element: class="fragment" -->
+	* Deployment Funktionen (vgl. Fabric oder Capistrano)<!-- .element: class="fragment" -->
+* 2012 gestartete, 2015 von RedHat übernommen<!-- .element: class="fragment" -->
+* in Python geschrieben <!-- .element: class="fragment" -->
+* kommt ohne Agents und Server aus <!-- .element: class="fragment" -->
+
+>NOTES:
+* Seit seiner Entstehung ist Ansible stark gewachsen: Auf GitHub ist es in der Top 10 der Python-Projekte und enthält Beiträge von über 700 Entwickler/innen. Ungefähr alle 3 Monate erscheint ein neues Feature-Release.
+* Gegenüber Puppet und anderen Lösungen, positioniert sich Ansible als einfachere und robustere Lösung. Ansible benötigt keinen Ansible-Server oder Ansible-Agents, sondern kann über SSH direkt auf das Zielsystem angewendet werden. Dadurch entfällt die Installation und Verwaltung der Konfigurationssoftware selbst. Es ist kein vorhergehendes Bootstrapping notwendig und ein Upgrade oder Fehler kann nicht dazu führen, dass kein Zugriff auf Systeme mehr möglich ist. Gleichzeitig ist Ansible so auch für kleine Setups, sogar nur für einen einzigen Host, praktikabel.
+* Ansible verwendet keine eigene Syntax für Konfiguration, sondern basiert auf dem etablierten YAML-Format. Die Konfigurationsdateien, genannt Playbooks, sind leicht zu lesen und zu schreiben.
+
+--
+
+
+# Beispiel
+
+
+* YAML-basierte Syntax für die sog. Playbooks<!-- .element: class="fragment" -->
+
+<pre class="fragment"><code data-trim data-noescape>
+- hosts: webservers
+  &nbsp;&nbsp;vars:
+&nbsp;&nbsp;&nbsp;&nbsp;http_port: 80
+&nbsp;&nbsp;&nbsp;&nbsp;max_clients: 200
+&nbsp;&nbsp;&nbsp;&nbsp;remote_user: root
+&nbsp;&nbsp;&nbsp;&nbsp;tasks:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- name: ensure apache is at the latest version
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apt: pkg=apache2-mpm-worker state=latest
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- name: ensure apache is running
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service: name=apache2 state=started
+</code></pre>
+
+--
+
+# Deployment
+
+```groovy
+sshagent(['e96eb307-86ff-4858-82bb-cdc20bf1e4b4']) {
+  stage('Deploy') {
+    dir("ansible") {
+      // Install / update dependencies
+      sh "ansible-galaxy install -r requirements.yml -f"
+      // Execute playbook
+      sh "ansible-playbook cddemo.yml --extra-vars 'app_version=${appVersion}
+        path_to_artifact=../angular-spring-boot-webapp/target/ng-spring-boot.jar
+        --ansible_ssh_port=\${ANSIBLE_PORT}'"
+    }
+  }
+}
+```
+
+[Beispiel](https://github.com/holisticon/continuous-delivery-demo/blob/master/Jenkinsfile)<!-- .element: target="_blank" -->
+
+--
+
+# Wieso Ansible
+
+* schlank und einfach zu erlernen <!-- .element: class="fragment" -->
+* flexibel und ohne Infrastruktur einsetzbar <!-- .element: class="fragment" -->
+* Mit Ansible Galaxy reichhaltige Bibliothek <!-- .element: class="fragment" -->
+* guter Support in RedHat Distributionen <!-- .element: class="fragment" -->
+
+---
+
+# Fazit & Ausblick
+
+* Feedback ist ein Muss<!-- .element: class="fragment" -->
+    * Teststufen kontinuierlich Feedback über aktuellen Qualitätsstand
+    * Tools müssen das unterstützen
+* Pipeline Plugin enorme Hilfe, gerade bei git flow<!-- .element: class="fragment" -->
+* Im Bereich von CD viele Tools im Bereich Testing & Automatisierung <!-- .element: class="fragment" -->
+* Gefahr von "Over-Engineering" der Schritte in Pipeline<!-- .element: class="fragment" -->
+* Bewegung im Tool-Bereich (Thoughtworks Go, Docker ...)<!-- .element: class="fragment" -->
+* Continuous Integration zwingend für Continuous Delivery<!-- .element: class="fragment" -->
+
+---
+
+# Links
+
+* [Beispiel Anwendung](https://github.com/holisticon/continous-delivery-demo)
+* [Jenkins MultiBranch Beispiel](https://jenkins.holisticon.de/job/Public/job/ContinousDelivery_BranchDemo/)
+* [DevOps – Testautomation I – Infrastructure as Code](https://www.informatik-aktuell.de/entwicklung/methoden/testautomation-im-bereich-continuous-delivery.html)
+* [Rock CI mit Jenkins 2 und Docker](https://www.holisticon.de/2016/04/rock-ci-mit-docker-und-jenkins-2/)
+* [Beispiel Serenity](https://martinreinhardt-online.de/jenkins/view/Demos/job/serenity_gradle_sample/)
+* [Über Jenkins Build Libraries](https://wiki.jenkins.io/display/JENKINS/Pipeline+Shared+Groovy+Libraries+Plugin)
+* [Jenkins Build Library Beispiel](https://github.com/holisticon/jenkins-pipeline-library)
+
+---
+
+> There is no one-size-fits-all solution to the complex problem of
+implementing a deployment pipeline.”
+   *Continuous Delivery*, J. Humble, D. Farley
+
+
+---
+
+# About me
+
+* Martin Reinhardt (Holisticon AG)
+
+![img](images/mreinhardt.jpeg)<!-- .element: class="big-image no-border" style="width:30%;height:30%"-->
+
+* [github.com/hypery2k](https://github.com/hypery2k)
+* [twitter.com/mreinhardt](https://twitter.com/mreinhardt)
+
+
+---
+
+# Präsentation
+
+![img](images/qr.png)
+
+[holisticon.github.io](https://holisticon.github.io/presentations/2017_xpdays_continuous-delivery/)
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/logo2016-silver.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
