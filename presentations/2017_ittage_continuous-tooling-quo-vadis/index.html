@@ -94,14 +94,6 @@
 * Pipeline wird mit jeder Änderung durchlaufen
     * neuer Softwarestand hinein
     * qualitätsgesichertes, produktionsreifes und installierbares Softwarepaket
---
-
-# Warum Build Pipelines
-
-
-> *"One of the challenges of an automated build and test environment is you want your build to be fast, so that you can get fast feedback, but comprehensive tests take a long time to run. A deployment pipeline is a way to deal with this by breaking up your build into stages. Each stage provides increasing confidence, usually at the cost of extra time. Early stages can find most problems yielding faster feedback, while later stages provide slower and more through probing. Deployment pipelines are a central part of Continuous Delivery"*
->
-> **Martin Fowler**
 
 ---
 
@@ -267,6 +259,17 @@ node {
 # Demo für Continuous Integration Setup
 
 
+* komplette Buildumgebung<!-- .element: class="fragment big-image no-border" -->
+* Persistenz über Docker Volumes<!-- .element: class="fragment big-image no-border" -->
+* Verlinkung der Container<!-- .element: class="fragment big-image no-border" -->
+* inklusive Selenium Grid<!-- .element: class="fragment big-image no-border" -->
+
+<div class="stretch">
+
+![img](images/demo-setup.png)<!-- .element: class="fragment no-border"  style="height:40%;width:100%" -->
+
+</div>
+
 ---
 
 # Testautomatisierung
@@ -310,10 +313,6 @@ node {
 ![img](images/serenity_detail.png)
 
 [Beispiel](https://jenkins.holisticon.de/job/Public/job/ContinousDelivery_BranchDemo/job/develop/Serenity_Test_Report/)<!-- .element: target="_blank" -->
-
---
-
-# Demo - Testen mit Serenity BDD
 
 ---
 
@@ -371,7 +370,7 @@ sshagent(['e96eb307-86ff-4858-82bb-cdc20bf1e4b4']) {
 }
 ```
 
-[Beispiel](https://github.com/holisticon/continuous-delivery-demo/blob/master/Jenkinsfile)<!-- .element: target="_blank" -->
+[Beispiel](https://github.com/holisticon/continuous-delivery-demo/blob/develop/Jenkinsfile#L83)<!-- .element: target="_blank" -->
 
 --
 
@@ -385,6 +384,8 @@ sshagent(['e96eb307-86ff-4858-82bb-cdc20bf1e4b4']) {
 --
 
 # Demo - Deployment mit Ansible
+
+[Beispiel](https://jenkins.holisticon.de/blue/organizations/jenkins/Public%2FContinousDelivery_BranchDemo/detail/feature%2Fansible/7/pipeline/71/)<!-- .element: target="_blank" -->
 
 ---
 
@@ -555,7 +556,7 @@ An nahezu allen Stellen lassen sich Sicherheitsaspekte berücksichtigen. So ko�
 
 # Links
 
-* [Demo Setup](https://github.com/holisticon/buildbox)
+* [Buildbox](https://github.com/holisticon/buildbox)
 * [DevOps – Testautomation](https://www.informatik-aktuell.de/entwicklung/methoden/testautomation-im-bereich-continuous-delivery.html)
 * [OWASP Top 10](https://www.owasp.org/index.php/Germany/Projekte/Top_10)
 * [OWASP Cheat Sheet](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series)
