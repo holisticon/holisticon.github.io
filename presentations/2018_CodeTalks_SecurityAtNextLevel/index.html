@@ -44,7 +44,6 @@
 
     <div class="slides">
         <section data-markdown  data-separator="^---$" data-separator-vertical="^--$" data-separator-notes="^>NOTES:"><script type="text/template">
-
 <!-- .slide: class="title" data-background="images/codetalks_title_slide.png" data-background-repeat="repeat-x" data-background-position="center center" data-background-size="100%" data-background-color="#fff"-->
 
 ---
@@ -56,8 +55,9 @@
     * Methodik
     * Agil & Security
 * Continuous Security
-    * Automatisierung
-    * Tools
+    * Schwachstellen Scanning
+    * Attackieren
+* Operation & Monitoring
 * Ausblick
 * Links
 
@@ -192,9 +192,9 @@ implementing a deployment pipeline."
 
 * Thema einarbeiten
     * Erstellung von Security Guidelines<!-- .element: class="fragment no-border" -->
-    * Berücksichtigung von Sicherheit im Rahmen der Erstellung von User Stories<!-- .element: class="fragment no-border" -->
-    * Codescans durchführen<!-- .element: class="fragment no-border" -->
-    * Peer-Reviews durch einen Security Champion durchführen<!-- .element: class="fragment no-border" -->
+    * Berücksichtigung von Sicherheit im Rahmen der Erstellung von User Stories<!-- .element: class="fragment no-border" -->
+    * Codescans durchführen<!-- .element: class="fragment no-border" -->
+    * Peer-Reviews durch einen Security Champion durchführen<!-- .element: class="fragment no-border" -->
     * Penetrationstests einplanen<!-- .element: class="fragment no-border" -->
 * Planing<!-- .element: class="fragment no-border" -->
 * Secure Scrum<!-- .element: class="fragment no-border" -->
@@ -203,7 +203,7 @@ implementing a deployment pipeline."
 
 >NOTES:
 
-An nahezu allen Stellen lassen sich Sicherheitsaspekte berücksichtigen. So können User-Stories für die Härtung geschrieben werden oder auch in fachlichen Anforderungen sicherheitsrelevante Punkte berücksichtigt werden. Es ist generell gerade in größeren Projekten ratsam die Rolle des Security Champions zu besetzen und ggf. auch ein- oder mehrere Security-Sprints einzuplanen. Für das methodische Grundgerüst gibt es also verschiedene Punkte die es zu beachten gilt:
+An nahezu allen Stellen lassen sich Sicherheitsaspekte berücksichtigen. So können User-Stories für die Härtung geschrieben werden oder auch in fachlichen Anforderungen sicherheitsrelevante Punkte berücksichtigt werden. Es ist generell gerade in größeren Projekten ratsam die Rolle des Security Champions zu besetzen und ggf. auch ein- oder mehrere Security-Sprints einzuplanen. Für das methodische Grundgerüst gibt es also verschiedene Punkte die es zu beachten gilt:
 * Security Aspekte
 * Methodik + Testen + Konzeption = gute Software
 
@@ -386,6 +386,24 @@ mit neuer LTS version /NPM 6 verfügbar
 
 ---
 
+# Sicher im Container
+
+* <!-- .element: class="fragment no-border" -->[Clair](https://github.com/coreos/clair) scannt Docker Images nach Schwachstellen
+* <!-- .element: class="fragment no-border" -->[Portus](http://port.us.org) integriert Clair direkt in Registry
+
+![img](images/portus_security.png)<!-- .element: class="fragment no-border" -->
+
+![img](images/portus_tag-vulnerabilities.png)<!-- .element: class="fragment no-border" -->
+
+---
+
+# Attacke
+
+* nächste logische Schritt<!-- .element: class="fragment no-border" -->
+* eigene Anwendung automatisch attackieren<!-- .element: class="fragment no-border" -->
+
+--
+
 # ![img](images/zap_logo.png)<!-- .element: style="margin:0" --> OWASP Zed Attack Proxy (ZAP)
 
 ## Features
@@ -477,6 +495,25 @@ mit neuer LTS version /NPM 6 verfügbar
 
 ---
 
+# Secure Ops
+
+* Dauerhaftes Monitoring nötig<!-- .element: class="fragment no-border" -->
+* Nutzen bestehender Tools (Logging, Events ...)<!-- .element: class="fragment no-border" -->
+
+--
+
+# Security Onion
+
+* <!-- .element: class="fragment no-border" -->[Security Onion](https://securityonion.net) nutzt EFK/ELK Stack um Security Dashboard umzusetzen
+* Analyse/Breakdown möglich (Audit Trail)<!-- .element: class="fragment no-border" -->
+
+![img](images/security-onion_kibana-sysmon.png)<!-- .element: class="fragment no-border" -->
+--
+
+![img](images/security-onion_squert.png)
+
+--
+
 # AWS absichern
 
 * Security Monkey [github.com/Netflix/security_monkey](https://github.com/Netflix/security_monkey)
@@ -501,10 +538,10 @@ mit neuer LTS version /NPM 6 verfügbar
     * Spring Vault [projects.spring.io/spring-vault/](http://projects.spring.io/spring-vault/)
     * HashiCorp Sentinel [hashicorp.com/blog/sentinel-announcement-policy-as-code-framework/](https://www.hashicorp.com/blog/sentinel-announcement-policy-as-code-framework/)
 * Feedback ist ein Muss<!-- .element: class="fragment" -->
-* unerlässlich ein Sicherheitsbewusstsein im Team aufzubauen<!-- .element: class="fragment" -->
+* unerlässlich ein Sicherheitsbewusstsein im Team aufzubauen<!-- .element: class="fragment" -->
 
 >NOTES:
-* sinnvolle Techniken zur Verwaltung von technischen Logins wie z.B. Spring Vault ([spring-vault]) zu berücksichtigen
+* sinnvolle Techniken zur Verwaltung von technischen Logins wie z.B. Spring Vault ([spring-vault]) zu berücksichtigen
 * Policy as a Code
 
 ---
@@ -512,6 +549,10 @@ mit neuer LTS version /NPM 6 verfügbar
 > "**There are only two types of companies**: those that have been hacked, and those that will be"
 
   **Robert Miller**, FBI Director, 2012
+
+---
+
+> „Sicherheit sollte begleiten und nicht blockierend. Lieber Leitflanken geben, als Strafzettel zu verteilen“
 
 ---
 
