@@ -1,0 +1,63 @@
+version: '3'
+services:
+
+  db:
+    container_name: blog_db
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+    volumes:
+      - ./docker/blog/db:/docker-entrypoint-initdb.d
+    ports:
+      - "${DB_PORT}:3306"
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+
+  blog:
+    container_name: blog_app
+    build: docker/blog
+    environment:
+      - WORDPRESS_DB_NAME
+      - WORDPRESS_DB_USER
+      - WORDPRESS_DB_PASSWORD
+      - WORDPRESS_DB_HOST
+    depends_on:
+      - db
+    ports:
+      - "${BLOG_PORT}:80"
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:80"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+
+  spring:
+    container_name: sb_app
+    build: docker/springboot_app
+    ports:
+      - "${SPRINGBOOT_PORT}:8080"
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8080"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+
+
+  kali:
+    container_name: kali_linux
+    build: docker/kali
+    ports:
+      - "8443:8443"
+      - "8888:8888"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - "./docker/kali/share:/share"
+    stdin_open: true
+    tty: true
