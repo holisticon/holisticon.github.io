@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Compliant and Secure Continuous Improvement with OpenShift</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.css" media="all">
+
+    <link rel="stylesheet" href="styles/presentation.css" media="all">
+
+    <link rel="shortcut icon" href="images/brand/favicon.png">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'node_modules/reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            var linkMore = document.createElement('link');
+            linkMore.rel = 'stylesheet';
+            linkMore.type = 'text/css';
+            linkMore.href = 'styles/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( linkMore );
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <div class="slides">
+        <section data-markdown  data-separator="^---$" data-separator-vertical="^--$" data-separator-notes="^>NOTES:"><script type="text/template">![BDK](images/meetup.png)
+
+---
+
+# MIP @ Bank Deutsches Kraftfahrzeuggewerbe GmbH
+
+Compliant and Secure Continuous Improvement with OpenShift
+
+![BDK](images/bdk.svg)<!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --><br />
+
+![Twitter - Holisticon](images/brand/tweet_logo.png) <!-- .element: class="inline" style="max-height:32px; vertical-align: top; " --> [@holisticon](https://twitter.com/holisticon)<br />
+
+<!-- .slide: class="title" data-background="images/brand/grass_footer.png" data-background-repeat="repeat-x" data-background-position="bottom center" data-background-size="inherit" -->
+
+---
+
+# Agenda
+
+* Background<!-- .element: class="fragment"-->
+* Release Management<!-- .element: class="fragment"-->
+* Security built-In<!-- .element: class="fragment"-->
+* Monitoring<!-- .element: class="fragment"-->
+* Sum Up<!-- .element: class="fragment"-->
+
+
+--
+
+# Background
+
+* Banking background with BDK <!-- .element: class="fragment"-->
+  * Compliance & Security<!-- .element: class="fragment"-->
+  * Legal<!-- .element: class="fragment"-->
+* Managed Integration Platform (MIP)<!-- .element: class="fragment"-->
+  * Easy to maintain services<!-- .element: class="fragment"-->
+  * Flexible infrastructure for the operation of software<!-- .element: class="fragment"-->
+* consists of three sections<!-- .element: class="fragment"-->
+  * Infrastructure Level (Openshift as basic infrastructure is operated by a provider for the BDK)<!-- .element: class="fragment"-->
+  * MIP Platform (Platform Services)<!-- .element: class="fragment"-->
+  * Business Application Level (The application software which implements the functional aspects of the BDK)<!-- .element: class="fragment"-->
+
+--
+
+<!-- .slide: class="title" data-background="images/mip_aod.png" data-background-position="center center" data-background-size="inherit" -->
+
+
+>NOTES:
+
+Trigger for the build of a new version is a change in the version control system Git.
+The jenkins build server observes the changes in Git and gets the build pipline and the java sources to build the new version of a service. The build server then builds the Java sources.
+The build server notifies the sonar server, which checks the code quality.
+The built artifacts are stored in the Nexus Repository.
+The Jenkins starts the build in the Openshift Cluster, which takes the Jenkins built artifacts out of the Nexus and creates an Openshift image.
+The image is stored by the build process in the Image Repository.
+The Image Scaner Clair monitors the Image Repository and scans the image on Vulnerables and creates a report. The scanner checks the created images against lists of known vurnables.
+The Replication Controller oversees the image registry and deployed a new pod.
+A new image is deployed by the Replication Controller in the Openshift cluster to a new pod.
+The service is secured with Keycloak.
+The Logging of each application pod is done via Central Logging Solution (EFK). The log server notifies about events and provides log files.
+The Monitoring of each pod is done via central monitorinig solution (Prometheus). The monitoring provides views on the state of all pods and its availability.  It notifies administrators on failure events or ressource limits.
+
+
+--
+
+# Release Management
+
+* Continuous Delivery<!-- .element: class="fragment" -->
+* Agile software development works in small parts<!-- .element: class="fragment" -->
+    * Software often and reliably in production<!-- .element: class="fragment" -->
+    * Software with agile methods cannot be tested completely (manually)<!-- .element: class="fragment" -->
+    * It's all about the Build Pipeline 😊<!-- .element: class="fragment" -->
+* Why?<!-- .element: class="fragment" -->
+    * Speed & Fast Feedback
+    * Automation
+
+![img](images/buildpipeline.png) <!-- .element: class="fragment big-image no-border" -->
+
+--
+
+
+![img](images/mip_build.png)
+
+--
+
+# Complete Process
+
+* Common build tasks are Wrapped in Jenkins Pipeline Library<!-- .element: class="fragment" -->
+* Image packaging is only done once in dev environment<!-- .element: class="fragment" -->
+* All other stages use images from there<!-- .element: class="fragment" -->
+
+![img](images/mip_release_process.png) <!-- .element: class="fragment big-image no-border" -->
+
+>NOTES:
+
+
+--
+
+# Release to Production
+
+* For all production deployments AWX is used<!-- .element: class="fragment" -->
+* Playbooks uses podman to copy image<!-- .element: class="fragment" -->
+* Deployment of versioned images for easier rollback <!-- .element: class="fragment" -->
+
+![img](images/mip_release_prod.png) <!-- .element: class="fragment big-image no-border" -->
+
+---
+
+# Security <span>rocks?</span><!-- .element: class="fragment" -->
+
+
+![img](images/secdevops_unicorn_fail.png)<!-- .element: class="fragment no-border" style="margin: 0"-->
+
+
+
+--
+
+# Think security holistic
+
+* Training<!-- .element: class="fragment"-->
+    * Security Guidelines<!-- .element: class="fragment no-border" -->
+    * Consideration of security in the creation of user stories<!-- .element: class="fragment no-border" -->
+    * Codescans <!-- .element: class="fragment no-border" -->
+    * Peer-Reviews<!-- .element: class="fragment no-border" -->
+    * Penetration Testing<!-- .element: class="fragment no-border" -->
+* Planing<!-- .element: class="fragment no-border" -->
+* Analogous to the rest of software development<!-- .element: class="fragment no-border" -->
+* Security must be considered on different levels  <!-- .element: class="fragment no-border" -->
+  * Code & Architecture (Sonar) <!-- .element: class="fragment no-border" -->
+  * Testing (bdd-security, zap, owasp)  <!-- .element: class="fragment no-border" -->
+  * Monitoring, Auditing & Logging  <!-- .element: class="fragment no-border" -->
+
+
+--
+
+# OpenShift
+
+* No container can run as root<!-- .element: class="fragment" -->
+* RBAC by default<!-- .element: class="fragment" -->
+* Network Policies<!-- .element: class="fragment" -->
+
+![img](images/openshift_networkpolicies.gif)<!-- .element: class="fragment no-border" style="margin: 0"-->
+
+--
+
+# What we added
+
+* Enforce OAuth authentication<!-- .element: class="fragment" -->
+* Differente methods for persons and technical client usage<!-- .element: class="fragment" -->
+* Strict role model for Platform and Services (OAuth/Keycloak)<!-- .element: class="fragment" -->
+* Clair for Image vulnerability checks<!-- .element: class="fragment" -->
+* ClamAV REST endpoint<!-- .element: class="fragment" -->
+* Projects use dependency checker tools for NodeJS and Java<!-- .element: class="fragment" -->
+* Sonar with FindBugs and FindSecBugs<!-- .element: class="fragment" -->
+
+--
+
+# Clair
+
+* Clair is provided via ClairCtl
+* ClairCtl provides an easy integration of the Clair REST API
+
+![img](images/mip_clair.png)<!-- .element: class="fragment no-border" style="margin: 0"-->
+
+---
+
+# Tracability & Compliance
+
+* We tend to use Code as truth<!-- .element: class="fragment" -->
+* Provisioning of most things<!-- .element: class="fragment" -->
+* Use git-flow and 4 eyes principle where possible<!-- .element: class="fragment" -->
+
+
+---
+
+# Monitoring
+
+* Using Prometheus whereever possible<!-- .element: class="fragment" -->
+* Alerting!<!-- .element: class="fragment" -->
+* Operations<!-- .element: class="fragment" -->
+  * Build Failure Ratio<!-- .element: class="fragment" -->
+  * All systems working<!-- .element: class="fragment" -->
+  * Computing Limits reached<!-- .element: class="fragment" -->
+  * API Gateway status<!-- .element: class="fragment" -->
+  * ...<!-- .element: class="fragment" -->
+* Security<!-- .element: class="fragment" -->
+  * SSL Statistics <!-- .element: class="fragment" -->
+  * Login Failures<!-- .element: class="fragment" -->
+  * SSL Statistics <!-- .element: class="fragment" -->
+  * ...<!-- .element: class="fragment" -->
+* Still adopting limits for alerting 😊<!-- .element: class="fragment" -->
+
+--
+
+<!-- .slide: class="title" data-background="images/mip_monitoring_traefik.png" data-background-position="center center" data-background-size="inherit" -->
+
+--
+
+<!-- .slide: class="title" data-background="images/mip_monitoring_security.png" data-background-position="center center" data-background-size="inherit" -->
+
+---
+
+
+# Secure Software Development Priniciples
+
+* Ensure dependencies are up-to-date<!-- .element: class="fragment no-border" -->
+* Explicitly declare acceptable user payloads<!-- .element: class="fragment no-border" -->
+* Assert safe regular expressions<!-- .element: class="fragment no-border" -->
+* Prevent abusive requests<!-- .element: class="fragment no-border" -->
+* Code secure first<!-- .element: class="fragment no-border" -->
+* No credentials in Git<!-- .element: class="fragment no-border" -->
+* Test<!-- .element: class="fragment no-border" -->
+* <!-- .element: class="fragment no-border" -->Think **before** implemented authorization
+* Monitor and Log<!-- .element: class="fragment no-border" -->
+* Analyze and Learn <!-- .element: class="fragment no-border" -->
+
+
+>NOTES:
+we'll take a look at several commonly overlooked ways to secure your web apps. Many of the examples provided will be specific to Java, but any modern programming language will have equivalent tactics.
+
+* Regular expressions are both a boon and curse for every developer. They can make pattern matching on strings an easy task, but a poorly crafted regular expression can also bring an application down. Consider a simple pattern like this one: (a|aa)+. While it looks innocuous, the | ("or") combined with the + operator can take a catastrophically long time to match against a string such as "aaaaaaaaaaaaaaaaaaaaaaaa!". Malicious users could cause a denial-of-service attack on your system by submitting a particularly complicated (yet still technically "valid") text. (A similar issue affected the Node.js community several years ago.)
+
+* Validating your regular expressions will ensure that they are not susceptible to this type of ReDoS attack. One tool you can use is saferegex, a command-line Java utility that will report on the likelihood of a regular expressions causing a problem:
+
+* Building a popular application involves more than just adding desired features. Your site will also need to handle the amount of traffic it receives as it grows. Even if every part of your application is secure, bad actors who repeatedly hammer your servers could succeed in bringing them down. To ensure uptime for your users, you should throttle aggressive clients. This can be done in a few different ways, like limiting requests by IP address or user agent.
+
+* We all make mistakes. Although we ask users of our applications to behave with security in mind, we also need to practice good security hygiene. Some common sense actions that everyone should take include:
+
+Using two-factor authentication wherever possible
+Locking your computer screen any time you're not at your workstation
+Implementing unique passwords across accounts and services, and using a password manager
+
+* Many applications only log critical failures, like unexpected server errors. But even behavior we have accounted for can be used as an attack vector. In those cases, it's imperative to log any sensitive action. An example of some behavior to log includes:
+
+Successful and unsuccessful logins
+Password resets
+Changes to access levels
+
+
+---
+
+# SumUp
+
+* Container works quite well for banks😊<!-- .element: class="fragment" -->
+* Image building still issue 😟 <!-- .element: class="fragment" -->
+* Challenges of KnowHow and People<!-- .element: class="fragment" -->
+* Next Steps<!-- .element: class="fragment" -->
+  * Operations<!-- .element: class="fragment" -->
+  * Automation of Pen-Testing<!-- .element: class="fragment" -->
+  * Maybe move to pure Kubernetes<!-- .element: class="fragment" -->
+  * OpenJDK 11<!-- .element: class="fragment" -->
+  * More Business Services<!-- .element: class="fragment" -->
+
+
+---
+
+> <center>"**There are only two types of companies**: those that have been hacked, and those that will be"
+>  <br> <br>
+>  **Robert Miller**, FBI Director, 2012 </center>
+
+---
+
+> <center>„Security should accompany and not block. <br>
+> I'd rather give guarding rails than handing out parking tickets.“</center>
+
+
+
+---
+
+
+# Thank you
+
+![img](images/qr.png)<!-- .element: style="width:30%;height:30%"-->
+<br>
+[bit.ly/2DEgyrW](https://holisticon.github.io/presentations/2019_meetup_mip/)
+<br>
+
+![img](https://media.giphy.com/media/3otPot3HqxcKRbGkXC/giphy.gif)<!-- .element: class="fragment no-border" -->
+</script></section>
+    </div>
+    <footer>
+        <img src="images/brand/holisticon-logo-grey.svg" class="holisticon-logo" alt="Holisticon AG">
+    </footer>
+
+</div>
+
+<script src="scripts/reveal.js"></script>
+
+<script>
+    // Configure Reveal
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+
+        width:  1024,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.5,
+        maxScale: 100.0,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'scripts/reveal.classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'scripts/reveal.marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'scripts/reveal.highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'scripts/reveal.zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'scripts/reveal.notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.search.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'scripts/reveal.remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        ]
+    });
+</script>
+
+</body>
+
+</html>
