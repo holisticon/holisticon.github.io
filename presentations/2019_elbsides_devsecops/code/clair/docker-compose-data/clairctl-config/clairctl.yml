@@ -1,0 +1,9 @@
+clair:
+  port: 6060
+  uri: http://clair
+  report:
+    path: /reports
+    format: json
+  insecure-tls: true
+auth:
+  insecureSkipVerify: true
