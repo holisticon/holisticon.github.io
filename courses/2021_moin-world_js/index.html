@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>JavaScript - Intro</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+  <link href="lib/css/app.css" rel="stylesheet"><link href="lib/css/ttf.css" rel="stylesheet"></head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section><section id="_intro"><h2>Intro</h2><div class="imageblock" style=""><img src="images/logo_js.png" alt="logo js"></div></section><section id="_agenda"><h2>Agenda</h2><div class="ulist"><ul><li class="fragment"><p>Vorstellung</p><div class="ulist"><ul><li><p>Gruppen</p></li><li><p>Zeitplan</p></li></ul></div></li><li class="fragment"><p>Intro</p><div class="ulist"><ul><li><p>Geschichte von JavaScript</p></li><li><p>Verbindung zu HTML &amp; CSS</p></li></ul></div></li><li class="fragment"><p>Datentypen und Datenstrukturen</p></li></ul></div></section></section>
+<section><section id="_vorstellung"><h2>Vorstellung</h2></section><section id="_wir_über_uns"><h2>Wir über uns</h2><div class="ulist"><ul><li class="fragment"><p>Arbeite beide bei <a href="http://holisticon.de" target="_blank">Holisticon</a></p></li><li class="fragment"><p>Standorte in Kiel, Hannover und Hamburg</p></li><li class="fragment"><p>Software Berater aus Leidenschaft ❤️‍🔥</p></li></ul></div></section><section id="_gruppen"><h2>Gruppen</h2><div class="ulist"><ul><li class="fragment"><p>Wer seid ihr?</p></li><li class="fragment"><p>Alle die Kamera aus 😊</p></li><li class="fragment"><p>Es machen alle die Kamera die eine Frage mit ja beantworten können</p><div class="ulist"><ul><li class="fragment"><p>Programmier-Erfahrung?</p></li><li class="fragment"><p>Wer hat schonmal HTML "benutzt"?</p></li><li class="fragment"><p>HTML/CSS?</p></li><li class="fragment"><p>JavaScript?</p></li></ul></div></li></ul></div></section><section id="_zeitplan"><h2>Zeitplan</h2><div class="ulist"><ul><li class="fragment"><p>9:00 - 9:50: Intro</p></li><li class="fragment"><p>10:00 - 10:50 Deep Dive</p></li><li class="fragment"><p>11:00 - 12:00 Coding: TicTacToe</p></li><li class="fragment"><p>13:00 - 13:20 Fazit / Vorstellung</p></li><li class="fragment"><p>13:30 - 14:00 Fragerunde &amp; Diskussion</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Lücken sind Pausen ;)</p></li><li><p>Fragerunde &amp; Diskussion als Lean Coffee</p></li></ul></div></aside></section></section>
+<section><section id="_basics"><h2>Basics</h2></section><section id="_was_ist_javascript"><h2>Was ist JavaScript</h2><div class="ulist"><ul><li class="fragment"><p>Nichts mit Java zu tun, nur die Marke von Oracle (SUN)</p></li><li class="fragment"><p>JavaScript = Programmiersprache, die im Browser (z.B. Chrome ausgeführt wird)</p></li><li class="fragment"><p>JavaScript ist wie HTML im Klartext lesbar</p></li><li class="fragment"><p>Direkt in HTML integrierbar</p></li><li class="fragment"><p>ECMAScript als Standard</p></li><li class="fragment"><p>Browser in einer sogenannten Sandbox ausgeführt</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>Sandbox-Prinzip[Bearbeiten | Quelltext bearbeiten]
+JavaScript wird im Browser in einer sogenannten Sandbox ausgeführt. Dies soll bewirken, dass man in JavaScript nur Zugriff auf die Objekte des Browsers hat und nicht auf das Dateisystem zugreifen kann. Eine Ausnahme stellt der Lesezugriff auf eine Datei dar, die per Dateiauswahl-Dialog, gestartet mit dem HTML-Element &lt;input type="file"&gt;, vom Benutzer ausgewählt wurde.</p></div></aside></section><section id="_die_kurze_geschichte_von_javascript"><h2>Die (kurze) Geschichte von JavaScript</h2><div class="ulist"><ul><li class="fragment"><p><strong>1998</strong>: ECMAScript 2</p></li><li class="fragment"><p><strong>1999</strong>: ECMAScript 3</p></li><li class="fragment"><p><strong>2000 - 2009</strong>: ECMAScript 4</p></li><li class="fragment"><p><strong>2005 - 2207</strong>: Renaissance der Sprache JavaScript</p><div class="ulist"><ul><li><p>Bibliotheken: jQuery, Dojo u.a.</p></li><li><p>ECMAScript 3.1</p></li></ul></div></li><li class="fragment"><p><strong>2007</strong>: Als Gegenbewegung zu ECMAScript 4 bringen Microsoft und Yahoo ECMAScript 3.1 auf den Weg</p></li><li class="fragment"><p><strong>2009</strong>: ECMAScript 3.1 wird zu ECMAScript 5</p></li><li class="fragment"><p><strong>2011</strong>: ECMAScript 5.1 ohne neue Features, nur Spezifikation</p></li><li class="fragment"><p><strong>Juni 2015</strong>: Release von ES2015</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p><strong>NICHT EINSCHLAFEN</strong></p></li><li><p><strong>1998</strong>: ECMAScript 2</p></li><li><p><strong>1999</strong>: ECMAScript 3</p></li><li><p><strong>2000 - 2009</strong>: ECMAScript 4 auf und ab</p><div class="ulist"><ul><li><p>sehr fortschrittlicher Ansatz</p></li><li><p>u.a. Klassen und deklarierte Typen</p></li><li><p>ActionScript 3 als Implementierung</p></li></ul></div></li><li><p><strong>2005</strong>: Ajax und damit SPAs kommen auf (The rise of JavaScript)</p><div class="ulist"><ul><li><p>Renaissance der Sprache JavaScript</p></li><li><p>Bibliotheken: jQuery, Dojo u.a.</p></li></ul></div></li><li><p><strong>2007</strong>: Als Gegenbewegung zu ECMAScript 4 bringen Microsoft und Yahoo ECMAScript 3.1 auf den Weg</p></li><li><p><strong>2009</strong>: ECMAScript 3.1 wird in ECMAScript 5 umbenannt und man spielt wieder miteinander</p></li><li><p>ECMAScript 4 und ActionScript 3 enden als Sackgassen</p></li><li><p>Alle Browser ab IE9, Firefox 3 unterstützen ECMAScript 5</p></li><li><p>ECMAScript 5 hat einen nicht rückwärts kompatiblen &lt;code&gt;strict mode&lt;/code&gt;</p></li><li><p><strong>2011</strong>: ECMAScript 5.1 ohne neue Features, lediglich Klärungen in der Spezifikation</p></li><li><p>Technik und Irrwege</p></li></ul></div></aside></section><section id="_html"><h2>HTML</h2><div class="ulist"><ul><li class="fragment"><p>HTML ist nicht wirklich eine Programmiersprache</p></li><li class="fragment"><p>HTML (Hypertext Markup Language)</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="html language-html">Ein Absatz
+&lt;p&gt;Ein Absatz&lt;/p&gt;</code></pre>
+<aside class="notes"><div class="paragraph"><p>HTML (Hypertext Markup Language) ist der Code, welcher benötigt wird, um den Webinhalt zu strukturieren und ihm eine Bedeutung und einen Zweck zu geben. Zum Beispiel könnte Ihr Inhalt Absätze und Grafiken, aber auch Bilder und Tabellen enthalten. Wie der Titel dieses Artikels verspricht, soll Ihnen hier ein grundsätzliches Verständnis vermittelt werden, wie HTML eingesetzt wird.</p></div></aside></section><section id="_html_struktur"><h2>HTML-Struktur</h2><div class="ulist"><ul><li class="fragment"><p>Baum aus Elementen</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="html language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Meine Testseite&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;img src="images/firefox-icon.png" alt="Mein Testbild"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<aside class="notes"><div class="paragraph"><p>Jetzt wissen Sie, wie die einzelnen Elemente in einer HTML-Datei aufgebaut sind, aber ein Element für sich alleine tut nicht viel. Wir schauen uns jetzt an, wie die einzelnen Elemente kombiniert werden, um eine HTML Seite aufzubauen. Schauen wir den Code wieder an, welchen wir vorher in die index.html-Datei eingefügt haben (welche wir im Artikel "Dateien nutzen" erstellt haben):</p></div></aside></section><section id="_css"><h2>CSS</h2><div class="ulist"><ul><li class="fragment"><p>engl.: Cascading Style Sheets = gestufte Gestaltungsbögen</p></li><li class="fragment"><p>Wie HTML keine Programmiersprache</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="css language-css">/* Alle Absätze einfärben */
+p {
+  color: red;
+}
+
+/* Alle Absätze und Element mit "class"-Attribute "red-text" */
+p, .red-text {
+  color: red;
+  border: 1px solid black;
+}</code></pre>
+<div class="ulist"><ul><li class="fragment"><p>Wird in HTML eingebunden:</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="html language-html">&lt;link href="styles/style.css" rel="stylesheet" type="text/css"&gt;</code></pre>
+<aside class="notes"><div class="paragraph"><p>Wie HTML ist CSS nicht wirklich eine Programmiersprache. Es ist auch keine Markup-Sprache, sondern eine Stylesheet-Sprache, die es erlaubt für Elemente auf der Seite das Aussehen festzulegen.</p></div>
+<div class="paragraph"><p>Es gibt viele verschiedene Arten von Selektoren. Bisher haben wir nur Element-Selektoren genutzt, welche alle Elemente eines bestimmten Typs innerhalb eines HTML-Dokumentes auswählen. Aber wir können auch eine spezifischere Auswahl nutzen. Hier sind einige weitere Arten von Selektoren, welche häufig genutzt werden:</p></div></aside></section><section id="_dom"><h2>DOM</h2><div class="ulist"><ul><li class="fragment"><p>Document Object Model (DOM) ist eine Programmierschnittstelle für u.a. HTML-Dokumente</p></li><li class="fragment"><p>strukturelle Abbildung des Dokuments</p></li><li class="fragment"><p>Baum des HTML Dokuments</p></li><li class="fragment"><p>Knoten sprechen Elemente im Dokument an</p></li><li class="fragment"><p>Dynamisch</p></li></ul></div></section><section id="_html_co"><h2>HTML &amp; Co</h2><div class="imageblock" style=""><img src="images/logo_html-css-js.png" alt="logo html css js"></div>
+<div class="ulist"><ul><li class="fragment"><p>HTML &amp; CSS für Gestaltung, JavaScript für Logik</p></li><li class="fragment"><p>Basis jeder Webseite und Webanwendung</p></li><li class="fragment"><p>Über <code>&lt;script&gt;</code> Element wird angezeigt wo HTML aufhört und JavaScript anfängt</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="html language-html">&lt;html&gt;
+    &lt;script type="text/javascript"&gt;
+       alert('Moin')
+    &lt;/script&gt;
+&lt;/html&gt;</code></pre>
+<aside class="notes"></aside></section><section id="_ausführung_im_browser"><h2>Ausführung im Browser</h2><div class="ulist"><ul><li class="fragment"><p>Beispiel lässt sich direkt ausführen</p></li></ul></div>
+<div class="paragraph fragment"><p><a href="code/run-browser.html" target="_blank">Run</a></p></div></section><section id="_referenzen"><h2>Referenzen</h2><div class="paragraph"><p>MDN
+<a href="https://developer.mozilla.org/de/docs/Web/JavaScript" class="bare">https://developer.mozilla.org/de/docs/Web/JavaScript</a></p></div></section></section>
+        <section><section id="_datentypen_und_datenstrukturen"><h2>Datentypen und Datenstrukturen</h2><div class="imageblock" style=""><img src="images/hack-keyboard.gif" alt="hack keyboard"></div></section><section id="_datentypen"><h2>Datentypen</h2><div class="ulist"><ul><li class="fragment"><p>JavaScript = schwach typisierte oder dynamische Programmiersprache</p></li><li class="fragment"><p>Primitives:</p><div class="ulist"><ul><li><p>Boolean</p></li><li><p>Null</p></li><li><p>Undefined</p></li><li><p>Number</p></li><li><p>String</p></li><li><p>Symbol (new in ECMAScript 2015)</p></li></ul></div></li><li class="fragment"><p>Object</p><div class="ulist"><ul><li><p>Eigene "Untertypen" möglich</p></li></ul></div></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">var foo = 42;    // foo ist jetzt eine number
+var foo = "bar"; // foo ist jetzt ein string
+var foo = true;  // foo ist jetzt ein boolean</code></pre>
+<aside class="notes"><div class="paragraph"><p><strong>Dynamische Typisierung</strong>
+JavaScript ist eine schwach typisierte oder dynamische Programmiersprache. Datentypen werden bei einer Variable nicht explizit deklariert und jede Variable kann mit Werten jedes Typen beschrieben (überschrieben) werden:</p></div></aside></section><section id="_besonderheiten_typsystem"><h2>Besonderheiten Typsystem</h2><div class="ulist"><ul><li class="fragment"><p><code>null</code> für Zurücksetzen nutzen</p></li><li class="fragment"><p><code>undefined</code> für nicht-initiale "leere" Werte</p></li><li class="fragment"><p>Keinen Typ für Ganzzahlen</p></li><li class="fragment"><p>Ungenaue Berechnungen (Problem vom Standard IEEE 754)</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">var result = 0.1 + 0.2;
+result === 0.3
+
+// false !
+// result == 0.30000000000000004</code></pre>
+<aside class="notes"><div class="ulist"><ul><li><p>Undefined wird durch die JS-Engine "vergeben", nicht selbst nutzen</p></li><li><p>JavaScript steht nicht allein da
+Wer sich nun bestätigt darin fühlt, dass JavaScript eine total verkorkste Sprache sei und nicht einmal ordentlich rechnen kann, wird erstaunt sein, dass dieses Problem nicht allein auf JavaScript beschränkt ist. Alle Sprachen, welche Fließkommazahlen nach IEEE 754 implementieren, weisen entsprechende Rundungsfehler auf. Der Unterschied besteht lediglich in den diversen Sprachen sich unterscheidenden zusätzlichen Datentypen.</p></li></ul></div>
+<div class="paragraph"><p>Wer es nicht glaubt, kann gerne einmal in groovy (bzw. Java) folgendes ausprobieren:</p></div>
+<div class="paragraph"><p>Rundungsproblem in Java/Groovy</p></div>
+<div class="paragraph"><p>println"0.1 + 0.2 = ${0.1 + 0.2}"// "0.1 + 0.2 = 0.3"</p></div>
+<div class="paragraph"><p>println"0.1f + 0.2f = ${0.1f + 0.2f}"// "0.1f + 0.2f = 0.30000000447034836"</p></div>
+<div class="paragraph"><p>println"0.1d + 0.2d = ${0.1d + 0.2d}"// "0.1d + 0.2d = 0.30000000000000004"
+Daran lässt sich auch gut erkennen, dass Number dem Datentyp Double in Java entspricht.</p></div></aside></section><section id="_objekte"><h2>Objekte</h2><div class="ulist"><ul><li class="fragment"><p>einfaches objekt-basiertes Muster ("Prototype")</p></li><li class="fragment"><p>Sammlung von Eigenschaften (Name &amp; Wert)</p></li><li class="fragment"><p>Eigenschaften können auch Funktionen sein</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">var myCar = new Object();
+myCar.make = "Ford";
+myCar.model = "Mustang";
+myCar.year = 1969;
+// Nicht initialisierte Eigenschaften eines Objektes haben den Wert undefined
+myCar.color; // undefined</code></pre></section><section id="_eigene_objekte"><h2>Eigene Objekte</h2><pre class="highlight listingblock fragment"><code class="javascript language-javascript">class Car {
+
+    constructor(maker, model, year) {
+        this.maker = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    drive(distance) {
+        // ...
+    }
+}
+
+let myCar = new Car("Tesla", "Model 3", 2019);
+myCar.drive(100);</code></pre>
+<aside class="notes"><div class="paragraph"><p>Objekte in JavaScript, wie in vielen anderen Programmiersprachen, können mit Objekten aus dem realen Leben verglichen werden. Das Konzept der Objekte in JavaScript kann mit greifbaren Objekten aus der realen Welt verstanden werden.</p></div></aside></section><section id="_arrays"><h2>Arrays</h2><div class="ulist"><ul><li class="fragment"><p>globales Objekt und Konstruktor für das Erstellen von Listen</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">var fruits = ['Apple', 'Banana'];
+console.log(fruits.length);</code></pre>
+<div class="ulist"><ul><li class="fragment"><p>vordefinierte Eigenschaften und Methoden</p></li></ul></div>
+<div class="ulist"><ul><li class="fragment"><p><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank"><code>find</code></a></p></li><li class="fragment"><p><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank"><code>concat</code></a></p></li><li class="fragment"><p>&#8230;&#8203;</p></li></ul></div>
+<aside class="notes"></aside></section><section id="_operationen"><h2>Operationen</h2><div class="ulist"><ul><li class="fragment"><p>ähnlich zu anderen Sprachen, wie Python</p></li><li class="fragment"><p>Mathematische Operationen</p></li><li class="fragment"><p>String-Verkettungen</p></li><li class="fragment"><p>Globale Funktionen (alert, console.log) nutzbar</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="html language-html">&lt;html&gt;
+  &lt;script type="text/javascript"&gt;
+    alert(1 + 4);
+    alert(1 + '4');
+    alert(1 + "4");
+  &lt;/script&gt;
+&lt;/html&gt;</code></pre>
+<div class="paragraph fragment"><p><a href="code/run-operations.html" target="_blank">Run</a>
+<a href="https://codepen.io/hypery2k/pen/poPmpNM" target="_blank">Selbstversuch</a></p></div></section><section id="_flusskontrolle"><h2>Flusskontrolle</h2><div class="ulist"><ul><li class="fragment"><p>Über Bedingungen Fallunterscheidungen möglich</p></li><li class="fragment"><p><code>switch</code> als Sonderfall möglich</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">if (&lt;condition&gt;) {
+
+} else {
+
+}</code></pre>
+<div class="paragraph fragment"><p><a href="https://codepen.io/hypery2k/pen/poPmpNM" target="_blank">Selbstversuch</a></p></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Unterschiede alert und console</p></li></ul></div></aside></section><section id="_schleifen"><h2>Schleifen</h2><div class="ulist"><ul><li class="fragment"><p>Wie in anderen Sprachen gibt es <code>while</code> und <code>for</code> als gängige Anwendungen</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">for (var i = 0; &lt;condition&gt;; i++) {
+
+}</code></pre>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">do {
+
+} while (&lt;condition&gt;);</code></pre>
+<aside class="notes"><div class="paragraph"><p>Man kann sich Schleifen wie eine Computerversion des Spiels vorstellen, bei dem man jemandem sagt, er soll x Schritte in eine Richtung und dann y Schritte in eine andere Richtung gehen. So kann zum Beispiel die Aussage "Gehe fünf Schritte nach Osten" mit Hilfe von Schleifen so ausgedrückt werden:</p></div>
+<div class="paragraph"><p>Es gibt viele verschiedene Arten von Schleifen, doch im Wesentlichen verrichten alle die gleiche Aufgabe: sie führen eine Aktion für eine bestimmte Anzahl an Wiederholungen aus (diese Anzahl kann auch 0 sein). Dabei ermöglichen die verschiedenen Arten von Schleifen unterschiedliche Anfangs- und Endpunkte festzulegen. Es gibt zahlreiche Situationen in denen eine Art von Schleifen einfacher zum Ergebnis führt, als eine andere.</p></div></aside></section><section id="_sichtbarkeiten"><h2>Sichtbarkeiten</h2><div class="ulist"><ul><li class="fragment"><p>verschiedene Möglichkeiten, in Javascript Variabeln anzulegen</p></li><li class="fragment"><p>Variabeln ohne <code>var</code>, <code>let</code> oder <code>const</code> definieren</p><div class="ulist"><ul><li class="fragment"><p>Globale Variable erzeugt</p></li></ul></div></li><li class="fragment"><p><code>var</code> ist immer im Funktions-Scope</p></li><li class="fragment"><p><code>let</code> gilt für Blöcke</p></li><li class="fragment"><p><code>const</code> für Konstanten</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>gehen sie sparsam mit <strong>Globalen Variablen</strong> um!
+Verwenden sie diese nur, wenn sie die Variable im gesamten Projekt benötigen
+Am Besten an separater Stelle, damit diese immer transparent sind</p></div>
+<div class="paragraph"><p>LET Variabeln sind nur in Blöcken zugreifbar, aber auch in Unterblöcken. Folgendes Konstrukt lässt sich also ausführen:</p></div>
+<div class="paragraph"><p>CONST hingegen verhindern, dass ein Wert überschrieben werden kann:</p></div></aside></section><section id="_funktionen"><h2>Funktionen</h2><div class="ulist"><ul><li class="fragment"><p>Funktion = "Unterprogramm"</p></li><li class="fragment"><p>Funktionen First-Class Objekte, Grundbaustein in JavaScript</p></li><li class="fragment"><p>Ganze Reihe von Standard-Funktionen, wie z.B. <code>alert</code>, <code>console.*</code>, <code>prompt</code>&#8230;&#8203;</p></li><li class="fragment"><p>Eigene Funktionen möglich:</p></li></ul></div>
+<pre class="highlight listingblock fragment"><code class="javascript language-javascript">/* Deklariert die Funktion 'myFunc' */
+function myFunc(theObject) {
+  theObject.brand = "Toyota";
+}
+
+// Aufruf
+myFunc({type: "petrol"});</code></pre>
+<aside class="notes"><div class="paragraph"><p>Funktionen sind ein Grundbaustein in JavaScript. Eine Funktion ist eine Prozedur - eine Reihe von Anweisungen, um eine Aufgabe auszuführen oder eine Wert auszurechnen. Um Funktionen zu verwenden, müssen diese im Scope (Gültigkeitsbereich) deklariert werden, in dem sie ausgeführt werden soll.</p></div></aside></section></section>
+        <section><section id="_sample_app"><h2>Sample App</h2><div class="imageblock fragment" style=""><img src="images/tictactoe.jpeg" alt="tictactoe"></div></section><section id="_aufgabe"><h2>Aufgabe</h2><div class="ulist"><ul><li class="fragment"><p>TicTacToe als WebApp entwickeln</p></li><li class="fragment"><p>2 Spieler an einem Gerät</p></li><li class="fragment"><p>Verbindung von HTML, CSS und JavaScript</p></li></ul></div></section><section id="_coding_time"><h2>Coding Time</h2><div class="imageblock fragment" style=""><img src="images/hack-keyboard.gif" alt="hack keyboard"></div></section><section id="_fazit"><h2>Fazit</h2><div class="ulist"><ul><li class="fragment"><p>Eine Lösung:</p><div class="ulist"><ul><li class="fragment"><p><a href="https://codepen.io/greelgorke/pen/PomLQoZ" target="_blank">von uns 😂</a></p></li></ul></div></li></ul></div></section></section>
+        <section><section id="_wrap_up"><h2>Wrap up</h2></section><section id="_feedback_diskussion"><h2>Feedback &amp; Diskussion</h2><div class="ulist"><ul><li class="fragment"><p>Kurzes Blitzlicht</p></li><li class="fragment"><p>Lean Coffee</p><div class="ulist"><ul><li><p>Ohne Themen-Board</p></li><li><p>Nach 3 Minuten per Emoji signalieren ob weiter oder nicht</p></li></ul></div></li></ul></div>
+<aside class="notes"></aside></section><section id="_danke"><h2>Danke</h2><div class="ulist"><ul><li class="fragment"><p>für eure Teilnahme</p></li><li class="fragment"><p>wir sind durch</p></li></ul></div>
+<div class="imageblock fragment" style=""><img src="images/yeah.jpg" alt="yeah"></div></section></section>
+      </div>
+      <footer>
+        <img
+          src="images/brand/holisticon-logo-grey.svg"
+          class="holisticon-logo"
+          alt="Holisticon AG"
+        />
+      </footer>
+    </div>
+  <script type="text/javascript" src="lib/js/app.js"></script></body>
+</html>
