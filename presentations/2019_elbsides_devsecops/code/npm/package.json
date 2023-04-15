@@ -13,6 +13,6 @@
     "moment": "2.18.0"
   },
   "devDependencies": {
-    "npm-audit-resolver": "^1.5.0"
+    "npm-audit-resolver": "^3.0.0-RC.0"
   }
 }
